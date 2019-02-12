@@ -14,33 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QDial" name="dial">
+   <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>140</y>
-      <width>50</width>
-      <height>64</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QDial" name="dial_2">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>140</y>
-      <width>50</width>
-      <height>64</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QScrollBar" name="verticalScrollBar">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>20</y>
-      <width>41</width>
-      <height>160</height>
+      <x>133</x>
+      <y>100</y>
+      <width>20</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="orientation">
