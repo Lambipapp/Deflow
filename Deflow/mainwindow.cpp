@@ -23,5 +23,7 @@ void MainWindow::OpenFileDialog()
     projectPath = new QString(fileName);
     projectPath->remove(tr("game.project"));
     std::cout << projectPath->toStdString() << std::endl;
+
+    findChild<folderTreeView*>(tr("fileTree"))->ShowTree(projectPath);
 }
 

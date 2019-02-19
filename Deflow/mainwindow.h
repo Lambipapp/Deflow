@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include "topbarcontroller.h"
+#include "foldertreeview.h"
 
 namespace Ui {
 class MainWindow;
