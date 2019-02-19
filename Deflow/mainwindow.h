@@ -5,7 +5,7 @@
 #include <QFileDialog>
 #include "topbarcontroller.h"
 #include "canvas.h"
-#include "printblock.h"
+#include "Blocks/printblock.h"
 #include <QSplitter>
 
 namespace Ui {

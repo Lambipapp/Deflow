@@ -29,10 +29,10 @@ SOURCES += \
         mainwindow.cpp \
     topbarcontroller.cpp \
     canvas.cpp \
-    testblock.cpp \
+    Blocks/testblock.cpp \
     foldertree.cpp \
-    baseblock.cpp \
-    printblock.cpp \
+    Blocks/baseblock.cpp \
+    Blocks/printblock.cpp \
     canvas.cpp
 
 
@@ -40,17 +40,17 @@ HEADERS += \
         mainwindow.h \
     topbarcontroller.h \
     canvas.h \
-    testblock.h \
+    Blocks/testblock.h \
     foldertree.h \
-    baseblock.h \
-    printblock.h \
+    Blocks/baseblock.h \
+    Blocks/printblock.h \
     canvas.h
 
 FORMS += \
         mainwindow.ui \
-        testblock.ui \
+        Blocks/testblock.ui \
     foldertree.ui \
-    printblock.ui \
+    Blocks/printblock.ui \
     canvas.ui
 
 # Default rules for deployment.

@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //create block example
     ui->canvas->CreateBlock<PrintBlock>();
+    ui->canvas->CreateBlock<PrintBlock>();
 
 }
 

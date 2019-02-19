@@ -2,7 +2,7 @@
 #define PRINTBLOCK_H
 
 #include <QWidget>
-#include "baseblock.h"
+#include "Blocks/baseblock.h"
 
 namespace Ui {
 class PrintBlock;

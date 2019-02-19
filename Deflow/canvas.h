@@ -7,7 +7,8 @@
 #include <QDragEnterEvent>
 #include <QMimeData>
 #include <QWheelEvent>
-#include "baseblock.h"
+#include "Blocks/baseblock.h"
+#include <iostream>
 
 namespace Ui {
 class Canvas;
@@ -26,6 +27,14 @@ public:
         void CreateBlock()
         {
             T *n = new T(this);
+            //make sure we are creating a block
+            if(!n->inherits("BaseBlock"))
+            {
+                delete n;
+                return;
+            }
+
+
             blocks.push_back(n);
         }
 

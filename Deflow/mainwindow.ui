@@ -38,10 +38,17 @@
         <height>16777215</height>
        </size>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
      </widget>
     </item>
     <item>
-     <widget class="Canvas" name="canvas" native="true"/>
+     <widget class="Canvas" name="canvas" native="true">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
