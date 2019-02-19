@@ -40,7 +40,8 @@ HEADERS += \
     testblock.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+        testblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
