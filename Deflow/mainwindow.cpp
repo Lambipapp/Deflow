@@ -7,6 +7,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     topbar = new TopBarController(menuBar(), this);
     topbar->SetUpMenu();
+    canvas = new Canvas(300,200);
+    centralWidget()->layout()->addWidget(canvas);
+
+    for(int i = 0; i < 100; i++)
+    {
+        TestBlock *b = new TestBlock(canvas);
+        canvas->blocks.push_back(b);
+    }
+
 }
 
 MainWindow::~MainWindow()

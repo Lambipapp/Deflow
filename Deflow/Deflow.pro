@@ -28,12 +28,16 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     topbarcontroller.cpp \
-    foldertreeview.cpp
+    foldertreeview.cpp \
+    canvas.cpp \
+    testblock.cpp
 
 HEADERS += \
         mainwindow.h \
     topbarcontroller.h \
-    foldertreeview.h
+    foldertreeview.h \
+    canvas.h \
+    testblock.h
 
 FORMS += \
         mainwindow.ui

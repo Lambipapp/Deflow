@@ -5,6 +5,8 @@
 #include <QFileDialog>
 #include "topbarcontroller.h"
 #include "foldertreeview.h"
+#include "canvas.h"
+#include "testblock.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +27,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     TopBarController* topbar;
+    Canvas *canvas;
 };
 
 #endif // MAINWINDOW_H
