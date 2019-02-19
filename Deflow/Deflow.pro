@@ -26,10 +26,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    topbarcontroller.cpp \
+    foldertreeview.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    topbarcontroller.h \
+    foldertreeview.h
 
 FORMS += \
         mainwindow.ui
