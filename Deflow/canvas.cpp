@@ -1,26 +1,17 @@
 #include "canvas.h"
-#include <QPainter>
-#include <QDrag>
-#include <QDragEnterEvent>
-#include <QMimeData>
-#include <QWheelEvent>
+#include "ui_canvas.h"
 
-Canvas::Canvas(QWidget *parent) : QWidget(parent)
+Canvas::Canvas(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::Canvas)
 {
+    ui->setupUi(this);
     setAcceptDrops(true);
 }
 
-Canvas::Canvas(int width, int heigth, QWidget *parent) : QWidget(parent)
+Canvas::~Canvas()
 {
-    setMinimumSize(width,heigth);
-    setAcceptDrops(true);
-}
-
-
-void Canvas::paintEvent(QPaintEvent *event)
-{
-    QPainter painter(this);
-    painter.fillRect(event->rect(), Qt::white);
+    delete ui;
 }
 
 void Canvas::mousePressEvent(QMouseEvent* event)
@@ -37,7 +28,7 @@ void Canvas::mousePressEvent(QMouseEvent* event)
 void Canvas::mouseReleaseEvent(QMouseEvent* event)
 {
     //stop drag event
-    TestBlock::selectedBlock = nullptr;
+    BaseBlock::selectedBlock = nullptr;
 }
 
 void Canvas::dragMoveEvent(QDragMoveEvent *event)
@@ -53,7 +44,7 @@ void Canvas::dragMoveEvent(QDragMoveEvent *event)
     }
     else
     {
-        TestBlock::selectedBlock->move(event->pos() - TestBlock::selectedBlock->mouseOffset);
+        BaseBlock::selectedBlock->move(event->pos() - BaseBlock::selectedBlock->mouseOffset);
     }
 }
 
@@ -68,4 +59,3 @@ void Canvas::dropEvent(QDropEvent *event)
     event->acceptProposedAction();
     //blocks[0]->move(event->pos());
 }
-

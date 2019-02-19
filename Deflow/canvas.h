@@ -2,31 +2,47 @@
 #define CANVAS_H
 
 #include <QWidget>
-#include "testblock.h"
+#include <QPainter>
+#include <QDrag>
+#include <QDragEnterEvent>
+#include <QMimeData>
+#include <QWheelEvent>
+#include "baseblock.h"
+
+namespace Ui {
+class Canvas;
+}
 
 class Canvas : public QWidget
 {
     Q_OBJECT
+
 public:
-    explicit Canvas(QWidget *parent = nullptr);
-    explicit Canvas(int width, int heigth, QWidget*parent = nullptr);
-    std::vector<TestBlock*> blocks;
+    explicit Canvas(QWidget* parent = nullptr);
+    std::vector<BaseBlock*> blocks;
 
-signals:
+    //create block
+    template<class T>
+        void CreateBlock()
+        {
+            T *n = new T(this);
+            blocks.push_back(n);
+        }
 
-public slots:
-
+    ~Canvas();
 
 private:
+    Ui::Canvas *ui;
     QPoint previousMouseDragPos;
 
+
 protected:
-    void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void dragMoveEvent(QDragMoveEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     void dragEnterEvent(QDragEnterEvent *event) override;
+
 };
 
 #endif // CANVAS_H

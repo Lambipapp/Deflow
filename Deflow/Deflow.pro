@@ -30,19 +30,28 @@ SOURCES += \
     topbarcontroller.cpp \
     canvas.cpp \
     testblock.cpp \
-    foldertree.cpp
+    foldertree.cpp \
+    baseblock.cpp \
+    printblock.cpp \
+    canvas.cpp
+
 
 HEADERS += \
         mainwindow.h \
     topbarcontroller.h \
     canvas.h \
     testblock.h \
-    foldertree.h
+    foldertree.h \
+    baseblock.h \
+    printblock.h \
+    canvas.h
 
 FORMS += \
         mainwindow.ui \
         testblock.ui \
-    foldertree.ui
+    foldertree.ui \
+    printblock.ui \
+    canvas.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

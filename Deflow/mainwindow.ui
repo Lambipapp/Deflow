@@ -40,6 +40,9 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="Canvas" name="canvas" native="true"/>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -68,6 +71,12 @@
    <class>FolderTree</class>
    <extends>QWidget</extends>
    <header>foldertree.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Canvas</class>
+   <extends>QWidget</extends>
+   <header>canvas.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

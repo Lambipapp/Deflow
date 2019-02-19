@@ -5,7 +5,7 @@
 #include <QFileDialog>
 #include "topbarcontroller.h"
 #include "canvas.h"
-#include "testblock.h"
+#include "printblock.h"
 #include <QSplitter>
 
 namespace Ui {
@@ -27,7 +27,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     TopBarController* topbar;
-    Canvas *canvas;
 };
 
 #endif // MAINWINDOW_H
