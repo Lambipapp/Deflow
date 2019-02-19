@@ -34,7 +34,8 @@ SOURCES += \
     Blocks/baseblock.cpp \
     Blocks/printblock.cpp \
     canvas.cpp \
-    StatusBar.cpp
+    StatusBar.cpp \
+    openingdialog.cpp
 
 
 HEADERS += \
@@ -46,14 +47,16 @@ HEADERS += \
     Blocks/baseblock.h \
     Blocks/printblock.h \
     canvas.h \
-    StatusBar.h
+    StatusBar.h \
+    openingdialog.h
 
 FORMS += \
         mainwindow.ui \
         Blocks/testblock.ui \
     foldertree.ui \
     Blocks/printblock.ui \
-    canvas.ui
+    canvas.ui \
+    openingdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

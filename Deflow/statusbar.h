@@ -2,7 +2,6 @@
 #define STATUSBAR_H
 
 #include <QStatusBar>
-#include <QString>
 
 class StatusBar
 {

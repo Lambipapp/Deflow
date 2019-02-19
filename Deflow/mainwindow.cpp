@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -7,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     topbar = new TopBarController(menuBar(), this);
     topbar->SetUpMenu();
+    setWindowTitle(tr("Deflow"));
 
     //create block example
     ui->canvas->CreateBlock<PrintBlock>();
@@ -27,7 +29,7 @@ void MainWindow::OpenFileDialog()
     QString fileName = fileDialog.getOpenFileName(this, tr("Select Defold Project"), "/home", tr("Project (*.project)"));
     projectPath = new QString(fileName);
     projectPath->remove(tr("game.project"));
-    std::cout << projectPath->toStdString() << std::endl;
+    qDebug() << *projectPath;
 
     if(projectPath->length() > 0){
         ui->fileTree->ShowTree(projectPath);

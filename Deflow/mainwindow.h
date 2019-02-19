@@ -7,6 +7,7 @@
 #include "canvas.h"
 #include "Blocks/printblock.h"
 #include "statusbar.h"
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
