@@ -31,13 +31,7 @@
      <number>5</number>
     </property>
     <item>
-     <widget class="folderTreeView" name="fileTree" native="true">
-      <property name="minimumSize">
-       <size>
-        <width>100</width>
-        <height>0</height>
-       </size>
-      </property>
+     <widget class="FolderTree" name="fileTree" native="true">
       <property name="maximumSize">
        <size>
         <width>300</width>
@@ -71,9 +65,9 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>folderTreeView</class>
+   <class>FolderTree</class>
    <extends>QWidget</extends>
-   <header>foldertreeview.h</header>
+   <header>foldertree.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
