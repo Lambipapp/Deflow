@@ -7,6 +7,7 @@
 #include "foldertreeview.h"
 #include "canvas.h"
 #include "testblock.h"
+#include <QSplitter>
 
 namespace Ui {
 class MainWindow;
@@ -28,6 +29,7 @@ private:
     Ui::MainWindow *ui;
     TopBarController* topbar;
     Canvas *canvas;
+    folderTreeView* fileTree;
 };
 
 #endif // MAINWINDOW_H

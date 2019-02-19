@@ -8,9 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
     topbar = new TopBarController(menuBar(), this);
     topbar->SetUpMenu();
     canvas = new Canvas(300,200);
+    fileTree = findChild<folderTreeView*>(tr("fileTree"));
     centralWidget()->layout()->addWidget(canvas);
 
-    for(int i = 0; i < 100; i++)
+
+
+    for(int i = 0; i < 30; i++)
     {
         TestBlock *b = new TestBlock(canvas);
         canvas->blocks.push_back(b);
@@ -33,6 +36,6 @@ void MainWindow::OpenFileDialog()
     projectPath->remove(tr("game.project"));
     std::cout << projectPath->toStdString() << std::endl;
 
-    findChild<folderTreeView*>(tr("fileTree"))->ShowTree(projectPath);
+    fileTree->ShowTree(projectPath);
 }
 

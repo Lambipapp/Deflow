@@ -32,6 +32,12 @@
     </property>
     <item>
      <widget class="folderTreeView" name="fileTree" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
         <width>300</width>
