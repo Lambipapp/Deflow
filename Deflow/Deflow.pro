@@ -33,7 +33,8 @@ SOURCES += \
     foldertree.cpp \
     Blocks/baseblock.cpp \
     Blocks/printblock.cpp \
-    canvas.cpp
+    canvas.cpp \
+    StatusBar.cpp
 
 
 HEADERS += \
@@ -44,7 +45,8 @@ HEADERS += \
     foldertree.h \
     Blocks/baseblock.h \
     Blocks/printblock.h \
-    canvas.h
+    canvas.h \
+    StatusBar.h
 
 FORMS += \
         mainwindow.ui \

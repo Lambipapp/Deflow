@@ -5,7 +5,9 @@
 #include <QTreeView>
 #include <QFileSystemModel>
 #include <QAbstractButton>
-
+#include <QSortFilterProxyModel>
+#include "mainwindow.h"
+#include <statusbar.h>
 #include <iostream>
 
 namespace Ui {

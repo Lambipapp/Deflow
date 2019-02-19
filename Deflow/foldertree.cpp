@@ -8,6 +8,9 @@ FolderTree::FolderTree(QWidget *parent) :
     ui->setupUi(this);
     folderModel = new QFileSystemModel();
 
+
+    folderModel->setNameFilters(QStringList() << tr("*.script"));
+
 }
 
 FolderTree::~FolderTree()
@@ -16,6 +19,7 @@ FolderTree::~FolderTree()
 }
 void FolderTree::ShowTree(QString* folderPath)
 {
+
     folderModel->setRootPath(*folderPath);//model->setRootPath(projectPath);
     ui->tree->setModel(folderModel);
     ui->tree->setRootIndex(folderModel->index(*folderPath));
@@ -23,6 +27,7 @@ void FolderTree::ShowTree(QString* folderPath)
     ui->tree->hideColumn(1);
     ui->tree->hideColumn(2);
     ui->tree->hideColumn(3);
+
 }
 
 void FolderTree::on_toggleButton_clicked()
@@ -44,5 +49,11 @@ void FolderTree::on_toggleButton_clicked()
 
 void FolderTree::on_tree_doubleClicked(const QModelIndex &index)
 {
-    std::cout << folderModel->fileName(index).toStdString() << std::endl;
+    if(folderModel->fileName(index).contains(tr(".script")))
+    {
+        StatusBar::instance->postMsg(tr("Opening ") + folderModel->fileName(index) , 2);
+    }else
+    {
+        StatusBar::instance->postMsg(tr("Not a *.script-file"), 2);
+    }
 }

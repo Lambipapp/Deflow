@@ -6,7 +6,7 @@
 #include "topbarcontroller.h"
 #include "canvas.h"
 #include "Blocks/printblock.h"
-#include <QSplitter>
+#include "statusbar.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,6 +27,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     TopBarController* topbar;
+    StatusBar* sb;
 };
 
 #endif // MAINWINDOW_H

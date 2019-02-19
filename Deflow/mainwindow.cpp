@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //create block example
     ui->canvas->CreateBlock<PrintBlock>();
     ui->canvas->CreateBlock<PrintBlock>();
-
+    sb = new StatusBar(ui->statusBar);
 }
 
 MainWindow::~MainWindow()
@@ -29,7 +29,13 @@ void MainWindow::OpenFileDialog()
     projectPath->remove(tr("game.project"));
     std::cout << projectPath->toStdString() << std::endl;
 
-    if(projectPath->length() > 0)
+    if(projectPath->length() > 0){
         ui->fileTree->ShowTree(projectPath);
+        StatusBar::instance->postMsg(tr("Opening project at: ")+projectPath, 2);
+    }
+    else
+    {
+        StatusBar::instance->postMsg(tr("Did not find project"), 2);
+    }
 }
 
