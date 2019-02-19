@@ -41,3 +41,8 @@ void FolderTree::on_toggleButton_clicked()
     }
     minimized = !minimized;
 }
+
+void FolderTree::on_tree_doubleClicked(const QModelIndex &index)
+{
+    std::cout << folderModel->fileName(index).toStdString() << std::endl;
+}

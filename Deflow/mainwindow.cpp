@@ -35,6 +35,7 @@ void MainWindow::OpenFileDialog()
     projectPath->remove(tr("game.project"));
     std::cout << projectPath->toStdString() << std::endl;
 
-    ui->fileTree->ShowTree(projectPath);
+    if(projectPath->length() > 0)
+        ui->fileTree->ShowTree(projectPath);
 }
 

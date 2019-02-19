@@ -6,6 +6,8 @@
 #include <QFileSystemModel>
 #include <QAbstractButton>
 
+#include <iostream>
+
 namespace Ui {
 class FolderTree;
 }
@@ -21,6 +23,8 @@ public:
 
 private slots:
     void on_toggleButton_clicked();
+
+    void on_tree_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::FolderTree *ui;
