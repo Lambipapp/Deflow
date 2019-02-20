@@ -1,24 +1,46 @@
 #include "canvas.h"
 #include "ui_canvas.h"
-#include "graphspace.h"
+
 
 Canvas::Canvas(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Canvas)
 {
     ui->setupUi(this);
+    if(Canvas::instance == nullptr)
+    {
+        Canvas::instance = this;
+    }
+    else
+    {
+        destroy(); //dont know if this is correct
+    }
     setAcceptDrops(true);
-    currentCanvas = ui->InitCanvas;
     currentGraphSpace = ui->InitCanvas;
 }
+
+void Canvas::CreatePrintBlock(const QPoint &pos)
+{
+    PrintBlock *n = new PrintBlock(currentGraphSpace);
+    n->show();
+    n->move(pos);
+    currentGraphSpace->blocks.push_back(n);
+}
+
+void Canvas::RemoveBlock(BaseBlock* block)
+{
+
+}
+
+
 
 Canvas::~Canvas()
 {
     delete ui;
 }
 
-QWidget* Canvas::currentCanvas = nullptr;
 GraphSpace* Canvas::currentGraphSpace;
+Canvas* Canvas::instance;
 
 void Canvas::on_FunctionTabs_currentChanged(int index)
 {
@@ -43,5 +65,4 @@ void Canvas::on_FunctionTabs_currentChanged(int index)
         currentGraphSpace = ui->FinalCanvas;
         break;
     }
-    currentCanvas = currentGraphSpace;
 }

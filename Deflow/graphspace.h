@@ -5,6 +5,7 @@
 #include <QDrag>
 #include <QDragEnterEvent>
 #include <QMimeData>
+#include <QMenu>
 #include "Blocks/baseblock.h"
 #include "Blocks/printblock.h"
 
@@ -25,6 +26,9 @@ public:
 private:
     Ui::GraphSpace *ui;
     QPoint previousMouseDragPos;
+    QPoint newBlockPos;
+
+
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -32,6 +36,10 @@ protected:
     void dragMoveEvent(QDragMoveEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     void dragEnterEvent(QDragEnterEvent *event) override;
+
+public slots:
+    void CreatePrintBlock();
+    void ShowContextMenu(const QPoint &pos);
 };
 
 #endif // GRAPHSPACE_H

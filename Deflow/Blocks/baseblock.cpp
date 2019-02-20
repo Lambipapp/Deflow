@@ -10,9 +10,17 @@ BaseBlock::BaseBlock(QWidget *parent) : QWidget(parent)
 
 void BaseBlock::mousePressEvent(QMouseEvent *event)
 {
-    dragStartPosition = event->pos();
-    selectedBlock = this;
-    mouseOffset = event->pos(); - this->pos();
+    if(event->button() == Qt::LeftButton)
+    {
+        dragStartPosition = event->pos();
+        selectedBlock = this;
+        mouseOffset = event->pos(); - this->pos();
+    }
+    else if(event->button() == Qt::RightButton)
+    {
+
+    }
+
 }
 
 

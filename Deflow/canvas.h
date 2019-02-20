@@ -5,6 +5,7 @@
 #include "Blocks/baseblock.h"
 #include "Blocks/printblock.h"
 #include "graphspace.h"
+#include <iostream>
 
 namespace Ui {
 class Canvas;
@@ -18,23 +19,11 @@ public:
     explicit Canvas(QWidget* parent = nullptr);
 
 
-    //create block
-    template<class T>
-        void CreateBlock()
-        {
-            T *n = new T(currentCanvas);
-            //make sure we are creating a block
-            if(!n->inherits("BaseBlock"))
-            {
-                delete n;
-                return;
-            }
-            currentGraphSpace->blocks.push_back(n);
-        }
+
 
     ~Canvas();
-    static QWidget* currentCanvas;
     static GraphSpace* currentGraphSpace;
+    static Canvas* instance;
 
 private:
     Ui::Canvas *ui;
@@ -45,6 +34,23 @@ private:
 protected:
 
 
+public slots:
+    //create block
+//    template<class T>
+//        void CreateBlock()
+//        {
+//            T *n = new T(currentCanvas);
+//            //make sure we are creating a block
+//            if(!n->inherits("BaseBlock"))
+//            {
+//                delete n;
+//                return;
+//            }
+//            currentGraphSpace->blocks.push_back(n);
+//        }
+
+    void CreatePrintBlock(const QPoint &pos);
+    void RemoveBlock(BaseBlock* block);
 private slots:
     void on_FunctionTabs_currentChanged(int index);
 };

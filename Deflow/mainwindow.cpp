@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle(tr("Deflow"));
 
     //create block example
-    ui->canvas->CreateBlock<PrintBlock>();
-    ui->canvas->CreateBlock<PrintBlock>();
+    //ui->canvas->CreateBlock<PrintBlock>();
+    //ui->canvas->CreateBlock<PrintBlock>();
     sb = new StatusBar(ui->statusBar);
 }
 

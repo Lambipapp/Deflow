@@ -41,6 +41,9 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="InitTab">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <attribute name="title">
        <string>Init</string>
       </attribute>
