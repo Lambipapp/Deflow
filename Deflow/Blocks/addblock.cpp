@@ -6,6 +6,7 @@ AddBlock::AddBlock(QWidget *parent) :
     ui(new Ui::AddBlock)
 {
     ui->setupUi(this);
+    ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
 }
 
 AddBlock::~AddBlock()
