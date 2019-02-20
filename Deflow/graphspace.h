@@ -5,7 +5,6 @@
 #include <QDrag>
 #include <QDragEnterEvent>
 #include <QMimeData>
-#include <QWheelEvent>
 #include "Blocks/baseblock.h"
 #include "Blocks/printblock.h"
 
