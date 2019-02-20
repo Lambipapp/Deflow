@@ -21,6 +21,8 @@ public:
 private:
     Ui::Connector *ui;
     void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent* event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
 };
 
 #endif // CONNECTOR_H

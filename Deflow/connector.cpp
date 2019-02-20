@@ -23,3 +23,11 @@ void Connector::mousePressEvent(QMouseEvent* event)
 //        lineRenderer->show();
     }
 }
+
+void Connector::mouseMoveEvent(QMouseEvent* event){
+
+}
+void Connector::mouseReleaseEvent(QMouseEvent *event)
+{
+
+}
