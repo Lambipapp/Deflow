@@ -26,6 +26,15 @@ void Canvas::CreatePrintBlock(const QPoint &pos)
     n->move(pos);
     currentGraphSpace->blocks.push_back(n);
 }
+void Canvas::CreateAddBlock(const QPoint &pos)
+{
+    AddBlock *n = new AddBlock(currentGraphSpace);
+    n->show();
+    n->move(pos);
+    currentGraphSpace->blocks.push_back(n);
+}
+
+
 
 void Canvas::RemoveBlock(BaseBlock* block)
 {

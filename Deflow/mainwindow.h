@@ -5,7 +5,7 @@
 #include <QFileDialog>
 #include "topbarcontroller.h"
 #include "canvas.h"
-#include "Blocks/printblock.h"
+#include "Blocks.h"
 #include "statusbar.h"
 #include <QDebug>
 

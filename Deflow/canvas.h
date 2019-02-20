@@ -2,8 +2,7 @@
 #define CANVAS_H
 
 #include <QWidget>
-#include "Blocks/baseblock.h"
-#include "Blocks/printblock.h"
+#include "blocks.h"
 #include "graphspace.h"
 #include <iostream>
 
@@ -50,6 +49,7 @@ public slots:
 //        }
 
     void CreatePrintBlock(const QPoint &pos);
+    void CreateAddBlock(const QPoint &pos);
     void RemoveBlock(BaseBlock* block);
 private slots:
     void on_FunctionTabs_currentChanged(int index);
