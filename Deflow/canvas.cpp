@@ -1,5 +1,6 @@
 #include "canvas.h"
 #include "ui_canvas.h"
+#include "graphspace.h"
 
 Canvas::Canvas(QWidget *parent) :
     QWidget(parent),
@@ -7,6 +8,8 @@ Canvas::Canvas(QWidget *parent) :
 {
     ui->setupUi(this);
     setAcceptDrops(true);
+    currentCanvas = ui->InitCanvas;
+    currentGraphSpace = ui->InitCanvas;
 }
 
 Canvas::~Canvas()
@@ -14,48 +17,31 @@ Canvas::~Canvas()
     delete ui;
 }
 
-void Canvas::mousePressEvent(QMouseEvent* event)
-{
-    //start drag event
-    previousMouseDragPos = event->pos();
-    QDrag* drag = new QDrag(this);
-    QMimeData *mimeData = new QMimeData;
-    mimeData->setText("CanvasDrag");
-    drag->setMimeData(mimeData);
-    drag->start();
-}
+QWidget* Canvas::currentCanvas = nullptr;
+GraphSpace* Canvas::currentGraphSpace;
 
-void Canvas::mouseReleaseEvent(QMouseEvent* event)
+void Canvas::on_FunctionTabs_currentChanged(int index)
 {
-    //stop drag event
-    BaseBlock::selectedBlock = nullptr;
-}
-
-void Canvas::dragMoveEvent(QDragMoveEvent *event)
-{
-    if(event->mimeData()->text() == "CanvasDrag")
+    switch(index)
     {
-
-        for(unsigned int i = 0; i < blocks.size(); i++)
-        {
-            blocks[i]->move(blocks[i]->pos() + (event->pos() - previousMouseDragPos));
-        }
-        previousMouseDragPos = event->pos();
+    case 0:
+        currentGraphSpace = ui->InitCanvas;
+        break;
+    case 1:
+        currentGraphSpace = ui->UpdateCanvas;
+        break;
+    case 2:
+        currentGraphSpace = ui->OnMessageCanvas;
+        break;
+    case 3:
+        currentGraphSpace = ui->OnInputCanvas;
+        break;
+    case 4:
+        currentGraphSpace = ui->OnReloadCanvas;
+        break;
+    case 5:
+        currentGraphSpace = ui->FinalCanvas;
+        break;
     }
-    else
-    {
-        BaseBlock::selectedBlock->move(event->pos() - BaseBlock::selectedBlock->mouseOffset);
-    }
-}
-
-void Canvas::dragEnterEvent(QDragEnterEvent *event)
-{
-    event->acceptProposedAction();
-}
-
-
-void Canvas::dropEvent(QDropEvent *event)
-{
-    event->acceptProposedAction();
-    //blocks[0]->move(event->pos());
+    currentCanvas = currentGraphSpace;
 }

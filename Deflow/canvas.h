@@ -2,13 +2,13 @@
 #define CANVAS_H
 
 #include <QWidget>
-#include <QPainter>
 #include <QDrag>
 #include <QDragEnterEvent>
 #include <QMimeData>
 #include <QWheelEvent>
 #include "Blocks/baseblock.h"
-#include <iostream>
+#include "Blocks/printblock.h"
+#include "graphspace.h"
 
 namespace Ui {
 class Canvas;
@@ -20,38 +20,37 @@ class Canvas : public QWidget
 
 public:
     explicit Canvas(QWidget* parent = nullptr);
-    std::vector<BaseBlock*> blocks;
+
 
     //create block
     template<class T>
         void CreateBlock()
         {
-            T *n = new T(this);
+            T *n = new T(currentCanvas);
             //make sure we are creating a block
             if(!n->inherits("BaseBlock"))
             {
                 delete n;
                 return;
             }
-
-
-            blocks.push_back(n);
+            currentGraphSpace->blocks.push_back(n);
         }
 
     ~Canvas();
+    static QWidget* currentCanvas;
+    static GraphSpace* currentGraphSpace;
 
 private:
     Ui::Canvas *ui;
-    QPoint previousMouseDragPos;
+
+
 
 
 protected:
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
-    void dragMoveEvent(QDragMoveEvent *event) override;
-    void dropEvent(QDropEvent *event) override;
-    void dragEnterEvent(QDragEnterEvent *event) override;
 
+
+private slots:
+    void on_FunctionTabs_currentChanged(int index);
 };
 
 #endif // CANVAS_H

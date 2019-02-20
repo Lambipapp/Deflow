@@ -35,7 +35,8 @@ SOURCES += \
     Blocks/printblock.cpp \
     canvas.cpp \
     StatusBar.cpp \
-    openingdialog.cpp
+    openingdialog.cpp \
+    graphspace.cpp
 
 
 HEADERS += \
@@ -48,7 +49,8 @@ HEADERS += \
     Blocks/printblock.h \
     canvas.h \
     StatusBar.h \
-    openingdialog.h
+    openingdialog.h \
+    graphspace.h
 
 FORMS += \
         mainwindow.ui \
@@ -56,7 +58,8 @@ FORMS += \
     foldertree.ui \
     Blocks/printblock.ui \
     canvas.ui \
-    openingdialog.ui
+    openingdialog.ui \
+    graphspace.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
