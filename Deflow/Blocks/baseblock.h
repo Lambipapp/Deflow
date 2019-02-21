@@ -23,10 +23,12 @@ public:
 signals:
 
 public slots:
-
+    void DestroyBlock();
 
 private:
     QPoint dragStartPosition;
+    void ShowContextMenu(const QPoint &pos);
+    virtual void OnDestroy();
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;

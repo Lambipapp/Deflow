@@ -6,8 +6,7 @@
 #include <QDragEnterEvent>
 #include <QMimeData>
 #include <QMenu>
-#include "Blocks/baseblock.h"
-#include "Blocks/printblock.h"
+#include "blocks.h"
 
 
 namespace Ui {
@@ -27,6 +26,7 @@ private:
     Ui::GraphSpace *ui;
     QPoint previousMouseDragPos;
     QPoint newBlockPos;
+    void TranslateToLua();
 
 
 
@@ -39,6 +39,7 @@ protected:
 
 public slots:
     void CreatePrintBlock();
+    void CreateAddBlock();
     void ShowContextMenu(const QPoint &pos);
 };
 

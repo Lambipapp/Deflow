@@ -26,7 +26,7 @@ public:
 
 private:
     Ui::Canvas *ui;
-
+    void OpenFile();
 
 
 

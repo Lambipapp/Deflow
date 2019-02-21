@@ -1,11 +1,13 @@
 #include "baseblock.h"
+#include "canvas.h"
+
 
 BaseBlock* BaseBlock::selectedBlock = nullptr;
 
 
 BaseBlock::BaseBlock(QWidget *parent) : QWidget(parent)
 {
-
+    setContextMenuPolicy(Qt::CustomContextMenu);
 }
 
 void BaseBlock::mousePressEvent(QMouseEvent *event)
@@ -18,7 +20,7 @@ void BaseBlock::mousePressEvent(QMouseEvent *event)
     }
     else if(event->button() == Qt::RightButton)
     {
-
+        ShowContextMenu(event->pos());
     }
 
 }
@@ -39,4 +41,29 @@ void BaseBlock::mouseMoveEvent(QMouseEvent *event)
     drag->setMimeData(mimeData);
 
     drag->exec(Qt::MoveAction);
+}
+
+void BaseBlock::ShowContextMenu(const QPoint &pos)
+{
+    QMenu contextMenu(tr("Context menu"), this);
+
+    QAction deleteBlock("Delete", &contextMenu);
+    connect(&deleteBlock, SIGNAL(triggered()), this, SLOT(DestroyBlock()));
+    contextMenu.addAction(&deleteBlock);
+
+    contextMenu.setStyleSheet("");
+
+    contextMenu.exec(mapToGlobal(pos));
+}
+
+
+void BaseBlock::DestroyBlock()
+{
+    OnDestroy();
+    Canvas::instance->RemoveBlock(this);
+    deleteLater();
+}
+
+void BaseBlock::OnDestroy()
+{
 }

@@ -38,6 +38,19 @@ void Canvas::CreateAddBlock(const QPoint &pos)
 
 void Canvas::RemoveBlock(BaseBlock* block)
 {
+    for(unsigned int i = 0; i < currentGraphSpace->blocks.size(); i++)
+    {
+        if(currentGraphSpace->blocks[i] == block)
+        {
+            currentGraphSpace->blocks.erase(currentGraphSpace->blocks.begin() + i);
+            break;
+        }
+    }
+}
+
+
+void Canvas::OpenFile()
+{
 
 }
 

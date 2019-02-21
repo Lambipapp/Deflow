@@ -1,7 +1,7 @@
 #include "graphspace.h"
 #include "ui_graphspace.h"
 #include "canvas.h"
-#include <iostream>
+
 
 GraphSpace::GraphSpace(QWidget *parent) :
     QWidget(parent),
@@ -23,15 +23,14 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
    QMenu createBlockMenu(tr("New.."), &contextMenu);
    contextMenu.addMenu(&createBlockMenu);
 
-   QAction createPrintBlockAction("Printblock", &createBlockMenu);
+   QAction createPrintBlockAction("Print block", &createBlockMenu);
    connect(&createPrintBlockAction, SIGNAL(triggered()), this, SLOT(CreatePrintBlock()));
 
-   QAction createASD("ASD", &createBlockMenu);
-   connect(&createASD, SIGNAL(triggered()), this, SLOT());
+   QAction createAddBlock("Add block", &createBlockMenu);
+   connect(&createAddBlock, SIGNAL(triggered()), this, SLOT(CreateAddBlock()));
 
-   createBlockMenu.addAction(&createASD);
+   createBlockMenu.addAction(&createAddBlock);
    createBlockMenu.addAction(&createPrintBlockAction);
-
 
 
    newBlockPos = pos;
@@ -43,6 +42,10 @@ void GraphSpace::CreatePrintBlock()
     Canvas::instance->CreatePrintBlock(newBlockPos);
 }
 
+void GraphSpace::CreateAddBlock()
+{
+    Canvas::instance->CreateAddBlock(newBlockPos);
+}
 
 void GraphSpace::mousePressEvent(QMouseEvent* event)
 {
@@ -93,4 +96,9 @@ void GraphSpace::dragEnterEvent(QDragEnterEvent *event)
 void GraphSpace::dropEvent(QDropEvent *event)
 {
     event->acceptProposedAction();
+}
+
+void GraphSpace::TranslateToLua()
+{
+
 }
