@@ -18,10 +18,12 @@ void Connector::mousePressEvent(QMouseEvent* event)
     if(event->button() == Qt::LeftButton)
     {
 //        qDebug() << "klick";
-        ui->widget->setStyleSheet(tr("background-color: Yellow"));
-        QPoint p = mapTo(Canvas::currentGraphSpace, this->geometry().center());
-        LineRenderer* lineRenderer = new LineRenderer(p, p + QPoint(100,100), Canvas::currentGraphSpace);
-        lineRenderer->show();
+//        ui->widget->setStyleSheet(tr("background-color: Yellow"));
+//        QPoint p = mapTo(Canvas::currentGraphSpace, this->geometry().center());
+//        LineRenderer* lineRenderer = new LineRenderer(p, p + QPoint(100,100), Canvas::currentGraphSpace);
+//        lineRenderer->show();
+
+        Canvas::instance->currentGraphSpace->CreateLine(mapTo(Canvas::currentGraphSpace,this->parentWidget()->pos()), mapTo(Canvas::currentGraphSpace,event->pos()));
     }
 }
 

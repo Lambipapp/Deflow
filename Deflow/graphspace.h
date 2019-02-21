@@ -7,6 +7,7 @@
 #include <QMimeData>
 #include <QMenu>
 #include "blocks.h"
+#include "linerenderer.h"
 
 
 namespace Ui {
@@ -21,6 +22,7 @@ public:
     explicit GraphSpace(QWidget *parent = nullptr);
     ~GraphSpace();
     std::vector<BaseBlock*> blocks;
+    std::vector<LineRenderer*> lines;
 
 private:
     Ui::GraphSpace *ui;
@@ -41,6 +43,7 @@ public slots:
     void CreatePrintBlock();
     void CreateAddBlock();
     void ShowContextMenu(const QPoint &pos);
+    void CreateLine(const QPoint &start, const QPoint &end);
 };
 
 #endif // GRAPHSPACE_H

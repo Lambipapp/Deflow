@@ -2,6 +2,10 @@
 #include "ui_linerenderer.h"
 #include "canvas.h"
 #include <QDebug>
+
+LineRenderer* LineRenderer::selectedLine = nullptr;
+
+
 LineRenderer::LineRenderer(const QPoint &startPos, const QPoint &endPos, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LineRenderer), sPos(startPos), ePos(endPos)
@@ -25,8 +29,6 @@ void LineRenderer::UpdatePositions(const QPoint &newStart, const QPoint &newEnd)
 {
     sPos = newStart;
     ePos = newEnd;
-
-    qDebug() << sPos << ePos;
 
     if(sPos.x() < ePos.x() && sPos.y() < ePos.y()) downHill = true;
     else if(sPos.x() < ePos.x() && sPos.y() > ePos.y()) downHill = false;

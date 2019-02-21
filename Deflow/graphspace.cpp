@@ -17,6 +17,14 @@ GraphSpace::~GraphSpace()
     delete ui;
 }
 
+void GraphSpace::CreateLine(const QPoint &start, const QPoint &end)
+{
+    LineRenderer* newLine = new LineRenderer(start,end,Canvas::currentGraphSpace);
+    lines.push_back(newLine);
+    newLine->show();
+}
+
+
 void GraphSpace::ShowContextMenu(const QPoint &pos)
 {
    QMenu contextMenu(tr("Context menu"), this);

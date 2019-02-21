@@ -2,7 +2,6 @@
 #define LINERENDERER_H
 
 #include <QWidget>
-#include <graphspace.h>
 #include "blocks.h"
 
 
@@ -18,6 +17,7 @@ public:
     explicit LineRenderer(const QPoint &startPos, const QPoint &endPos, QWidget *parent = nullptr);
     ~LineRenderer() override;
     void UpdatePositions(const QPoint &newStart, const QPoint &newEnd);
+    static LineRenderer* selectedLine;
 private:
     Ui::LineRenderer *ui;
     static float map(float newMin, float newMax, float oldMin, float oldMax, float val);
