@@ -1,6 +1,6 @@
 #include "connector.h"
 #include "ui_connector.h"
-
+#include "canvas.h"
 Connector::Connector(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Connector)
@@ -18,9 +18,10 @@ void Connector::mousePressEvent(QMouseEvent* event)
     if(event->button() == Qt::LeftButton)
     {
 //        qDebug() << "klick";
-//        ui->widget->setStyleSheet(tr("background-color: Yellow"));
-//        LineRenderer* lineRenderer = new LineRenderer(this->pos(), this->pos()+ QPoint(100,100));
-//        lineRenderer->show();
+        ui->widget->setStyleSheet(tr("background-color: Yellow"));
+        QPoint p = mapTo(Canvas::currentGraphSpace, this->geometry().center());
+        LineRenderer* lineRenderer = new LineRenderer(p, p + QPoint(100,100), Canvas::currentGraphSpace);
+        lineRenderer->show();
     }
 }
 
