@@ -21,17 +21,24 @@ Canvas::Canvas(QWidget *parent) :
 
 void Canvas::CreatePrintBlock(const QPoint &pos)
 {
-    PrintBlock *n = new PrintBlock(currentGraphSpace);
-    n->show();
-    n->move(pos);
-    currentGraphSpace->blocks.push_back(n);
+//    PrintBlock *n = new PrintBlock(currentGraphSpace);
+//    n->show();
+//    n->move(pos);
+//    currentGraphSpace->blocks.push_back(n);
 }
 void Canvas::CreateAddBlock(const QPoint &pos)
 {
-    AddBlock *n = new AddBlock(currentGraphSpace);
-    n->show();
-    n->move(pos);
-    currentGraphSpace->blocks.push_back(n);
+//    AddBlock *n = new AddBlock(currentGraphSpace);
+//    n->show();
+//    n->move(pos);
+//    currentGraphSpace->blocks.push_back(n);
+}
+void Canvas::CreateStartBlock(const QPoint &pos)
+{
+//    StartBlock *n = new StartBlock(currentGraphSpace);
+//    n->show();
+//    n->move(pos);
+//    currentGraphSpace->blocks.push_back(n);
 }
 
 

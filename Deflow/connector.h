@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QMouseEvent>
 #include <QDebug>
-#include "blocks.h"
 
 
 namespace Ui {
@@ -24,7 +23,6 @@ private:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
-    BaseBlock* myBlock;
 };
 
 #endif // CONNECTOR_H

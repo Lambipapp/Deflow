@@ -10,6 +10,7 @@ GraphSpace::GraphSpace(QWidget *parent) :
     ui->setupUi(this);
     setAcceptDrops(true);
     setContextMenuPolicy(Qt::CustomContextMenu);
+    CreateStartBlock();
 }
 
 GraphSpace::~GraphSpace()
@@ -48,12 +49,28 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
 
 void GraphSpace::CreatePrintBlock()
 {
-    Canvas::instance->CreatePrintBlock(newBlockPos);
+    //Canvas::instance->CreatePrintBlock(newBlockPos);
+    PrintBlock *n = new PrintBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
 }
 
 void GraphSpace::CreateAddBlock()
 {
-    Canvas::instance->CreateAddBlock(newBlockPos);
+    //Canvas::instance->CreateAddBlock(newBlockPos);
+    AddBlock *n = new AddBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+}
+void GraphSpace::CreateStartBlock()
+{
+    //Canvas::instance->CreateStartBlock();
+    StartBlock *n = new StartBlock(this);
+    n->show();
+    n->move(this->width()/2, this->height()/2);
+    this->blocks.push_back(n);
 }
 
 void GraphSpace::mousePressEvent(QMouseEvent* event)

@@ -44,6 +44,7 @@ protected:
 public slots:
     void CreatePrintBlock();
     void CreateAddBlock();
+    void CreateStartBlock();
     void ShowContextMenu(const QPoint &pos);
     void CreateLine(QWidget* connector1, QWidget* connector2);
 };

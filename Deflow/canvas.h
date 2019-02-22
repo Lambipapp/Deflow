@@ -50,6 +50,7 @@ public slots:
 
     void CreatePrintBlock(const QPoint &pos);
     void CreateAddBlock(const QPoint &pos);
+    void CreateStartBlock(const QPoint &pos = QPoint(100, 100));
     void RemoveBlock(BaseBlock* block);
 private slots:
     void on_FunctionTabs_currentChanged(int index);
