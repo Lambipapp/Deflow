@@ -2,7 +2,7 @@
 #define LINERENDERER_H
 
 #include <QWidget>
-#include "blocks.h"
+//#include "blocks.h"
 
 
 namespace Ui {
@@ -14,9 +14,9 @@ class LineRenderer : public QWidget
     Q_OBJECT
 
 public:
-    explicit LineRenderer(const QPoint &startPos, const QPoint &endPos, QWidget *parent = nullptr);
+    explicit LineRenderer(QWidget* p1, QWidget* p2, QWidget *parent = nullptr);
     ~LineRenderer() override;
-    void UpdatePositions(const QPoint &newStart, const QPoint &newEnd);
+    void UpdatePositions();
     static LineRenderer* selectedLine;
 private:
     Ui::LineRenderer *ui;
@@ -29,6 +29,9 @@ private:
     int halfWidth = 2;
     QPoint padding;
     bool downHill = false;
+
+    QWidget* w1;
+    QWidget* w2;
 protected:
     void paintEvent(QPaintEvent *event) override;
 };

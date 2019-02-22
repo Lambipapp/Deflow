@@ -17,9 +17,10 @@ GraphSpace::~GraphSpace()
     delete ui;
 }
 
-void GraphSpace::CreateLine(const QPoint &start, const QPoint &end)
+
+void GraphSpace::CreateLine(QWidget* connector1, QWidget* connector2)
 {
-    LineRenderer* newLine = new LineRenderer(start,end,Canvas::currentGraphSpace);
+    LineRenderer* newLine = new LineRenderer(connector1,connector2,Canvas::currentGraphSpace);
     lines.push_back(newLine);
     newLine->show();
 }
@@ -77,6 +78,16 @@ void GraphSpace::mouseReleaseEvent(QMouseEvent* event)
 {
     //stop drag event
     BaseBlock::selectedBlock = nullptr;
+
+
+}
+
+
+void GraphSpace::UpdateAllLines()
+{
+    for(unsigned int i = 0; i < lines.size(); i++){
+        lines[i]->UpdatePositions();
+    }
 }
 
 void GraphSpace::dragMoveEvent(QDragMoveEvent *event)
@@ -87,11 +98,14 @@ void GraphSpace::dragMoveEvent(QDragMoveEvent *event)
         {
             blocks[i]->move(blocks[i]->pos() + (event->pos() - previousMouseDragPos));
         }
+            UpdateAllLines();
         previousMouseDragPos = event->pos();
     }
     else
     {
         BaseBlock::selectedBlock->move(event->pos() - BaseBlock::selectedBlock->mouseOffset);
+        UpdateAllLines();
+        //Update all connected lines to the selected block
     }
 }
 
@@ -103,6 +117,8 @@ void GraphSpace::dragEnterEvent(QDragEnterEvent *event)
 
 void GraphSpace::dropEvent(QDropEvent *event)
 {
+    UpdateAllLines();
+    BaseBlock::selectedBlock = nullptr;
     event->acceptProposedAction();
 }
 

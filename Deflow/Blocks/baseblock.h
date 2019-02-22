@@ -8,7 +8,8 @@
 #include <QMimeData>
 #include <QPainter>
 #include <QApplication>
-
+#include "linerenderer.h"
+#include <vector>
 
 class BaseBlock : public QWidget
 {
@@ -25,10 +26,12 @@ signals:
 public slots:
     void DestroyBlock();
 
+
 private:
     QPoint dragStartPosition;
     void ShowContextMenu(const QPoint &pos);
     virtual void OnDestroy();
+    std::vector<LineRenderer*> connectedLines;
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;

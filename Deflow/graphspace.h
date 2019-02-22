@@ -8,6 +8,7 @@
 #include <QMenu>
 #include "blocks.h"
 #include "linerenderer.h"
+#include <QDebug>
 
 
 namespace Ui {
@@ -29,6 +30,7 @@ private:
     QPoint previousMouseDragPos;
     QPoint newBlockPos;
     void TranslateToLua();
+    void UpdateAllLines();
 
 
 
@@ -43,7 +45,7 @@ public slots:
     void CreatePrintBlock();
     void CreateAddBlock();
     void ShowContextMenu(const QPoint &pos);
-    void CreateLine(const QPoint &start, const QPoint &end);
+    void CreateLine(QWidget* connector1, QWidget* connector2);
 };
 
 #endif // GRAPHSPACE_H

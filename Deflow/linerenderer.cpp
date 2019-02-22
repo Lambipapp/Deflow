@@ -6,16 +6,17 @@
 LineRenderer* LineRenderer::selectedLine = nullptr;
 
 
-LineRenderer::LineRenderer(const QPoint &startPos, const QPoint &endPos, QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::LineRenderer), sPos(startPos), ePos(endPos)
+LineRenderer::LineRenderer(QWidget* p1, QWidget* p2, QWidget *parent) :
+    QWidget(parent), w1(p1), w2(p2), ui(new Ui::LineRenderer)
 {
     ui->setupUi(this);
     this->setAttribute(Qt::WA_TransparentForMouseEvents);
-    //parent = Canvas::currentGraphSpace;
+
+    sPos = w1->parentWidget()->mapTo(Canvas::currentGraphSpace, w1->geometry().center());
+    ePos = w2->parentWidget()->mapTo(Canvas::currentGraphSpace, w2->geometry().center());
 
     padding = QPoint(halfWidth, halfWidth);
-    UpdatePositions(startPos, endPos);
+    UpdatePositions();
 
 
 }
@@ -25,10 +26,10 @@ LineRenderer::~LineRenderer()
     delete ui;
 }
 
-void LineRenderer::UpdatePositions(const QPoint &newStart, const QPoint &newEnd)
+void LineRenderer::UpdatePositions()
 {
-    sPos = newStart;
-    ePos = newEnd;
+    sPos = w1->parentWidget()->mapTo(Canvas::currentGraphSpace, w1->geometry().center());
+    ePos = w2->parentWidget()->mapTo(Canvas::currentGraphSpace, w2->geometry().center());
 
     if(sPos.x() < ePos.x() && sPos.y() < ePos.y()) downHill = true;
     else if(sPos.x() < ePos.x() && sPos.y() > ePos.y()) downHill = false;
@@ -83,7 +84,7 @@ void LineRenderer::paintEvent(QPaintEvent *event)
     }
 
     smoothPath->lineTo(downHill ? e : QPoint(e.x(), height-e.y() + lineWidth));
-
+    painter.setRenderHint(QPainter::Antialiasing);
     painter.drawPath(*smoothPath);
     delete smoothPath;
 }
