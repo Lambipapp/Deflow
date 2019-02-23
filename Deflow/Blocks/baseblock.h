@@ -32,7 +32,7 @@ public slots:
 
 private:
     QPoint dragStartPosition;
-    void ShowContextMenu(const QPoint &pos);
+    virtual void ShowContextMenu(const QPoint &pos);
     virtual void OnDestroy();
 
 protected:

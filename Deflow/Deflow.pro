@@ -39,10 +39,11 @@ SOURCES += \
     graphspace.cpp \
     Blocks/addblock.cpp \
     linerenderer.cpp \
-    connector.cpp \
-    connectorout.cpp \
-    connectorin.cpp \
-    Blocks/startblock.cpp
+    Connectors/connector.cpp \
+    Blocks/startblock.cpp \
+    Connectors/connectorexec.cpp \
+    Connectors/connectorin.cpp \
+    Connectors/connectorout.cpp
 
 
 HEADERS += \
@@ -60,10 +61,11 @@ HEADERS += \
     blocks.h \
     Blocks/addblock.h \
     linerenderer.h \
-    connector.h \
-    connectorout.h \
-    connectorin.h \
-    Blocks/startblock.h
+    Connectors/connector.h \
+    Blocks/startblock.h \
+    Connectors/connectorexec.h \
+    Connectors/connectorin.h \
+    Connectors/connectorout.h
 
 FORMS += \
         mainwindow.ui \
@@ -75,8 +77,11 @@ FORMS += \
     openingdialog.ui \
     graphspace.ui \
     linerenderer.ui \
-    connector.ui \
-    Blocks/startblock.ui
+    Connectors/connector.ui \
+    Blocks/startblock.ui \
+    Connectors/connectorexec.ui \
+    Connectors/connectorin.ui \
+    Connectors/connectorout.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

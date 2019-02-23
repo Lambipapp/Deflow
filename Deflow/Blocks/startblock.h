@@ -16,6 +16,7 @@ public:
     explicit StartBlock(QWidget *parent = nullptr);
     ~StartBlock();
     QString getLuaCodeLine() override;
+    virtual void ShowContextMenu(const QPoint &pos) override;
 
 private:
     Ui::StartBlock *ui;

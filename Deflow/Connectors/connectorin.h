@@ -2,19 +2,21 @@
 #define CONNECTORIN_H
 
 #include <QWidget>
-#include "connector.h"
 
 namespace Ui {
 class ConnectorIn;
 }
 
-class ConnectorIn : public Connector
+class ConnectorIn : public QWidget
 {
+    Q_OBJECT
+
 public:
-    ConnectorIn(QWidget* parent);
+    explicit ConnectorIn(QWidget *parent = nullptr);
+    ~ConnectorIn();
 
 private:
-    Ui::ConnectorIn* ui;
+    Ui::ConnectorIn *ui;
 };
 
 #endif // CONNECTORIN_H
