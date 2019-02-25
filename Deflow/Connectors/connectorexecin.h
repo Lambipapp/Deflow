@@ -1,23 +1,24 @@
-#ifndef CONNECTOROUT_H
-#define CONNECTOROUT_H
+#ifndef CONNECTOREXECIN_H
+#define CONNECTOREXECIN_H
 
 #include <QWidget>
 #include "Connectors/connector.h"
 
 namespace Ui {
-class ConnectorOut;
+class ConnectorExecIn;
 }
 
-class ConnectorOut : public Connector
+class ConnectorExecIn : public Connector
 {
     Q_OBJECT
 
 public:
-    explicit ConnectorOut(QWidget *parent = nullptr);
-    ~ConnectorOut();
+    explicit ConnectorExecIn(QWidget *parent = nullptr);
+    ~ConnectorExecIn();
 
 private:
-    Ui::ConnectorOut *ui;
+    Ui::ConnectorExecIn *ui;
+
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
@@ -26,4 +27,4 @@ protected:
 
 };
 
-#endif // CONNECTOROUT_H
+#endif // CONNECTOREXECIN_H

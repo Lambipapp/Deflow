@@ -11,6 +11,7 @@ TestBlock::TestBlock(QWidget *parent) :
     ui(new Ui::TestBlock)
 {
     ui->setupUi(this);
+    //initConnectors();
 }
 
 TestBlock::~TestBlock()

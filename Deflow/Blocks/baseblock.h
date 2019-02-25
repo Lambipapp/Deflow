@@ -8,9 +8,10 @@
 #include <QMimeData>
 #include <QPainter>
 #include <QApplication>
+#include <QList>
 
-#include "connectorin.h"
-#include "connectorout.h"
+#include "Connectors/connectorin.h"
+#include "Connectors/connectorout.h"
 #include <vector>
 
 class BaseBlock : public QWidget
@@ -35,10 +36,13 @@ private:
     virtual void ShowContextMenu(const QPoint &pos);
     virtual void OnDestroy();
 
+
 protected:
+    void initConnectors();
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
+
 };
 
 #endif // BASEBLOCK_H

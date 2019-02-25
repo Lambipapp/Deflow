@@ -43,6 +43,7 @@ protected:
 
 public slots:
     void CreatePrintBlock();
+    void CreateStringBlock();
     void CreateAddBlock();
     void CreateStartBlock();
     void ShowContextMenu(const QPoint &pos);

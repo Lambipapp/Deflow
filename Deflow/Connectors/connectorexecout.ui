@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ConnectorExec</class>
- <widget class="QWidget" name="ConnectorExec">
+ <class>ConnectorExecOut</class>
+ <widget class="QWidget" name="ConnectorExecOut">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -25,9 +25,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -42,9 +39,9 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QWidget" name="Exec" native="true">
+    <widget class="QWidget" name="Arrow" native="true">
      <property name="styleSheet">
-      <string notr="true">background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 255, 255, 255), stop:0.495 rgba(255, 255, 255, 255), stop:0.505 rgba(255, 0, 0, 255), stop:1 rgba(255, 0, 0, 255))</string>
+      <string notr="true">background-image: url(:/new/prefix1/Arrow-filled.png);</string>
      </property>
     </widget>
    </item>

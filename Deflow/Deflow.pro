@@ -39,11 +39,13 @@ SOURCES += \
     graphspace.cpp \
     Blocks/addblock.cpp \
     linerenderer.cpp \
-    Connectors/connector.cpp \
     Blocks/startblock.cpp \
-    Connectors/connectorexec.cpp \
     Connectors/connectorin.cpp \
-    Connectors/connectorout.cpp
+    Connectors/connectorout.cpp \
+    Connectors/connector.cpp \
+    Connectors/connectorexecin.cpp \
+    Connectors/connectorexecout.cpp \
+    Blocks/stringblock.cpp
 
 
 HEADERS += \
@@ -61,11 +63,13 @@ HEADERS += \
     blocks.h \
     Blocks/addblock.h \
     linerenderer.h \
-    Connectors/connector.h \
     Blocks/startblock.h \
-    Connectors/connectorexec.h \
     Connectors/connectorin.h \
-    Connectors/connectorout.h
+    Connectors/connectorout.h \
+    Connectors/connector.h \
+    Connectors/connectorexecin.h \
+    Connectors/connectorexecout.h \
+    Blocks/stringblock.h
 
 FORMS += \
         mainwindow.ui \
@@ -77,13 +81,21 @@ FORMS += \
     openingdialog.ui \
     graphspace.ui \
     linerenderer.ui \
-    Connectors/connector.ui \
     Blocks/startblock.ui \
-    Connectors/connectorexec.ui \
     Connectors/connectorin.ui \
-    Connectors/connectorout.ui
+    Connectors/connectorout.ui \
+    Connectors/connectorexecin.ui \
+    Connectors/connectorexecout.ui \
+    Blocks/stringblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    Arrow.png \
+    Arrow-filled.png
+
+RESOURCES += \
+    arrows.qrc

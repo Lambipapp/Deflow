@@ -1,6 +1,6 @@
 #include "baseblock.h"
 #include "canvas.h"
-
+#include <qdebug.h>
 
 BaseBlock* BaseBlock::selectedBlock = nullptr;
 
@@ -8,6 +8,7 @@ BaseBlock* BaseBlock::selectedBlock = nullptr;
 BaseBlock::BaseBlock(QWidget *parent) : QWidget(parent)
 {
     setContextMenuPolicy(Qt::CustomContextMenu);
+
 }
 
 void BaseBlock::mousePressEvent(QMouseEvent *event)
@@ -67,3 +68,13 @@ void BaseBlock::DestroyBlock()
 void BaseBlock::OnDestroy()
 {
 }
+
+void BaseBlock::initConnectors()
+{
+
+    for(Connector* c : findChildren<Connector*>())
+    {
+        c->myBlock = this;
+    }
+}
+

@@ -21,6 +21,7 @@ public:
 private:
     Ui::AddBlock *ui;
 
+
 };
 
 #endif // ADDBLOCK_H

@@ -2,27 +2,30 @@
 #define CONNECTOR_H
 
 #include <QWidget>
-#include <QMouseEvent>
 #include <QDebug>
+#include <QMouseEvent>
+#include <QApplication>
 
 
-namespace Ui {
-class Connector;
-}
 
 class Connector : public QWidget
 {
     Q_OBJECT
 public:
     explicit Connector(QWidget *parent = nullptr);
-    ~Connector() override;
-    static Connector* selected;
 
-private:
-    Ui::Connector *ui;
+signals:
+
+public slots:
+
+protected:
+    enum NodeType {execIn, execOut, varIn, varOut};
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
+public:
+    NodeType myType;
+    QWidget *myBlock = nullptr;
 };
 
 #endif // CONNECTOR_H

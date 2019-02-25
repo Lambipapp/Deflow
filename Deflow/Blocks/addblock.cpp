@@ -7,9 +7,7 @@ AddBlock::AddBlock(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
-    connectorsIN.push_back(ui->Node);
-    connectorsIN.push_back(ui->Node_2);
-    connectorsOUT.push_back(ui->Node_3);
+    initConnectors();
 }
 
 AddBlock::~AddBlock()

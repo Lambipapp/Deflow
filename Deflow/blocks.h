@@ -3,5 +3,6 @@
 #include "Blocks/baseblock.h"
 #include "Blocks/addblock.h"
 #include "Blocks/printblock.h"
-#include "blocks/startblock.h"
+#include "Blocks/startblock.h"
+#include "Blocks/stringblock.h"
 #endif // BLOCKS_H

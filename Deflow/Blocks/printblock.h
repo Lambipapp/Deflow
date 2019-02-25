@@ -20,6 +20,7 @@ public:
 
 private:
     Ui::PrintBlock *ui;
+
 };
 
 #endif // PRINTBLOCK_H

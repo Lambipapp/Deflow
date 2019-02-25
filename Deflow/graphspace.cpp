@@ -39,8 +39,12 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
    QAction createAddBlock("Add block", &createBlockMenu);
    connect(&createAddBlock, SIGNAL(triggered()), this, SLOT(CreateAddBlock()));
 
+   QAction createStringBlock("string variable block", &createBlockMenu);
+   connect(&createStringBlock, SIGNAL(triggered()), this, SLOT(CreateStringBlock()));
+
    createBlockMenu.addAction(&createAddBlock);
    createBlockMenu.addAction(&createPrintBlockAction);
+   createBlockMenu.addAction(&createStringBlock);
 
 
    newBlockPos = pos;
@@ -49,7 +53,6 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
 
 void GraphSpace::CreatePrintBlock()
 {
-    //Canvas::instance->CreatePrintBlock(newBlockPos);
     PrintBlock *n = new PrintBlock(this);
     n->show();
     n->move(newBlockPos);
@@ -58,15 +61,20 @@ void GraphSpace::CreatePrintBlock()
 
 void GraphSpace::CreateAddBlock()
 {
-    //Canvas::instance->CreateAddBlock(newBlockPos);
     AddBlock *n = new AddBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+}
+void GraphSpace::CreateStringBlock()
+{
+    StringBlock *n = new StringBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
 }
 void GraphSpace::CreateStartBlock()
 {
-    //Canvas::instance->CreateStartBlock();
     StartBlock *n = new StartBlock(this);
     n->show();
     n->move(this->width()/2, this->height()/2);

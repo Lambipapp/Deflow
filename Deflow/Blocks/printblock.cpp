@@ -6,6 +6,7 @@ PrintBlock::PrintBlock(QWidget *parent) :
     ui(new Ui::PrintBlock)
 {
     ui->setupUi(this);
+    initConnectors();
 }
 
 PrintBlock::~PrintBlock()
@@ -15,5 +16,5 @@ PrintBlock::~PrintBlock()
 
 QString PrintBlock::getLuaCodeLine()
 {
-    return "Print(" + ui->TextToPrint->toPlainText() + ");";
+    return tr("");
 }

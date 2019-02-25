@@ -8,7 +8,7 @@ StartBlock::StartBlock(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->Start->setAttribute(Qt::WA_TransparentForMouseEvents);
-    //connectorsOUT.push_back(ui->Node_3);
+    initConnectors();
 
 }
 
