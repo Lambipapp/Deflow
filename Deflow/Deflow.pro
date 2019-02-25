@@ -98,5 +98,5 @@ RESOURCES += \
     arrows.qrc
 
 INCLUDEPATH += \
-    Blocks \
-    Connectors
+    $$PWD/Blocks \
+    $$PWD/Connectors
