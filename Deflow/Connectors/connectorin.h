@@ -17,7 +17,7 @@ public:
     explicit ConnectorIn(QWidget *parent = nullptr);
     ~ConnectorIn();
 
-    ConnectorOut* input;
+    ConnectorOut* input = nullptr;
 private:
     Ui::ConnectorIn *ui;
 protected:

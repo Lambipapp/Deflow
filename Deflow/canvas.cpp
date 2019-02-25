@@ -17,6 +17,7 @@ Canvas::Canvas(QWidget *parent) :
     }
     setAcceptDrops(true);
     currentGraphSpace = ui->InitCanvas;
+    lineRenderer = new LineRenderer(currentGraphSpace);
 }
 
 void Canvas::CreatePrintBlock(const QPoint &pos)
@@ -94,4 +95,6 @@ void Canvas::on_FunctionTabs_currentChanged(int index)
         currentGraphSpace = ui->FinalCanvas;
         break;
     }
+    lineRenderer->setParent(currentGraphSpace);
+    lineRenderer->show();
 }

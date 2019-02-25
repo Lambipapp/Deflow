@@ -7,7 +7,6 @@
 #include <QMimeData>
 #include <QMenu>
 #include "blocks.h"
-#include "linerenderer.h"
 #include <QDebug>
 
 
@@ -23,15 +22,12 @@ public:
     explicit GraphSpace(QWidget *parent = nullptr);
     ~GraphSpace();
     std::vector<BaseBlock*> blocks;
-    std::vector<LineRenderer*> lines;
 
 private:
     Ui::GraphSpace *ui;
     QPoint previousMouseDragPos;
     QPoint newBlockPos;
     void TranslateToLua();
-    void UpdateAllLines();
-
 
 
 protected:
@@ -47,7 +43,6 @@ public slots:
     void CreateAddBlock();
     void CreateStartBlock();
     void ShowContextMenu(const QPoint &pos);
-    void CreateLine(QWidget* connector1, QWidget* connector2);
 };
 
 #endif // GRAPHSPACE_H

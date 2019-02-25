@@ -1,5 +1,5 @@
 #include "connector.h"
-
+#include "canvas.h"
 Connector::Connector(QWidget *parent) : QWidget(parent)
 {
 
@@ -16,3 +16,4 @@ void Connector::mouseReleaseEvent(QMouseEvent* event) {
 void Connector::mouseMoveEvent(QMouseEvent *event) {
 
 }
+

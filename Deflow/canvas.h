@@ -5,6 +5,7 @@
 #include "blocks.h"
 #include "graphspace.h"
 #include <iostream>
+#include "linerenderer.h"
 
 namespace Ui {
 class Canvas;
@@ -17,7 +18,7 @@ class Canvas : public QWidget
 public:
     explicit Canvas(QWidget* parent = nullptr);
 
-
+    LineRenderer* lineRenderer;
 
 
     ~Canvas();

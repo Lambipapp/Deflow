@@ -16,7 +16,7 @@ class ConnectorExecOut : public Connector
 public:
     explicit ConnectorExecOut(QWidget *parent = nullptr);
     ~ConnectorExecOut();
-    ConnectorExecIn* next;
+    ConnectorExecIn* next = nullptr;
 
 private:
     Ui::ConnectorExecOut *ui;

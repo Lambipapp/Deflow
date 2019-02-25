@@ -13,13 +13,12 @@ class Connector : public QWidget
     Q_OBJECT
 public:
     explicit Connector(QWidget *parent = nullptr);
-
+    enum NodeType {execIn, execOut, varIn, varOut};
 signals:
 
 public slots:
 
 protected:
-    enum NodeType {execIn, execOut, varIn, varOut};
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
