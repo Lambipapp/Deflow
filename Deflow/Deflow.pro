@@ -96,3 +96,7 @@ DISTFILES += \
 
 RESOURCES += \
     arrows.qrc
+
+INCLUDEPATH += \
+    Blocks \
+    Connectors
