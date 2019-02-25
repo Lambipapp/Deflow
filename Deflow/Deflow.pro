@@ -29,7 +29,6 @@ SOURCES += \
         mainwindow.cpp \
     topbarcontroller.cpp \
     canvas.cpp \
-    Blocks/testblock.cpp \
     foldertree.cpp \
     Blocks/baseblock.cpp \
     Blocks/printblock.cpp \
@@ -52,7 +51,6 @@ HEADERS += \
         mainwindow.h \
     topbarcontroller.h \
     canvas.h \
-    Blocks/testblock.h \
     foldertree.h \
     Blocks/baseblock.h \
     Blocks/printblock.h \
@@ -73,7 +71,6 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-        Blocks/testblock.ui \
     foldertree.ui \
     Blocks/printblock.ui \
     Blocks/addblock.ui \
