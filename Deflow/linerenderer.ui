@@ -29,13 +29,6 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item>
-    <widget class="QWidget" name="widget" native="true">
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(0, 0, 0, 25);</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <resources/>

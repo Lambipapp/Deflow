@@ -1,6 +1,7 @@
 #include "graphspace.h"
 #include "ui_graphspace.h"
 #include "canvas.h"
+#include "linerenderer.h"
 
 
 GraphSpace::GraphSpace(QWidget *parent) :
@@ -11,6 +12,7 @@ GraphSpace::GraphSpace(QWidget *parent) :
     setAcceptDrops(true);
     setContextMenuPolicy(Qt::CustomContextMenu);
     CreateStartBlock();
+    CreatePrintBlock();
 }
 
 GraphSpace::~GraphSpace()
@@ -100,7 +102,6 @@ void GraphSpace::mouseReleaseEvent(QMouseEvent* event)
 }
 
 
-
 void GraphSpace::dragMoveEvent(QDragMoveEvent *event)
 {
     if(event->mimeData()->text() == "CanvasDrag")
@@ -114,9 +115,11 @@ void GraphSpace::dragMoveEvent(QDragMoveEvent *event)
     else
     {
         BaseBlock::selectedBlock->move(event->pos() - BaseBlock::selectedBlock->mouseOffset);
+
         //Update all connected lines to the selected block
 
     }
+    Canvas::lineRenderer->update();
 }
 
 void GraphSpace::dragEnterEvent(QDragEnterEvent *event)
@@ -129,6 +132,7 @@ void GraphSpace::dropEvent(QDropEvent *event)
 {
     BaseBlock::selectedBlock = nullptr;
     event->acceptProposedAction();
+
 }
 
 void GraphSpace::TranslateToLua()

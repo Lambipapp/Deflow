@@ -71,6 +71,7 @@ Canvas::~Canvas()
 
 GraphSpace* Canvas::currentGraphSpace;
 Canvas* Canvas::instance;
+LineRenderer* Canvas::lineRenderer;
 
 void Canvas::on_FunctionTabs_currentChanged(int index)
 {

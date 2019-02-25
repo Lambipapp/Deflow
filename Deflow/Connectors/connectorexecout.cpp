@@ -1,6 +1,7 @@
 #include "connectorexecout.h"
 #include "connectorexecin.h"
 #include "ui_connectorexecout.h"
+#include "canvas.h"
 
 ConnectorExecOut::ConnectorExecOut(QWidget *parent) :
     Connector(parent),
@@ -13,11 +14,12 @@ ConnectorExecOut::ConnectorExecOut(QWidget *parent) :
 
 ConnectorExecOut::~ConnectorExecOut()
 {
+    next = nullptr;
     delete ui;
 }
 void ConnectorExecOut::mousePressEvent(QMouseEvent *event)
 {
-
+    clickedConnector = this;
 }
 void ConnectorExecOut::mouseReleaseEvent(QMouseEvent* event)
 {
@@ -29,7 +31,6 @@ void ConnectorExecOut::mouseReleaseEvent(QMouseEvent* event)
     if(widget->inherits("Connector"))
     {
         Connector* temp = static_cast<Connector*>(widget);
-
         if(temp->myType == NodeType::execIn)
         {
             if(temp->myBlock == myBlock)
@@ -37,11 +38,12 @@ void ConnectorExecOut::mouseReleaseEvent(QMouseEvent* event)
 
             ConnectorExecIn* c = static_cast<ConnectorExecIn*>(widget);
             next = c;
-
         }
     }
+    Canvas::lineRenderer->update();
+    clickedConnector = nullptr;
 }
 void ConnectorExecOut::mouseMoveEvent(QMouseEvent *event)
 {
-
+    Canvas::lineRenderer->update();
 }

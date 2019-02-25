@@ -1,5 +1,6 @@
 #include "connectorin.h"
 #include "ui_connectorin.h"
+#include "canvas.h"
 
 ConnectorIn::ConnectorIn(QWidget *parent) :
     Connector(parent),
@@ -12,11 +13,13 @@ ConnectorIn::ConnectorIn(QWidget *parent) :
 
 ConnectorIn::~ConnectorIn()
 {
+    input = nullptr;
     delete ui;
 }
 
-void ConnectorIn::mousePressEvent(QMouseEvent *event) {
-
+void ConnectorIn::mousePressEvent(QMouseEvent *event)
+{
+    clickedConnector = this;
 }
 void ConnectorIn::mouseReleaseEvent(QMouseEvent* event)
 {
@@ -37,7 +40,10 @@ void ConnectorIn::mouseReleaseEvent(QMouseEvent* event)
             input = c;
         }
     }
+    Canvas::lineRenderer->update();
+    clickedConnector = nullptr;
 }
-void ConnectorIn::mouseMoveEvent(QMouseEvent *event) {
-
+void ConnectorIn::mouseMoveEvent(QMouseEvent *event)
+{
+    Canvas::lineRenderer->update();
 }

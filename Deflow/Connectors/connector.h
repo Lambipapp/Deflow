@@ -13,7 +13,13 @@ class Connector : public QWidget
     Q_OBJECT
 public:
     explicit Connector(QWidget *parent = nullptr);
+    ~Connector() override;
     enum NodeType {execIn, execOut, varIn, varOut};
+
+    static Connector *clickedConnector;
+    NodeType myType;
+    QWidget *myBlock = nullptr;
+
 signals:
 
 public slots:
@@ -23,8 +29,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
 public:
-    NodeType myType;
-    QWidget *myBlock = nullptr;
+
 };
 
 #endif // CONNECTOR_H

@@ -12,6 +12,7 @@ LineRenderer::LineRenderer(QWidget *parent) :
     ui->setupUi(this);
     this->setAttribute(Qt::WA_TransparentForMouseEvents);
 
+
 }
 
 LineRenderer::~LineRenderer()
@@ -22,7 +23,7 @@ LineRenderer::~LineRenderer()
 
 void LineRenderer::paintEvent(QPaintEvent *event)
 {
-
+    raise();
     move(parentWidget()->pos());
     resize(parentWidget()->size());
     FindConnections();
@@ -53,7 +54,8 @@ void LineRenderer::FindConnections(){
             ConnectorExecOut* t = static_cast<ConnectorExecOut*>(c);
             if(t->next != nullptr)
             {
-                DrawLine(t->mapFrom(Canvas::currentGraphSpace, t->pos()), t->next->mapFrom(Canvas::currentGraphSpace, t->next->pos()), Qt::red);
+                DrawLine(t->parentWidget()->mapTo(Canvas::currentGraphSpace, t->geometry().center()),
+                         t->next->parentWidget()->mapTo(Canvas::currentGraphSpace, t->next->geometry().center()), Qt::gray);
             }
         }
         else if(c->myType == Connector::NodeType::varIn)
@@ -61,8 +63,14 @@ void LineRenderer::FindConnections(){
             ConnectorIn* t = static_cast<ConnectorIn*>(c);
             if(t->input != nullptr)
             {
-                DrawLine(t->pos(), t->input->pos(), Qt::green);
+                DrawLine(t->parentWidget()->mapTo(Canvas::currentGraphSpace, t->geometry().center()),
+                         t->input->parentWidget()->mapTo(Canvas::currentGraphSpace, t->input->geometry().center()), Qt::green);
             }
+        }
+        if(c == Connector::clickedConnector)
+        {
+            DrawLine(c->parentWidget()->mapTo(Canvas::currentGraphSpace, c->geometry().center()),
+                     mapFromGlobal(QCursor::pos()), Qt::blue);
         }
     }
 }
@@ -70,44 +78,36 @@ void LineRenderer::DrawLine(QPoint a, QPoint b, QColor c)
 {
 
     QPainter painter(this);
-    QPen pen(c, 2, Qt::SolidLine, Qt::RoundCap);
+    QPen pen(c, lineWidth, Qt::SolidLine, Qt::RoundCap);
     painter.setPen(pen);
 
-    QPainterPath* smoothPath;
+    if(a.x() > b.x()) {
+        QPoint x = a;
+        a = b;
+        b = x;
+    }
 
-    painter.drawLine(a*-1, b*-1);
-    qDebug() << a << b;
-//    if(a.x() > b.x()) {
-//        QPoint x = a;
-//        a = b;
-//        b = x;
-//    }
-//    qDebug() << a*-1 << b*-1;
-//    smoothPath = new QPainterPath(a);
-//    for(int i = 0; i < 8; i ++)
-//    {
-//        int xPos = ((b.x()-a.x()) / 8) * i+1;
-//        xPos += a.x();
-//        smoothPath->lineTo(xPos, a.y());
-//    }
-//    //
-//    //        float yVal = map(0, 1, 0, width, xPos);
-//    //        yVal = smoothstep(0, 1, yVal);
-//    //        yVal = downHill ? yVal : 1-yVal;
-//    //        int yPos = static_cast<int>((static_cast<float>(height)*yVal));
+    QPainterPath smoothPath(a);
+    int resoultion = 8;
+    int dx = b.x()-a.x();
+    int dy = b.y()-a.y();
 
-//    //        smoothPath->lineTo(xPos, yPos);
-//    //    }
+    for(int i = 0; i < resoultion; i++)
+    {
+        int xPos =  (dx / resoultion)*i;
+        float yVal = map(0, 1, 0, dx, xPos);
+        xPos += a.x();
+        float yPosf = smoothstep(0,1,yVal);
+        int yPos = a.y() + static_cast<int>(yPosf * dy);
+        smoothPath.lineTo(xPos, yPos);
+    }
 
-//        smoothPath->lineTo(b);
-//        painter.setRenderHint(QPainter::Antialiasing);
-//        painter.drawPath(*smoothPath);
-//        delete smoothPath;
-
+    smoothPath.lineTo(b);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.drawPath(smoothPath);
 
 
 }
-
 
 
 

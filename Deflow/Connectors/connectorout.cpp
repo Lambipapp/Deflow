@@ -2,6 +2,7 @@
 #include "ui_connectorout.h"
 #include "connectorin.h"
 #include <QDebug>
+#include "canvas.h"
 
 ConnectorOut::ConnectorOut(QWidget *parent) :
     Connector(parent),
@@ -14,11 +15,13 @@ ConnectorOut::ConnectorOut(QWidget *parent) :
 
 ConnectorOut::~ConnectorOut()
 {
+
     delete ui;
 }
 
-void ConnectorOut::mousePressEvent(QMouseEvent *event) {
-
+void ConnectorOut::mousePressEvent(QMouseEvent *event)
+{
+    clickedConnector = this;
 }
 void ConnectorOut::mouseReleaseEvent(QMouseEvent* event)
 {
@@ -37,10 +40,12 @@ void ConnectorOut::mouseReleaseEvent(QMouseEvent* event)
 
             ConnectorIn* c = static_cast<ConnectorIn*>(widget);
             c->input = this;
-
         }
     }
+    Canvas::lineRenderer->update();
+    clickedConnector = nullptr;
 }
-void ConnectorOut::mouseMoveEvent(QMouseEvent *event) {
-
+void ConnectorOut::mouseMoveEvent(QMouseEvent *event)
+{
+    Canvas::lineRenderer->update();
 }

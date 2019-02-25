@@ -18,7 +18,7 @@ class Canvas : public QWidget
 public:
     explicit Canvas(QWidget* parent = nullptr);
 
-    LineRenderer* lineRenderer;
+    static LineRenderer* lineRenderer;
 
 
     ~Canvas();
