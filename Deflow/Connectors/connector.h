@@ -19,6 +19,8 @@ public:
     static Connector *clickedConnector;
     NodeType myType;
     QWidget *myBlock = nullptr;
+    virtual void LoseConnection() = 0;
+    virtual void BindConnection() = 0;
 
 signals:
 

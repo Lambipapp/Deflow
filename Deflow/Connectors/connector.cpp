@@ -1,6 +1,6 @@
 #include "connector.h"
 #include "canvas.h"
-
+#include <QMouseEvent>
 
 Connector* Connector::clickedConnector = nullptr;
 Connector::Connector(QWidget *parent) : QWidget(parent)

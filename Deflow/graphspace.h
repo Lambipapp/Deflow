@@ -42,6 +42,10 @@ public slots:
     void CreateStringBlock();
     void CreateAddBlock();
     void CreateStartBlock();
+    void CreateAcquireInputBlock();
+    void CreateNewVarBlock();
+    void CreateVarBlock();
+    void CreateConditionalBlock();
     void ShowContextMenu(const QPoint &pos);
 };
 

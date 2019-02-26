@@ -44,7 +44,11 @@ SOURCES += \
     Connectors/connector.cpp \
     Connectors/connectorexecin.cpp \
     Connectors/connectorexecout.cpp \
-    Blocks/stringblock.cpp
+    Blocks/stringblock.cpp \
+    Blocks/acquireinputblock.cpp \
+    Blocks/newvarblock.cpp \
+    Blocks/varblock.cpp \
+    Blocks/conditionalblock.cpp
 
 
 HEADERS += \
@@ -67,7 +71,11 @@ HEADERS += \
     Connectors/connector.h \
     Connectors/connectorexecin.h \
     Connectors/connectorexecout.h \
-    Blocks/stringblock.h
+    Blocks/stringblock.h \
+    Blocks/acquireinputblock.h \
+    Blocks/newvarblock.h \
+    Blocks/varblock.h \
+    Blocks/conditionalblock.h
 
 FORMS += \
         mainwindow.ui \
@@ -83,7 +91,11 @@ FORMS += \
     Connectors/connectorout.ui \
     Connectors/connectorexecin.ui \
     Connectors/connectorexecout.ui \
-    Blocks/stringblock.ui
+    Blocks/stringblock.ui \
+    Blocks/acquireinputblock.ui \
+    Blocks/newvarblock.ui \
+    Blocks/varblock.ui \
+    Blocks/conditionalblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -92,7 +104,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     Arrow.png \
-    Arrow-filled.png
+    Arrow-filled.png \
+    Circle.png \
+    Circle-filled.png
 
 RESOURCES += \
     arrows.qrc

@@ -14,8 +14,9 @@ class ConnectorExecIn : public Connector
 
 public:
     explicit ConnectorExecIn(QWidget *parent = nullptr);
-    ~ConnectorExecIn();
-
+    ~ConnectorExecIn() override;
+    void LoseConnection() override;
+    void BindConnection() override;
 private:
     Ui::ConnectorExecIn *ui;
 

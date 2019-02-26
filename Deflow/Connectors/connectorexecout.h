@@ -17,6 +17,8 @@ public:
     explicit ConnectorExecOut(QWidget *parent = nullptr);
     ~ConnectorExecOut();
     ConnectorExecIn* next = nullptr;
+    void LoseConnection() override;
+    void BindConnection() override;
 
 private:
     Ui::ConnectorExecOut *ui;

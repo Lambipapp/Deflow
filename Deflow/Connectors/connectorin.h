@@ -15,9 +15,11 @@ class ConnectorIn : public Connector
 
 public:
     explicit ConnectorIn(QWidget *parent = nullptr);
-    ~ConnectorIn();
+    ~ConnectorIn() override;
 
     ConnectorOut* input = nullptr;
+    void LoseConnection() override;
+    void BindConnection() override;
 private:
     Ui::ConnectorIn *ui;
 protected:

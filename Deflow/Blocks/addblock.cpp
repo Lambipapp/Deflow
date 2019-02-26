@@ -16,6 +16,5 @@ AddBlock::~AddBlock()
 }
 QString AddBlock::getLuaCodeLine()
 {
-
     return QString();
 }

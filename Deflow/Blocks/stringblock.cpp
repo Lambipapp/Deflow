@@ -6,8 +6,8 @@ StringBlock::StringBlock(QWidget *parent) :
     ui(new Ui::StringBlock)
 {
     ui->setupUi(this);
-    initConnectors();
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
+    initConnectors();
 }
 
 StringBlock::~StringBlock()

@@ -5,4 +5,8 @@
 #include "Blocks/printblock.h"
 #include "Blocks/startblock.h"
 #include "Blocks/stringblock.h"
+#include "acquireinputblock.h"
+#include "newvarblock.h"
+#include "varblock.h"
+#include "conditionalblock.h"
 #endif // BLOCKS_H

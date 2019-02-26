@@ -2,5 +2,7 @@
     <qresource prefix="/new/prefix1">
         <file>Arrow.png</file>
         <file>Arrow-filled.png</file>
+        <file>Circle.png</file>
+        <file>Circle-filled.png</file>
     </qresource>
 </RCC>

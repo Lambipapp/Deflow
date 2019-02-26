@@ -12,7 +12,6 @@ GraphSpace::GraphSpace(QWidget *parent) :
     setAcceptDrops(true);
     setContextMenuPolicy(Qt::CustomContextMenu);
     CreateStartBlock();
-    CreatePrintBlock();
 }
 
 GraphSpace::~GraphSpace()
@@ -36,18 +35,63 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
    QAction createStringBlock("string variable block", &createBlockMenu);
    connect(&createStringBlock, SIGNAL(triggered()), this, SLOT(CreateStringBlock()));
 
+   QAction createAcquireInputBlock("Acquire Input Block", &createBlockMenu);
+   connect(&createAcquireInputBlock, SIGNAL(triggered()), this, SLOT(CreateAcquireInputBlock()));
+
+   QAction createNewVarBlock("New Variable Block", &createBlockMenu);
+   connect(&createNewVarBlock, SIGNAL(triggered()), this, SLOT(CreateNewVarBlock()));
+
+   QAction createVarBlock("Variable Block", &createBlockMenu);
+   connect(&createVarBlock, SIGNAL(triggered()), this, SLOT(CreateVarBlock()));
+
+   QAction createConditionalBlock("Conditional Block", &createBlockMenu);
+   connect(&createConditionalBlock, SIGNAL(triggered()), this, SLOT(CreateConditionalBlock()));
+
+   createBlockMenu.addAction(&createVarBlock);
+   createBlockMenu.addAction(&createConditionalBlock);
    createBlockMenu.addAction(&createAddBlock);
    createBlockMenu.addAction(&createPrintBlockAction);
    createBlockMenu.addAction(&createStringBlock);
+   createBlockMenu.addAction(&createAcquireInputBlock);
+   createBlockMenu.addAction(&createNewVarBlock);
 
 
    newBlockPos = pos;
    contextMenu.exec(mapToGlobal(pos));
 }
-
+void GraphSpace::CreateConditionalBlock()
+{
+    ConditionalBlock *n = new ConditionalBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+}
+void GraphSpace::CreateVarBlock()
+{
+    VarBlock *n = new VarBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+}
 void GraphSpace::CreatePrintBlock()
 {
     PrintBlock *n = new PrintBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+}
+
+void GraphSpace::CreateNewVarBlock()
+{
+    NewVarBlock *n = new NewVarBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+}
+
+void GraphSpace::CreateAcquireInputBlock()
+{
+    AcquireInputBlock *n = new AcquireInputBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
@@ -71,7 +115,7 @@ void GraphSpace::CreateStartBlock()
 {
     StartBlock *n = new StartBlock(this);
     n->show();
-    n->move(this->width()/2, this->height()/2);
+    n->move(100, this->height()/2);
     this->blocks.push_back(n);
 }
 

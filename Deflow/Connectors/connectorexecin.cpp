@@ -9,7 +9,7 @@ ConnectorExecIn::ConnectorExecIn(QWidget *parent) :
     ui(new Ui::ConnectorExecIn)
 {
     ui->setupUi(this);
-    ui->widget->setAttribute(Qt::WA_TransparentForMouseEvents);
+    ui->Arrow->setAttribute(Qt::WA_TransparentForMouseEvents);
     myType = NodeType::execIn;
 }
 
@@ -25,6 +25,7 @@ void ConnectorExecIn::mousePressEvent(QMouseEvent *event)
 }
 void ConnectorExecIn::mouseReleaseEvent(QMouseEvent* event)
 {
+    clickedConnector = nullptr;
     QWidget* widget = qApp->widgetAt(event->globalPos());
 
     if(widget == this)
@@ -40,12 +41,23 @@ void ConnectorExecIn::mouseReleaseEvent(QMouseEvent* event)
 
             ConnectorExecOut* c = static_cast<ConnectorExecOut*>(widget);
             c->next = this;
+            c->BindConnection();
+            BindConnection();
         }
     }
     Canvas::lineRenderer->update();
-    clickedConnector = nullptr;
 }
 void ConnectorExecIn::mouseMoveEvent(QMouseEvent *event)
 {
     Canvas::lineRenderer->update();
 }
+
+void ConnectorExecIn::LoseConnection()
+{
+    ui->Arrow->setStyleSheet(tr("background-image: url(:/new/prefix1/Arrow.png);"));
+}
+void ConnectorExecIn::BindConnection()
+{
+    ui->Arrow->setStyleSheet(tr("background-image: url(:/new/prefix1/Arrow-filled.png);"));
+}
+

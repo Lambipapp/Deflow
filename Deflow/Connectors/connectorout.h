@@ -14,8 +14,9 @@ class ConnectorOut : public Connector
 
 public:
     explicit ConnectorOut(QWidget *parent = nullptr);
-    ~ConnectorOut();
-
+    ~ConnectorOut()override;
+    void LoseConnection() override;
+    void BindConnection() override;
 private:
     Ui::ConnectorOut *ui;
 protected:

@@ -39,7 +39,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="Arrow" native="true">
      <property name="styleSheet">
       <string notr="true">background-image: url(:/new/prefix1/Arrow.png);</string>
      </property>

@@ -23,6 +23,7 @@ void ConnectorExecOut::mousePressEvent(QMouseEvent *event)
 }
 void ConnectorExecOut::mouseReleaseEvent(QMouseEvent* event)
 {
+    clickedConnector = nullptr;
     QWidget* widget = qApp->widgetAt(event->globalPos());
 
     if(widget == this)
@@ -38,12 +39,21 @@ void ConnectorExecOut::mouseReleaseEvent(QMouseEvent* event)
 
             ConnectorExecIn* c = static_cast<ConnectorExecIn*>(widget);
             next = c;
+            c->BindConnection();
+            BindConnection();
         }
     }
     Canvas::lineRenderer->update();
-    clickedConnector = nullptr;
 }
 void ConnectorExecOut::mouseMoveEvent(QMouseEvent *event)
 {
     Canvas::lineRenderer->update();
+}
+void ConnectorExecOut::LoseConnection()
+{
+    ui->Arrow->setStyleSheet(tr("background-image: url(:/new/prefix1/Arrow.png);"));
+}
+void ConnectorExecOut::BindConnection()
+{
+    ui->Arrow->setStyleSheet(tr("background-image: url(:/new/prefix1/Arrow-filled.png);"));
 }
