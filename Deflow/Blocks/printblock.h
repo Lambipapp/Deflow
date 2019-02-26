@@ -17,6 +17,7 @@ public:
     ~PrintBlock();
 
     QString getLuaCodeLine() override;
+    QJsonObject GetJsonRepresentation() override;
 
 private:
     Ui::PrintBlock *ui;

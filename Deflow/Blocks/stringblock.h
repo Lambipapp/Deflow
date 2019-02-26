@@ -16,6 +16,7 @@ public:
     explicit StringBlock(QWidget *parent = nullptr);
     ~StringBlock();
     QString getLuaCodeLine() override;
+    QJsonObject GetJsonRepresentation() override;
 private:
     Ui::StringBlock *ui;
 };

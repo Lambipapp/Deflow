@@ -64,4 +64,13 @@ void ConnectorExecIn::BindConnection()
 {
     ui->Arrow->setStyleSheet(tr("background-image: url(:/new/prefix1/Arrow-filled.png);"));
 }
+QJsonObject ConnectorExecIn::GetJsonRepresentation()
+{
+    QJsonObject o;
+
+    o.insert("myType", myType);
+    o.insert("myID", id);
+
+    return o;
+}
 

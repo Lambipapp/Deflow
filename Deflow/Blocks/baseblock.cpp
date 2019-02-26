@@ -27,6 +27,8 @@ void BaseBlock::mousePressEvent(QMouseEvent *event)
 }
 
 
+
+
 void BaseBlock::mouseReleaseEvent(QMouseEvent* event)
 {
     selectedBlock = nullptr;
@@ -76,5 +78,14 @@ void BaseBlock::initConnectors()
     {
         c->myBlock = this;
     }
+}
+QJsonObject BaseBlock::ParseConnectors()
+{
+    QJsonObject o;
+    for(Connector* c : findChildren<Connector*>())
+    {
+        o.insert("connector", c->GetJsonRepresentation());
+    }
+    return o;
 }
 

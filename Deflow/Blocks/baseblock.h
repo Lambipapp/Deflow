@@ -14,6 +14,7 @@
 #include "Connectors/connectorout.h"
 #include <vector>
 #include <QJsonObject>
+#include <QJsonArray>
 
 class BaseBlock : public QWidget
 {
@@ -27,6 +28,8 @@ public:
     QPoint mouseOffset;
     std::vector<ConnectorIn*> connectorsIN;
     std::vector<ConnectorOut*> connectorsOUT;
+
+    virtual QJsonObject GetJsonRepresentation() = 0;
 
 
 
@@ -44,6 +47,7 @@ private:
 
 protected:
     void initConnectors();
+    QJsonObject ParseConnectors();
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent *event) override;

@@ -19,6 +19,7 @@ public:
     ConnectorExecIn* next = nullptr;
     void LoseConnection() override;
     void BindConnection() override;
+    QJsonObject GetJsonRepresentation() override;
 
 private:
     Ui::ConnectorExecOut *ui;

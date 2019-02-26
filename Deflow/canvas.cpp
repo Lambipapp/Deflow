@@ -69,3 +69,9 @@ void Canvas::on_FunctionTabs_currentChanged(int index)
     lineRenderer->setParent(currentGraphSpace);
     lineRenderer->show();
 }
+
+QList<GraphSpace*> Canvas::GetGraphSpaces()
+{
+    return findChildren<GraphSpace*>();
+
+}

@@ -18,3 +18,17 @@ QString VarBlock::getLuaCodeLine()
 {
     return "";
 }
+
+QJsonObject VarBlock::GetJsonRepresentation()
+{
+    QJsonObject pos;
+    pos.insert("x", this->pos().x());
+    pos.insert("y", this->pos().y());
+    QJsonObject data;
+    data.insert("Position", pos);
+    data.insert("Connectors", ParseConnectors());
+    QJsonObject o;
+    o.insert("VarBlock", data);
+
+    return o;
+}

@@ -17,6 +17,7 @@ public:
     ~AcquireInputBlock() override;
 
     QString getLuaCodeLine() override;
+    QJsonObject GetJsonRepresentation() override;
 
 private:
     Ui::AcquireInputBlock *ui;

@@ -25,6 +25,7 @@ public:
     ~Canvas();
     static GraphSpace* currentGraphSpace;
     static Canvas* instance;
+    QList<GraphSpace*> GetGraphSpaces();
 
 private:
     Ui::Canvas *ui;

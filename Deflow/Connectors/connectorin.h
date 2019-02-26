@@ -20,6 +20,7 @@ public:
     ConnectorOut* input = nullptr;
     void LoseConnection() override;
     void BindConnection() override;
+    QJsonObject GetJsonRepresentation() override;
 private:
     Ui::ConnectorIn *ui;
 protected:

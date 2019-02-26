@@ -62,4 +62,12 @@ void ConnectorOut::BindConnection()
 {
     ui->Node->setStyleSheet(tr("background-image: url(:/new/prefix1/Circle-filled.png);"));
 }
+QJsonObject ConnectorOut::GetJsonRepresentation()
+{
+    QJsonObject o;
 
+    o.insert("myType", myType);
+    o.insert("myID", id);
+
+    return o;
+}

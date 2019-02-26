@@ -35,7 +35,9 @@ void MainWindow::OpenFileDialog()
     if(projectPath->length() > 0){
         ui->fileTree->ShowTree(projectPath);
         StatusBar::instance->postMsg(tr("Opening project at: ")+projectPath, 2);
-        GSSerializer *gss = new GSSerializer(*projectPath);
+
+
+        GSSerializer gss(*projectPath); ////////////////SAVE
 
     }
     else

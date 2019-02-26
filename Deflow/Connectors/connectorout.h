@@ -17,6 +17,7 @@ public:
     ~ConnectorOut()override;
     void LoseConnection() override;
     void BindConnection() override;
+    QJsonObject GetJsonRepresentation() override;
 private:
     Ui::ConnectorOut *ui;
 protected:

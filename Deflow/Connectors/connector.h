@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QMouseEvent>
 #include <QApplication>
-
+#include <vector>
 
 
 class Connector : public QWidget
@@ -21,12 +21,15 @@ public:
     QWidget *myBlock = nullptr;
     virtual void LoseConnection() = 0;
     virtual void BindConnection() = 0;
+    int id;
+    virtual QJsonObject GetJsonRepresentation() = 0;
 
 signals:
 
 public slots:
 
 protected:
+    static int cids;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
