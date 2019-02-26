@@ -22,7 +22,6 @@ public:
     explicit GraphSpace(QWidget *parent = nullptr);
     ~GraphSpace();
     std::vector<BaseBlock*> blocks;
-
 private:
     Ui::GraphSpace *ui;
     QPoint previousMouseDragPos;
@@ -38,6 +37,7 @@ protected:
     void dragEnterEvent(QDragEnterEvent *event) override;
 
 public slots:
+    void RemoveBlock(BaseBlock* block);
     void CreatePrintBlock();
     void CreateStringBlock();
     void CreateAddBlock();

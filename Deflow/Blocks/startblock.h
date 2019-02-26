@@ -14,7 +14,7 @@ class StartBlock : public BaseBlock
 
 public:
     explicit StartBlock(QWidget *parent = nullptr);
-    ~StartBlock();
+    ~StartBlock() override;
     QString getLuaCodeLine() override;
     virtual void ShowContextMenu(const QPoint &pos) override;
 

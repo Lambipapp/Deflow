@@ -10,13 +10,9 @@ MainWindow::MainWindow(QWidget *parent) :
     topbar->SetUpMenu();
     setWindowTitle(tr("Deflow"));
 
-    //create block example
-    //ui->canvas->CreateBlock<PrintBlock>();
-    //ui->canvas->CreateBlock<PrintBlock>();
 
 
     new FileManager();
-    ui->canvas->CreateAddBlock(QPoint(100, 100));
     sb = new StatusBar(ui->statusBar);
 }
 

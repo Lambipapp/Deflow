@@ -20,41 +20,11 @@ Canvas::Canvas(QWidget *parent) :
     lineRenderer = new LineRenderer(currentGraphSpace);
 }
 
-void Canvas::CreatePrintBlock(const QPoint &pos)
+void Canvas::SaveVisualCode()
 {
-//    PrintBlock *n = new PrintBlock(currentGraphSpace);
-//    n->show();
-//    n->move(pos);
-//    currentGraphSpace->blocks.push_back(n);
-}
-void Canvas::CreateAddBlock(const QPoint &pos)
-{
-//    AddBlock *n = new AddBlock(currentGraphSpace);
-//    n->show();
-//    n->move(pos);
-//    currentGraphSpace->blocks.push_back(n);
-}
-void Canvas::CreateStartBlock(const QPoint &pos)
-{
-//    StartBlock *n = new StartBlock(currentGraphSpace);
-//    n->show();
-//    n->move(pos);
-//    currentGraphSpace->blocks.push_back(n);
+
 }
 
-
-
-void Canvas::RemoveBlock(BaseBlock* block)
-{
-    for(unsigned int i = 0; i < currentGraphSpace->blocks.size(); i++)
-    {
-        if(currentGraphSpace->blocks[i] == block)
-        {
-            currentGraphSpace->blocks.erase(currentGraphSpace->blocks.begin() + i);
-            break;
-        }
-    }
-}
 
 
 void Canvas::OpenFile()

@@ -49,7 +49,8 @@ SOURCES += \
     Blocks/newvarblock.cpp \
     Blocks/varblock.cpp \
     Blocks/conditionalblock.cpp \
-    FileManager.cpp
+    FileManager.cpp \
+    VPLSaver.cpp
 
 
 HEADERS += \
@@ -77,7 +78,8 @@ HEADERS += \
     Blocks/newvarblock.h \
     Blocks/varblock.h \
     Blocks/conditionalblock.h \
-    FileManager.h
+    FileManager.h \
+    VPLSaver.h
 
 FORMS += \
         mainwindow.ui \

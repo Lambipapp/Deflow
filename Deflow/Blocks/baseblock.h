@@ -13,6 +13,7 @@
 #include "Connectors/connectorin.h"
 #include "Connectors/connectorout.h"
 #include <vector>
+#include <QJsonObject>
 
 class BaseBlock : public QWidget
 {
@@ -26,6 +27,10 @@ public:
     QPoint mouseOffset;
     std::vector<ConnectorIn*> connectorsIN;
     std::vector<ConnectorOut*> connectorsOUT;
+
+
+
+
 signals:
 
 public slots:

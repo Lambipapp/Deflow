@@ -18,3 +18,4 @@ QString AcquireInputBlock::getLuaCodeLine()
 {
     return QString();
 }
+

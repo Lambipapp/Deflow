@@ -183,3 +183,15 @@ void GraphSpace::TranslateToLua()
 {
 
 }
+
+void GraphSpace::RemoveBlock(BaseBlock* block)
+{
+    for(unsigned int i = 0; i < blocks.size(); i++)
+    {
+        if(blocks[i] == block)
+        {
+            blocks.erase(blocks.begin() + i);
+            break;
+        }
+    }
+}

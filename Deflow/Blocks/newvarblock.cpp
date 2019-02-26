@@ -8,6 +8,11 @@ NewVarBlock::NewVarBlock(QWidget *parent) :
     ui->setupUi(this);
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
+
+
+
+    //IF CREATED IN INIT TAB STRING IS "self.varName"
+    //IF CREATED IN ANY OTHER TAB STRING IS "local varName"
 }
 
 NewVarBlock::~NewVarBlock()

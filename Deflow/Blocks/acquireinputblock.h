@@ -14,7 +14,7 @@ class AcquireInputBlock : public BaseBlock
 
 public:
     explicit AcquireInputBlock(QWidget *parent = nullptr);
-    ~AcquireInputBlock();
+    ~AcquireInputBlock() override;
 
     QString getLuaCodeLine() override;
 

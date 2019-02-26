@@ -61,7 +61,7 @@ void BaseBlock::ShowContextMenu(const QPoint &pos)
 void BaseBlock::DestroyBlock()
 {
     OnDestroy();
-    Canvas::instance->RemoveBlock(this);
+    Canvas::currentGraphSpace->RemoveBlock(this);
     deleteLater();
 }
 
