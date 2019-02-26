@@ -27,16 +27,19 @@ void ConnectorExecOut::mouseReleaseEvent(QMouseEvent* event)
     QWidget* widget = qApp->widgetAt(event->globalPos());
 
     if(widget == this)
+    {
+        Canvas::lineRenderer->update();
         return;
-
+    }
     if(widget->inherits("Connector"))
     {
         Connector* temp = static_cast<Connector*>(widget);
         if(temp->myType == NodeType::execIn)
         {
-            if(temp->myBlock == myBlock)
+            if(temp->myBlock == myBlock){
+                Canvas::lineRenderer->update();
                 return;
-
+            }
             ConnectorExecIn* c = static_cast<ConnectorExecIn*>(widget);
             next = c;
             c->BindConnection();

@@ -29,16 +29,19 @@ void ConnectorOut::mouseReleaseEvent(QMouseEvent* event)
     QWidget* widget = qApp->widgetAt(event->globalPos());
 
     if(widget == this)
+    {
+        Canvas::lineRenderer->update();
         return;
-
+    }
     if(widget->inherits("Connector"))
     {
         Connector* temp = static_cast<Connector*>(widget);
         if(temp->myType == NodeType::varIn)
         {
-            if(temp->myBlock == myBlock)
+            if(temp->myBlock == myBlock){
+                Canvas::lineRenderer->update();
                 return;
-
+            }
             ConnectorIn* c = static_cast<ConnectorIn*>(widget);
             c->input = this;
             c->BindConnection();
@@ -53,7 +56,6 @@ void ConnectorOut::mouseMoveEvent(QMouseEvent *event)
 }
 void ConnectorOut::LoseConnection()
 {
-    //ui->Node->setStyleSheet(tr("background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.477528 rgba(255, 255, 255, 0), stop:0.679775 rgba(0, 0, 0, 220), stop:0.691011 rgba(0, 0, 0, 225), stop:0.904494 rgba(255, 255, 255, 0));"));
     ui->Node->setStyleSheet(tr("background-image: url(:/new/prefix1/Circle.png);"));
 }
 void ConnectorOut::BindConnection()

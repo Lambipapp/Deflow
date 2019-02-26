@@ -50,7 +50,7 @@ SOURCES += \
     Blocks/varblock.cpp \
     Blocks/conditionalblock.cpp \
     FileManager.cpp \
-    VPLSaver.cpp
+    gsserializer.cpp
 
 
 HEADERS += \
@@ -79,7 +79,7 @@ HEADERS += \
     Blocks/varblock.h \
     Blocks/conditionalblock.h \
     FileManager.h \
-    VPLSaver.h
+    gsserializer.h
 
 FORMS += \
         mainwindow.ui \
