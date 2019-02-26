@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->canvas->CreateBlock<PrintBlock>();
     //ui->canvas->CreateBlock<PrintBlock>();
 
+
+    new FileManager();
     ui->canvas->CreateAddBlock(QPoint(100, 100));
     sb = new StatusBar(ui->statusBar);
 }

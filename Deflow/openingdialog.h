@@ -15,7 +15,7 @@ class OpeningDialog : public QDialog
 public:
     explicit OpeningDialog(QWidget *parent = nullptr);
     ~OpeningDialog();
-    void SetFile(const QString filename, const QString filepath);
+    void SetFile(const QString filename);
 private slots:
     void on_buttonBox_accepted();
 
@@ -24,7 +24,6 @@ private slots:
 private:
     Ui::OpeningDialog *ui;
     QString* fileName;
-    QString* filePath;
 };
 
 #endif // OPENINGDIALOG_H

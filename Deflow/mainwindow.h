@@ -8,6 +8,7 @@
 #include "Blocks.h"
 #include "statusbar.h"
 #include <QDebug>
+#include "filemanager.h"
 
 namespace Ui {
 class MainWindow;

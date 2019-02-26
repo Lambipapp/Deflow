@@ -48,7 +48,8 @@ SOURCES += \
     Blocks/acquireinputblock.cpp \
     Blocks/newvarblock.cpp \
     Blocks/varblock.cpp \
-    Blocks/conditionalblock.cpp
+    Blocks/conditionalblock.cpp \
+    FileManager.cpp
 
 
 HEADERS += \
@@ -75,7 +76,8 @@ HEADERS += \
     Blocks/acquireinputblock.h \
     Blocks/newvarblock.h \
     Blocks/varblock.h \
-    Blocks/conditionalblock.h
+    Blocks/conditionalblock.h \
+    FileManager.h
 
 FORMS += \
         mainwindow.ui \

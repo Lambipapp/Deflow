@@ -1,5 +1,6 @@
 #include "openingdialog.h"
 #include "ui_openingdialog.h"
+#include "filemanager.h"
 
 OpeningDialog::OpeningDialog(QWidget *parent) :
     QDialog(parent),
@@ -17,18 +18,17 @@ OpeningDialog::~OpeningDialog()
 
 void OpeningDialog::on_buttonBox_accepted()
 {
-
+    //open file
 }
 
 void OpeningDialog::on_buttonBox_rejected()
 {
-
+    //do nothing
 }
 
-void OpeningDialog::SetFile(const QString filename, const QString filepath)
+void OpeningDialog::SetFile(const QString filename)
 {
     fileName = new QString(filename);
-    filePath = new QString(filepath);
     ui->fileName->setText(filename);
 
 }
