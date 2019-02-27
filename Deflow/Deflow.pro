@@ -50,7 +50,8 @@ SOURCES += \
     Blocks/varblock.cpp \
     Blocks/conditionalblock.cpp \
     FileManager.cpp \
-    gsserializer.cpp
+    gsserializer.cpp \
+    translator.cpp
 
 
 HEADERS += \
@@ -79,7 +80,8 @@ HEADERS += \
     Blocks/varblock.h \
     Blocks/conditionalblock.h \
     FileManager.h \
-    gsserializer.h
+    gsserializer.h \
+    translator.h
 
 FORMS += \
         mainwindow.ui \

@@ -131,8 +131,6 @@ StartBlock* GraphSpace::CreateStartBlock()
 }
 
 
-#include "translator.h"
-
 void GraphSpace::mousePressEvent(QMouseEvent* event)
 {
     //start drag event
@@ -144,7 +142,6 @@ void GraphSpace::mousePressEvent(QMouseEvent* event)
         mimeData->setText("CanvasDrag");
         drag->setMimeData(mimeData);
         drag->start();
-            Translator *c = new Translator();
     }
     else if(event->button() == Qt::RightButton)
     {

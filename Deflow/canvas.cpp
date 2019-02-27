@@ -73,5 +73,4 @@ void Canvas::on_FunctionTabs_currentChanged(int index)
 QList<GraphSpace*> Canvas::GetGraphSpaces()
 {
     return findChildren<GraphSpace*>();
-
 }
