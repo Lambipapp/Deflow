@@ -12,6 +12,8 @@
 
 #include "Connectors/connectorin.h"
 #include "Connectors/connectorout.h"
+#include "Connectors/connectorexecin.h"
+#include "Connectors/connectorexecout.h"
 #include <vector>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -26,10 +28,11 @@ public:
 
     static BaseBlock *selectedBlock;
     QPoint mouseOffset;
-    std::vector<ConnectorIn*> connectorsIN;
-    std::vector<ConnectorOut*> connectorsOUT;
+    std::vector<Connector*> connectors;
 
     virtual QJsonObject GetJsonRepresentation() = 0;
+
+    std::vector<ConnectorExecOut*> myExecOutConnectors;
 
 
 

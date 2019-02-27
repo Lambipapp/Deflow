@@ -77,6 +77,9 @@ void BaseBlock::initConnectors()
     for(Connector* c : findChildren<Connector*>())
     {
         c->myBlock = this;
+        connectors.push_back(c);
+        if(c->myType == c->NodeType::execOut)
+            myExecOutConnectors.push_back(static_cast<ConnectorExecOut*>(c));
     }
 }
 QJsonObject BaseBlock::ParseConnectors()
