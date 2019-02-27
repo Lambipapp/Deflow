@@ -11,13 +11,15 @@ GraphSpace::GraphSpace(QWidget *parent) :
     ui->setupUi(this);
     setAcceptDrops(true);
     setContextMenuPolicy(Qt::CustomContextMenu);
-    CreateStartBlock();
+    startBlock = CreateStartBlock();
 }
 
 GraphSpace::~GraphSpace()
 {
     delete ui;
 }
+
+
 
 
 void GraphSpace::ShowContextMenu(const QPoint &pos)
@@ -59,65 +61,77 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
    newBlockPos = pos;
    contextMenu.exec(mapToGlobal(pos));
 }
-void GraphSpace::CreateConditionalBlock()
+ConditionalBlock* GraphSpace::CreateConditionalBlock()
 {
     ConditionalBlock *n = new ConditionalBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
+    return n;
 }
-void GraphSpace::CreateVarBlock()
+VarBlock* GraphSpace::CreateVarBlock()
 {
     VarBlock *n = new VarBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
+    return n;
 }
-void GraphSpace::CreatePrintBlock()
+PrintBlock* GraphSpace::CreatePrintBlock()
 {
     PrintBlock *n = new PrintBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
+    return n;
 }
 
-void GraphSpace::CreateNewVarBlock()
+NewVarBlock* GraphSpace::CreateNewVarBlock()
 {
     NewVarBlock *n = new NewVarBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
+    return n;
 }
 
-void GraphSpace::CreateAcquireInputBlock()
+AcquireInputBlock* GraphSpace::CreateAcquireInputBlock()
 {
     AcquireInputBlock *n = new AcquireInputBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
+    return n;
 }
 
-void GraphSpace::CreateAddBlock()
+AddBlock* GraphSpace::CreateAddBlock()
 {
     AddBlock *n = new AddBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
+    return n;
 }
-void GraphSpace::CreateStringBlock()
+StringBlock* GraphSpace::CreateStringBlock()
 {
     StringBlock *n = new StringBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
+    return n;
+
 }
-void GraphSpace::CreateStartBlock()
+StartBlock* GraphSpace::CreateStartBlock()
 {
     StartBlock *n = new StartBlock(this);
     n->show();
     n->move(100, this->height()/2);
     this->blocks.push_back(n);
+    return n;
 }
+
+
+#include "translator.h"
 
 void GraphSpace::mousePressEvent(QMouseEvent* event)
 {
@@ -130,6 +144,7 @@ void GraphSpace::mousePressEvent(QMouseEvent* event)
         mimeData->setText("CanvasDrag");
         drag->setMimeData(mimeData);
         drag->start();
+            Translator *c = new Translator();
     }
     else if(event->button() == Qt::RightButton)
     {
@@ -137,12 +152,13 @@ void GraphSpace::mousePressEvent(QMouseEvent* event)
     }
 }
 
+
+
+
 void GraphSpace::mouseReleaseEvent(QMouseEvent* event)
 {
     //stop drag event
     BaseBlock::selectedBlock = nullptr;
-
-
 }
 
 

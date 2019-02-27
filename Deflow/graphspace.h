@@ -8,6 +8,7 @@
 #include <QMenu>
 #include "blocks.h"
 #include <QDebug>
+#include <QPainter>
 
 
 namespace Ui {
@@ -22,11 +23,15 @@ public:
     explicit GraphSpace(QWidget *parent = nullptr);
     ~GraphSpace();
     std::vector<BaseBlock*> blocks;
+    StartBlock* startBlock;
 private:
     Ui::GraphSpace *ui;
     QPoint previousMouseDragPos;
     QPoint newBlockPos;
+
     void TranslateToLua();
+
+
 
 
 protected:
@@ -38,14 +43,14 @@ protected:
 
 public slots:
     void RemoveBlock(BaseBlock* block);
-    void CreatePrintBlock();
-    void CreateStringBlock();
-    void CreateAddBlock();
-    void CreateStartBlock();
-    void CreateAcquireInputBlock();
-    void CreateNewVarBlock();
-    void CreateVarBlock();
-    void CreateConditionalBlock();
+    PrintBlock* CreatePrintBlock();
+    StringBlock* CreateStringBlock();
+    AddBlock* CreateAddBlock();
+    StartBlock* CreateStartBlock();
+    AcquireInputBlock* CreateAcquireInputBlock();
+    NewVarBlock* CreateNewVarBlock();
+    VarBlock* CreateVarBlock();
+    ConditionalBlock* CreateConditionalBlock();
     void ShowContextMenu(const QPoint &pos);
 };
 
