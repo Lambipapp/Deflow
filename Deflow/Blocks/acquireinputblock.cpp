@@ -8,6 +8,7 @@ AcquireInputBlock::AcquireInputBlock(QWidget *parent) :
     ui->setupUi(this);
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
+    myType = BlockType::AcquireInputBlock;
 }
 
 AcquireInputBlock::~AcquireInputBlock()
@@ -27,8 +28,16 @@ QJsonObject AcquireInputBlock::GetJsonRepresentation()
     data.insert("Position", pos);
     data.insert("Connectors", ParseConnectors());
     QJsonObject o;
-    o.insert("AcquireInputBlock", data);
+    o.insert(QString::number(myType), data);
 
     return o;
+}
+void AcquireInputBlock::ReLoadData(QJsonObject data)
+{
+    QJsonValue pos = data.value(tr("Position"));
+    move(posFromjsv(pos));
+    //SET POSITION
+    //SET CONNECTORIDS
+    //SET CONNECTIONS
 }
 

@@ -24,42 +24,42 @@ GraphSpace::~GraphSpace()
 
 void GraphSpace::ShowContextMenu(const QPoint &pos)
 {
-   QMenu contextMenu(tr("Context menu"), this);
-   QMenu createBlockMenu(tr("New.."), &contextMenu);
-   contextMenu.addMenu(&createBlockMenu);
+    QMenu contextMenu(tr("Context menu"), this);
+    QMenu createBlockMenu(tr("New.."), &contextMenu);
+    contextMenu.addMenu(&createBlockMenu);
 
-   QAction createPrintBlockAction("Print block", &createBlockMenu);
-   connect(&createPrintBlockAction, SIGNAL(triggered()), this, SLOT(CreatePrintBlock()));
+    QAction createPrintBlockAction("Print block", &createBlockMenu);
+    connect(&createPrintBlockAction, SIGNAL(triggered()), this, SLOT(CreatePrintBlock()));
 
-   QAction createAddBlock("Add block", &createBlockMenu);
-   connect(&createAddBlock, SIGNAL(triggered()), this, SLOT(CreateAddBlock()));
+    QAction createAddBlock("Add block", &createBlockMenu);
+    connect(&createAddBlock, SIGNAL(triggered()), this, SLOT(CreateAddBlock()));
 
-   QAction createStringBlock("string variable block", &createBlockMenu);
-   connect(&createStringBlock, SIGNAL(triggered()), this, SLOT(CreateStringBlock()));
+    QAction createStringBlock("string variable block", &createBlockMenu);
+    connect(&createStringBlock, SIGNAL(triggered()), this, SLOT(CreateStringBlock()));
 
-   QAction createAcquireInputBlock("Acquire Input Block", &createBlockMenu);
-   connect(&createAcquireInputBlock, SIGNAL(triggered()), this, SLOT(CreateAcquireInputBlock()));
+    QAction createAcquireInputBlock("Acquire Input Block", &createBlockMenu);
+    connect(&createAcquireInputBlock, SIGNAL(triggered()), this, SLOT(CreateAcquireInputBlock()));
 
-   QAction createNewVarBlock("New Variable Block", &createBlockMenu);
-   connect(&createNewVarBlock, SIGNAL(triggered()), this, SLOT(CreateNewVarBlock()));
+    QAction createNewVarBlock("New Variable Block", &createBlockMenu);
+    connect(&createNewVarBlock, SIGNAL(triggered()), this, SLOT(CreateNewVarBlock()));
 
-   QAction createVarBlock("Variable Block", &createBlockMenu);
-   connect(&createVarBlock, SIGNAL(triggered()), this, SLOT(CreateVarBlock()));
+    QAction createVarBlock("Variable Block", &createBlockMenu);
+    connect(&createVarBlock, SIGNAL(triggered()), this, SLOT(CreateVarBlock()));
 
-   QAction createConditionalBlock("Conditional Block", &createBlockMenu);
-   connect(&createConditionalBlock, SIGNAL(triggered()), this, SLOT(CreateConditionalBlock()));
+    QAction createConditionalBlock("Conditional Block", &createBlockMenu);
+    connect(&createConditionalBlock, SIGNAL(triggered()), this, SLOT(CreateConditionalBlock()));
 
-   createBlockMenu.addAction(&createVarBlock);
-   createBlockMenu.addAction(&createConditionalBlock);
-   createBlockMenu.addAction(&createAddBlock);
-   createBlockMenu.addAction(&createPrintBlockAction);
-   createBlockMenu.addAction(&createStringBlock);
-   createBlockMenu.addAction(&createAcquireInputBlock);
-   createBlockMenu.addAction(&createNewVarBlock);
+    createBlockMenu.addAction(&createVarBlock);
+    createBlockMenu.addAction(&createConditionalBlock);
+    createBlockMenu.addAction(&createAddBlock);
+    createBlockMenu.addAction(&createPrintBlockAction);
+    createBlockMenu.addAction(&createStringBlock);
+    createBlockMenu.addAction(&createAcquireInputBlock);
+    createBlockMenu.addAction(&createNewVarBlock);
 
 
-   newBlockPos = pos;
-   contextMenu.exec(mapToGlobal(pos));
+    newBlockPos = pos;
+    contextMenu.exec(mapToGlobal(pos));
 }
 ConditionalBlock* GraphSpace::CreateConditionalBlock()
 {
@@ -207,4 +207,49 @@ void GraphSpace::RemoveBlock(BaseBlock* block)
             break;
         }
     }
+}
+BaseBlock* GraphSpace::CreateBlock(int bt)
+{
+    switch (bt) {
+    case BaseBlock::BlockType::StartBlock:
+        return CreateStartBlock();
+    case BaseBlock::BlockType::AddBlock:
+        return CreateAddBlock();
+    case BaseBlock::BlockType::VarBlock:
+        return CreateVarBlock();
+    case BaseBlock::BlockType::PrintBlock:
+        return CreatePrintBlock();
+    case BaseBlock::BlockType::NewVarBlock:
+        return CreateNewVarBlock();
+    case BaseBlock::BlockType::StringBlock:
+        return CreateStringBlock();
+    case BaseBlock::BlockType::ConditionalBlock:
+        return CreateConditionalBlock();
+    case BaseBlock::BlockType::AcquireInputBlock:
+        return CreateAcquireInputBlock();
+    }
+    return nullptr;
+}
+
+BaseBlock* GraphSpace::CreateBlock(BaseBlock::BlockType bt)
+{
+    switch (bt) {
+    case BaseBlock::BlockType::StartBlock:
+        return CreateStartBlock();
+    case BaseBlock::BlockType::AddBlock:
+        return CreateAddBlock();
+    case BaseBlock::BlockType::VarBlock:
+        return CreateVarBlock();
+    case BaseBlock::BlockType::PrintBlock:
+        return CreatePrintBlock();
+    case BaseBlock::BlockType::NewVarBlock:
+        return CreateNewVarBlock();
+    case BaseBlock::BlockType::StringBlock:
+        return CreateStringBlock();
+    case BaseBlock::BlockType::ConditionalBlock:
+        return CreateConditionalBlock();
+    case BaseBlock::BlockType::AcquireInputBlock:
+        return CreateAcquireInputBlock();
+    }
+    return nullptr;
 }

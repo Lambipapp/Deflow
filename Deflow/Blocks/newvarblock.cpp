@@ -8,6 +8,7 @@ NewVarBlock::NewVarBlock(QWidget *parent) :
     ui->setupUi(this);
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
+    myType = BlockType::NewVarBlock;
 
 
 
@@ -33,7 +34,15 @@ QJsonObject NewVarBlock::GetJsonRepresentation()
     data.insert("Position", pos);
     data.insert("Connectors", ParseConnectors());
     QJsonObject o;
-    o.insert("NewVarBlock", data);
+    o.insert(QString::number(myType), data);
 
     return o;
+}
+void NewVarBlock::ReLoadData(QJsonObject data)
+{
+    QJsonValue pos = data.value(tr("Position"));
+    move(posFromjsv(pos));
+    //SET POSITION
+    //SET CONNECTORIDS
+    //SET CONNECTIONS
 }

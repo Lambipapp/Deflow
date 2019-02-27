@@ -91,4 +91,19 @@ QJsonObject BaseBlock::ParseConnectors()
     }
     return o;
 }
+void BaseBlock::ReLoadData(QJsonObject data)
+{}
+
+QJsonObject BaseBlock::GetJsonRepresentation()
+{
+    return QJsonObject();
+}
+QString BaseBlock::getLuaCodeLine()
+{
+    return QString();
+}
+QPoint BaseBlock::posFromjsv(QJsonValue pos)
+{
+    return QPoint(pos.toObject().value(tr("x")).toInt(), pos.toObject().value(tr("y")).toInt());
+}
 

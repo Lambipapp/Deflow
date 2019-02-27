@@ -18,6 +18,12 @@ Canvas::Canvas(QWidget *parent) :
     setAcceptDrops(true);
     currentGraphSpace = ui->InitCanvas;
     lineRenderer = new LineRenderer(currentGraphSpace);
+    gSpaces.push_back(ui->InitCanvas);
+    gSpaces.push_back(ui->UpdateCanvas);
+    gSpaces.push_back(ui->OnMessageCanvas);
+    gSpaces.push_back(ui->OnInputCanvas);
+    gSpaces.push_back(ui->OnReloadCanvas);
+    gSpaces.push_back(ui->FinalCanvas);
 }
 
 void Canvas::SaveVisualCode()
@@ -72,5 +78,5 @@ void Canvas::on_FunctionTabs_currentChanged(int index)
 
 QList<GraphSpace*> Canvas::GetGraphSpaces()
 {
-    return findChildren<GraphSpace*>();
+    return gSpaces;
 }

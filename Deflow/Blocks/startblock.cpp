@@ -9,6 +9,7 @@ StartBlock::StartBlock(QWidget *parent) :
     ui->setupUi(this);
     ui->Start->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
+    myType = BlockType::StartBlock;
 
 }
 
@@ -45,9 +46,16 @@ QJsonObject StartBlock::GetJsonRepresentation()
     data.insert("Position", pos);
     data.insert("Connectors", ParseConnectors());
     QJsonObject o;
-    o.insert("StartBlock", data);
+    o.insert(QString::number(myType), data);
 
     return o;
 }
-
+void StartBlock::ReLoadData(QJsonObject data)
+{
+    QJsonValue pos = data.value(tr("Position"));
+    move(posFromjsv(pos));
+    //SET POSITION
+    //SET CONNECTORIDS
+    //SET CONNECTIONS
+}
 

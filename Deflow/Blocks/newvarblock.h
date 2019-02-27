@@ -17,6 +17,7 @@ public:
     ~NewVarBlock() override;
     QString getLuaCodeLine() override;
     QJsonObject GetJsonRepresentation() override;
+    void ReLoadData(QJsonObject data) override;
 
 private:
     Ui::NewVarBlock *ui;

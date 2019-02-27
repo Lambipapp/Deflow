@@ -24,6 +24,10 @@ public:
     ~GraphSpace();
     std::vector<BaseBlock*> blocks;
     StartBlock* startBlock;
+
+    BaseBlock* CreateBlock(int bt);
+    BaseBlock* CreateBlock(BaseBlock::BlockType bt);
+
 private:
     Ui::GraphSpace *ui;
     QPoint previousMouseDragPos;

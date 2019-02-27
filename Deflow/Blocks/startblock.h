@@ -18,6 +18,7 @@ public:
     QString getLuaCodeLine() override;
     virtual void ShowContextMenu(const QPoint &pos) override;
     QJsonObject GetJsonRepresentation() override;
+    void ReLoadData(QJsonObject data) override;
 private:
     Ui::StartBlock *ui;
 

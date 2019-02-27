@@ -8,6 +8,7 @@ ConditionalBlock::ConditionalBlock(QWidget *parent) :
     ui->setupUi(this);
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
+    myType = BlockType::ConditionalBlock;
 }
 
 ConditionalBlock::~ConditionalBlock()
@@ -28,7 +29,15 @@ QJsonObject ConditionalBlock::GetJsonRepresentation()
     data.insert("Position", pos);
     data.insert("Connectors", ParseConnectors());
     QJsonObject o;
-    o.insert("ConditionalBlock", data);
+    o.insert(QString::number(myType), data);
 
     return o;
+}
+void ConditionalBlock::ReLoadData(QJsonObject data)
+{
+    QJsonValue pos = data.value(tr("Position"));
+    move(posFromjsv(pos));
+    //SET POSITION
+    //SET CONNECTORIDS
+    //SET CONNECTIONS
 }

@@ -16,7 +16,6 @@
 #include "Connectors/connectorexecout.h"
 #include <vector>
 #include <QJsonObject>
-#include <QJsonArray>
 
 class BaseBlock : public QWidget
 {
@@ -24,18 +23,21 @@ class BaseBlock : public QWidget
 public:
     explicit BaseBlock(QWidget *parent = nullptr);
 
-    virtual QString getLuaCodeLine() = 0;
 
     static BaseBlock *selectedBlock;
     QPoint mouseOffset;
     std::vector<Connector*> connectors;
 
-    virtual QJsonObject GetJsonRepresentation() = 0;
+
 
     std::vector<ConnectorExecOut*> myExecOutConnectors;
 
+    virtual QJsonObject GetJsonRepresentation();
+    virtual QString getLuaCodeLine();
+    virtual void ReLoadData(QJsonObject data);
 
-
+    enum BlockType {StartBlock, VarBlock, NewVarBlock, ConditionalBlock, AddBlock, PrintBlock, StringBlock, AcquireInputBlock};
+    BlockType myType;
 
 signals:
 
@@ -46,9 +48,8 @@ private:
     QPoint dragStartPosition;
     virtual void ShowContextMenu(const QPoint &pos);
     virtual void OnDestroy();
-
-
 protected:
+    QPoint posFromjsv(QJsonValue pos);
     void initConnectors();
     QJsonObject ParseConnectors();
     void mousePressEvent(QMouseEvent *event) override;

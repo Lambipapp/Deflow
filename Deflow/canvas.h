@@ -31,7 +31,7 @@ private:
     Ui::Canvas *ui;
     void OpenFile();
     void SaveVisualCode();
-
+    QList<GraphSpace*> gSpaces;
 
 protected:
 
