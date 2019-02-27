@@ -14,11 +14,19 @@ FileManager::FileManager()
 FileManager::~FileManager()
 {
     delete od;
+    delete gss;
 }
 
 
+void FileManager::SetGSS(GSSerializer* g)
+{
+    gss = g;
+}
 bool FileManager::OpenFile(QString filePath, QString fileName)
 {
+    if(currentFile.fileName() == filePath)
+        return false;
+
     if(ShouldOpenFile(filePath, fileName))
     {
         if(currentFile.isOpen())
@@ -30,7 +38,7 @@ bool FileManager::OpenFile(QString filePath, QString fileName)
             if(shouldOverwriteCurrentFile())
                 OverwriteCurrentFile();
 
-            OnOpenFile();
+            OnFileOpen();
             return true;
         }
         else return false;
@@ -68,7 +76,7 @@ void FileManager::OverwriteCurrentFile()
     overwrite = false; //reset overwrite flag
 }
 
-void FileManager::OnOpenFile()
+void FileManager::OnFileOpen()
 {
     qDebug() << "File Opened";
     //open corrent graphspaces, load block positions and connections here

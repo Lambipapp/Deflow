@@ -82,9 +82,9 @@ void BaseBlock::initConnectors()
 QJsonObject BaseBlock::ParseConnectors()
 {
     QJsonObject o;
-    for(Connector* c : findChildren<Connector*>())
+    for(int i = 0; i < findChildren<Connector*>().size(); i++)//Connector* c : findChildren<Connector*>())
     {
-        o.insert("connector", c->GetJsonRepresentation());
+        o.insert("connector_"+ QString::number(i), findChildren<Connector*>()[i]->GetJsonRepresentation());
     }
     return o;
 }

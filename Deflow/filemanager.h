@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QTextStream>
+#include "gsserializer.h"
 
 class FileManager
 {
@@ -22,15 +23,15 @@ public:
     OpeningDialog* od;
 
     static FileManager *fm;
-
+    void SetGSS(GSSerializer *p);
 
 private:
     bool overwrite = false;
-
+    GSSerializer *gss;
     bool shouldOverwriteCurrentFile();
     bool ShouldOpenFile(QString filePath, QString fileName);
     void OverwriteCurrentFile();
-    void OnOpenFile();
+    void OnFileOpen();
     void OnFileClose();
 
 };
