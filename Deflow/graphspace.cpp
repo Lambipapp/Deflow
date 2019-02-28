@@ -253,3 +253,11 @@ BaseBlock* GraphSpace::CreateBlock(BaseBlock::BlockType bt)
     }
     return nullptr;
 }
+
+
+//TEMP //TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP
+#include "translator.h"
+void GraphSpace::on_pushButton_clicked()
+{
+    new Translator();
+}

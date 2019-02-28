@@ -56,6 +56,8 @@ public slots:
     VarBlock* CreateVarBlock();
     ConditionalBlock* CreateConditionalBlock();
     void ShowContextMenu(const QPoint &pos);
+private slots:
+    void on_pushButton_clicked();
 };
 
 #endif // GRAPHSPACE_H
