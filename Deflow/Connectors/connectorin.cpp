@@ -13,13 +13,19 @@ ConnectorIn::ConnectorIn(QWidget *parent) :
 
 ConnectorIn::~ConnectorIn()
 {
+    LoseConnection(this);
     input = nullptr;
     delete ui;
 }
 
 void ConnectorIn::mousePressEvent(QMouseEvent *event)
 {
-    clickedConnector = this;
+    if(event->button() == Qt::LeftButton){
+        clickedConnector = this;
+    }
+    else if(event->button() == Qt::RightButton){
+        LoseConnection(this);
+    }
 }
 void ConnectorIn::mouseReleaseEvent(QMouseEvent* event)
 {
@@ -42,8 +48,8 @@ void ConnectorIn::mouseReleaseEvent(QMouseEvent* event)
             }
             ConnectorOut* c = static_cast<ConnectorOut*>(widget);
             input = c;
-            c->BindConnection();
-            BindConnection();
+            c->BindConnection(this);
+            BindConnection(c);
         }
     }
     Canvas::lineRenderer->update();
@@ -52,11 +58,17 @@ void ConnectorIn::mouseMoveEvent(QMouseEvent *event)
 {
     Canvas::lineRenderer->update();
 }
-void ConnectorIn::LoseConnection()
+void ConnectorIn::LoseConnection(Connector* c)
 {
+    if(c == this)
+    {
+        if(input != nullptr)
+            input->LoseConnection(this);
+    }
+    input = nullptr;
     ui->Node->setStyleSheet(tr("background-image: url(:/new/prefix1/Circle.png);"));
 }
-void ConnectorIn::BindConnection()
+void ConnectorIn::BindConnection(Connector* c)
 {
     ui->Node->setStyleSheet(tr("background-image: url(:/new/prefix1/Circle-filled.png);"));
 }

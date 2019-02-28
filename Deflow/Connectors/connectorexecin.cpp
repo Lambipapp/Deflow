@@ -15,13 +15,18 @@ ConnectorExecIn::ConnectorExecIn(QWidget *parent) :
 
 ConnectorExecIn::~ConnectorExecIn()
 {
-
+    LoseConnection(this);
     delete ui;
 }
 
 void ConnectorExecIn::mousePressEvent(QMouseEvent *event)
 {
-    clickedConnector = this;
+    if(event->button() == Qt::LeftButton)
+        clickedConnector = this;
+    else if(event->button() == Qt::RightButton)
+    {
+        LoseConnection(this);
+    }
 }
 void ConnectorExecIn::mouseReleaseEvent(QMouseEvent* event)
 {
@@ -45,8 +50,9 @@ void ConnectorExecIn::mouseReleaseEvent(QMouseEvent* event)
             }
             ConnectorExecOut* c = static_cast<ConnectorExecOut*>(widget);
             c->next = this;
-            c->BindConnection();
-            BindConnection();
+
+            c->BindConnection(this);
+            BindConnection(c);
         }
     }
     Canvas::lineRenderer->update();
@@ -56,12 +62,34 @@ void ConnectorExecIn::mouseMoveEvent(QMouseEvent *event)
     Canvas::lineRenderer->update();
 }
 
-void ConnectorExecIn::LoseConnection()
+void ConnectorExecIn::LoseConnection(Connector* c)
 {
+    if(c == this)
+    {
+        for(unsigned int i = 0; i < connected.size(); i++)
+        {
+            connected[i]->LoseConnection(this);
+        }
+        connected.clear();
+    }
+    else
+    {for(unsigned int i = 0; i < connected.size(); i++)
+        {
+            if(c == connected[i])
+            {
+                //c->LoseConnection(this);
+                connected.erase(connected.begin()+i);
+            }
+        }
+    }
     ui->Arrow->setStyleSheet(tr("background-image: url(:/new/prefix1/Arrow.png);"));
 }
-void ConnectorExecIn::BindConnection()
+
+void ConnectorExecIn::BindConnection(Connector* c)
 {
+    if(!(std::find(connected.begin(), connected.end(), c) != connected.end())) {
+        connected.push_back(c);
+    }
     ui->Arrow->setStyleSheet(tr("background-image: url(:/new/prefix1/Arrow-filled.png);"));
 }
 QJsonObject ConnectorExecIn::GetJsonRepresentation()

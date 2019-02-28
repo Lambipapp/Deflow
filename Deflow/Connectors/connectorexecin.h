@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "Connectors/connector.h"
+#include <vector>
 
 namespace Ui {
 class ConnectorExecIn;
@@ -15,11 +16,12 @@ class ConnectorExecIn : public Connector
 public:
     explicit ConnectorExecIn(QWidget *parent = nullptr);
     ~ConnectorExecIn() override;
-    void LoseConnection() override;
-    void BindConnection() override;
+    void LoseConnection(Connector* c) override;
+    void BindConnection(Connector* c) override;
     QJsonObject GetJsonRepresentation() override;
 private:
     Ui::ConnectorExecIn *ui;
+    std::vector<Connector*> connected;
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;

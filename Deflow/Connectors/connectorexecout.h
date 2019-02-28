@@ -17,8 +17,8 @@ public:
     explicit ConnectorExecOut(QWidget *parent = nullptr);
     ~ConnectorExecOut();
     ConnectorExecIn* next = nullptr;
-    void LoseConnection() override;
-    void BindConnection() override;
+    void LoseConnection(Connector* c) override;
+    void BindConnection(Connector* c) override;
     QJsonObject GetJsonRepresentation() override;
 
 private:

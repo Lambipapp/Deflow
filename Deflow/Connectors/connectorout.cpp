@@ -15,13 +15,18 @@ ConnectorOut::ConnectorOut(QWidget *parent) :
 
 ConnectorOut::~ConnectorOut()
 {
-
+    LoseConnection(this);
     delete ui;
 }
 
 void ConnectorOut::mousePressEvent(QMouseEvent *event)
 {
-    clickedConnector = this;
+    if(event->button() == Qt::LeftButton){
+        clickedConnector = this;
+    }
+    else if(event->button() == Qt::RightButton){
+        LoseConnection(this);
+    }
 }
 void ConnectorOut::mouseReleaseEvent(QMouseEvent* event)
 {
@@ -44,8 +49,8 @@ void ConnectorOut::mouseReleaseEvent(QMouseEvent* event)
             }
             ConnectorIn* c = static_cast<ConnectorIn*>(widget);
             c->input = this;
-            c->BindConnection();
-            BindConnection();
+            c->BindConnection(this);
+            BindConnection(c);
         }
     }
     Canvas::lineRenderer->update();
@@ -54,12 +59,37 @@ void ConnectorOut::mouseMoveEvent(QMouseEvent *event)
 {
     Canvas::lineRenderer->update();
 }
-void ConnectorOut::LoseConnection()
+void ConnectorOut::LoseConnection(Connector* c)
 {
+    if(c == this)
+    {
+        for(unsigned int i = 0; i < connected.size(); i++)
+        {
+            connected[i]->LoseConnection(this);
+        }
+        connected.clear();
+    }
+    else
+    {
+        for(unsigned int i = 0; i < connected.size(); i++)
+        {
+            if(c == connected[i])
+            {
+
+                connected.erase(connected.begin()+i);
+            }
+        }
+    }
     ui->Node->setStyleSheet(tr("background-image: url(:/new/prefix1/Circle.png);"));
+
+
+
 }
-void ConnectorOut::BindConnection()
+void ConnectorOut::BindConnection(Connector* c)
 {
+    if(!(std::find(connected.begin(), connected.end(), c) != connected.end())) {
+        connected.push_back(c);
+    }
     ui->Node->setStyleSheet(tr("background-image: url(:/new/prefix1/Circle-filled.png);"));
 }
 QJsonObject ConnectorOut::GetJsonRepresentation()

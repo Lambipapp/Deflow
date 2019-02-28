@@ -18,8 +18,8 @@ public:
     ~ConnectorIn() override;
 
     ConnectorOut* input = nullptr;
-    void LoseConnection() override;
-    void BindConnection() override;
+    void LoseConnection(Connector* c) override;
+    void BindConnection(Connector* c) override;
     QJsonObject GetJsonRepresentation() override;
 private:
     Ui::ConnectorIn *ui;

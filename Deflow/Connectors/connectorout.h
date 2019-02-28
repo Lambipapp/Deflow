@@ -15,12 +15,13 @@ class ConnectorOut : public Connector
 public:
     explicit ConnectorOut(QWidget *parent = nullptr);
     ~ConnectorOut()override;
-    void LoseConnection() override;
-    void BindConnection() override;
+    void LoseConnection(Connector* c) override;
+    void BindConnection(Connector* c) override;
     QJsonObject GetJsonRepresentation() override;
 private:
     Ui::ConnectorOut *ui;
 protected:
+    std::vector<Connector*> connected;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
