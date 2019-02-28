@@ -55,6 +55,7 @@ public slots:
     NewVarBlock* CreateNewVarBlock();
     VarBlock* CreateVarBlock();
     ConditionalBlock* CreateConditionalBlock();
+    GetGOPropertysBlock* CreateGetGOPropertysBlock();
     void ShowContextMenu(const QPoint &pos);
 private slots:
     void on_pushButton_clicked();

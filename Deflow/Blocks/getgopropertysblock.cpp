@@ -1,34 +1,28 @@
-#include "newvarblock.h"
-#include "ui_newvarblock.h"
+#include "getgopropertysblock.h"
+#include "ui_getgopropertysblock.h"
 
-NewVarBlock::NewVarBlock(QWidget *parent) :
+GetGOPropertysBlock::GetGOPropertysBlock(QWidget *parent) :
     BaseBlock(parent),
-    ui(new Ui::NewVarBlock)
+    ui(new Ui::GetGOPropertysBlock)
 {
     ui->setupUi(this);
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
-    myType = BlockType::NewVarBlock;
-
-
-
-    //IF CREATED IN INIT TAB STRING IS "self.varName"
-    //IF CREATED IN ANY OTHER TAB STRING IS "local varName"
+    myType = BlockType::GetGOPropertysBlock;
 }
 
-NewVarBlock::~NewVarBlock()
+GetGOPropertysBlock::~GetGOPropertysBlock()
 {
     delete ui;
 }
-QString NewVarBlock::getLuaCodeLine()
+
+QString GetGOPropertysBlock::getLuaCodeLine()
 {
-
-
-    return "self." + ui->NameField->toPlainText() + " = " + ui->ValueField->toPlainText();
+return QString();
 }
-
-QJsonObject NewVarBlock::GetJsonRepresentation()
+QJsonObject GetGOPropertysBlock::GetJsonRepresentation()
 {
+
     QJsonObject pos;
     pos.insert("x", this->pos().x());
     pos.insert("y", this->pos().y());
@@ -40,7 +34,7 @@ QJsonObject NewVarBlock::GetJsonRepresentation()
 
     return o;
 }
-void NewVarBlock::ReLoadData(QJsonObject data)
+void GetGOPropertysBlock::ReLoadData(QJsonObject data)
 {
     QJsonValue pos = data.value(tr("Position"));
     move(posFromjsv(pos));

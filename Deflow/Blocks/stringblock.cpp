@@ -18,7 +18,7 @@ StringBlock::~StringBlock()
 
 QString StringBlock::getLuaCodeLine()
 {
-    return QString();
+    return ui->plainTextEdit->toPlainText();
 }
 
 QJsonObject StringBlock::GetJsonRepresentation()

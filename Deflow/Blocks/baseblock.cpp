@@ -62,9 +62,7 @@ void BaseBlock::ShowContextMenu(const QPoint &pos)
 
 void BaseBlock::DestroyBlock()
 {
-    for(unsigned int i = 0; i < connectors.size(); i++)
-        connectors[i]->LoseConnection(connectors[i]);
-    Canvas::lineRenderer->update();
+
     OnDestroy();
     Canvas::currentGraphSpace->RemoveBlock(this);
     deleteLater();
@@ -72,6 +70,9 @@ void BaseBlock::DestroyBlock()
 
 void BaseBlock::OnDestroy()
 {
+    for(unsigned int i = 0; i < connectors.size(); i++)
+        connectors[i]->LoseConnection(connectors[i]);
+    Canvas::lineRenderer->update();
 }
 
 void BaseBlock::initConnectors()

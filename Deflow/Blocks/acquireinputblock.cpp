@@ -17,7 +17,8 @@ AcquireInputBlock::~AcquireInputBlock()
 }
 QString AcquireInputBlock::getLuaCodeLine()
 {
-    return QString();
+
+    return ui->checkBox->isChecked() == true ? "msg.post(\".\", \"acquire_input_focus\")" : "msg.post(\".\", \"release_input_focus\")";
 }
 QJsonObject AcquireInputBlock::GetJsonRepresentation()
 {

@@ -18,7 +18,14 @@ PrintBlock::~PrintBlock()
 
 QString PrintBlock::getLuaCodeLine()
 {
-    return tr("");
+    QString prevResult;
+    if(ui->NodeConnectorIn->input != nullptr)
+        prevResult = static_cast<BaseBlock*>(ui->NodeConnectorIn->input->myBlock)->getLuaCodeLine();
+
+
+    QString outString = tr("local printval = ") + prevResult + tr("\nprint(printval)");
+
+    return outString;
 }
 
 QJsonObject PrintBlock::GetJsonRepresentation()

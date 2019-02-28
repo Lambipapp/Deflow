@@ -12,6 +12,7 @@ GraphSpace::GraphSpace(QWidget *parent) :
     setAcceptDrops(true);
     setContextMenuPolicy(Qt::CustomContextMenu);
     startBlock = CreateStartBlock();
+    CreateGetGOPropertysBlock();
 }
 
 GraphSpace::~GraphSpace()
@@ -129,6 +130,14 @@ StartBlock* GraphSpace::CreateStartBlock()
     this->blocks.push_back(n);
     return n;
 }
+GetGOPropertysBlock* GraphSpace::CreateGetGOPropertysBlock()
+{
+    GetGOPropertysBlock *n = new GetGOPropertysBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
 
 
 void GraphSpace::mousePressEvent(QMouseEvent* event)
@@ -227,37 +236,22 @@ BaseBlock* GraphSpace::CreateBlock(int bt)
         return CreateConditionalBlock();
     case BaseBlock::BlockType::AcquireInputBlock:
         return CreateAcquireInputBlock();
+    case BaseBlock::BlockType::GetGOPropertysBlock:
+        return CreateGetGOPropertysBlock();
     }
+
     return nullptr;
 }
 
 BaseBlock* GraphSpace::CreateBlock(BaseBlock::BlockType bt)
 {
-    switch (bt) {
-    case BaseBlock::BlockType::StartBlock:
-        return CreateStartBlock();
-    case BaseBlock::BlockType::AddBlock:
-        return CreateAddBlock();
-    case BaseBlock::BlockType::VarBlock:
-        return CreateVarBlock();
-    case BaseBlock::BlockType::PrintBlock:
-        return CreatePrintBlock();
-    case BaseBlock::BlockType::NewVarBlock:
-        return CreateNewVarBlock();
-    case BaseBlock::BlockType::StringBlock:
-        return CreateStringBlock();
-    case BaseBlock::BlockType::ConditionalBlock:
-        return CreateConditionalBlock();
-    case BaseBlock::BlockType::AcquireInputBlock:
-        return CreateAcquireInputBlock();
-    }
-    return nullptr;
+    return CreateBlock(static_cast<int>(bt));
 }
 
 
 //TEMP //TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP
-#include "translator.h"
+#include "filemanager.h"
 void GraphSpace::on_pushButton_clicked()
 {
-    new Translator();
+    FileManager::fm->TranslateAndWriteToCurrentFile();
 }

@@ -36,7 +36,7 @@ public:
     virtual QString getLuaCodeLine();
     virtual void ReLoadData(QJsonObject data);
 
-    enum BlockType {StartBlock, VarBlock, NewVarBlock, ConditionalBlock, AddBlock, PrintBlock, StringBlock, AcquireInputBlock};
+    enum BlockType {StartBlock, VarBlock, NewVarBlock, ConditionalBlock, AddBlock, PrintBlock, StringBlock, AcquireInputBlock,GetGOPropertysBlock};
     BlockType myType;
 
 signals:

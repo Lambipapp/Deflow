@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QTextStream>
 #include "gsserializer.h"
+#include "translator.h"
 
 class FileManager
 {
@@ -25,6 +26,8 @@ public:
     static FileManager *fm;
     void SetGSS(GSSerializer *p);
 
+    void TranslateAndWriteToCurrentFile();
+
 private:
     bool overwrite = false;
     GSSerializer *gss;
@@ -33,6 +36,7 @@ private:
     void OverwriteCurrentFile();
     void OnFileOpen();
     void OnFileClose();
+    void WriteToCurrentFile(const QString &);
 
 };
 

@@ -14,8 +14,8 @@ GSSerializer::GSSerializer(QString ProjectPath) :
         if(QDir().mkdir(projectPath + folderName))
             folder = projectPath + folderName;
     }
-    SaveCurrentFile("placeHolderName");
-    LoadFromFile("placeHolderName");
+    //SaveCurrentFile("placeHolderName");
+    //LoadFromFile("placeHolderName");
 
 }
 

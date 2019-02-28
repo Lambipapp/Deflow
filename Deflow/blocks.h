@@ -9,4 +9,5 @@
 #include "newvarblock.h"
 #include "varblock.h"
 #include "conditionalblock.h"
+#include "getgopropertysblock.h"
 #endif // BLOCKS_H
