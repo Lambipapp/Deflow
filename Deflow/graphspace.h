@@ -32,6 +32,8 @@ private:
     Ui::GraphSpace *ui;
     QPoint previousMouseDragPos;
     QPoint newBlockPos;
+    QDrag* drag;
+    QMimeData* mimeData;
 
     void TranslateToLua();
 

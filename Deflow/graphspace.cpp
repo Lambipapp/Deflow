@@ -247,11 +247,13 @@ void GraphSpace::mousePressEvent(QMouseEvent* event)
     if(event->button() == Qt::LeftButton)
     {
         previousMouseDragPos = event->pos();
-        QDrag* drag = new QDrag(this);
-        QMimeData *mimeData = new QMimeData;
+        drag = new QDrag(this);
+        mimeData = new QMimeData;
         mimeData->setText("CanvasDrag");
         drag->setMimeData(mimeData);
         drag->start();
+        drag->deleteLater();
+        mimeData->deleteLater();
     }
     else if(event->button() == Qt::RightButton)
     {
