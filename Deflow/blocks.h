@@ -16,5 +16,6 @@
 #include "constantvarblock.h"
 #include "multiplicationblock.h"
 #include "divisionblock.h"
+#include "inputblock.h"
 
 #endif // BLOCKS_H

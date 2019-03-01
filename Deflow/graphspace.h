@@ -61,7 +61,8 @@ public slots:
     SetVarBlock*            CreateSetVarBlock();
     ConstantVarBlock*       CreateConstantVarBlock();
     MultiplicationBlock*    CreateMultiplicationBlock();
-    DivisionBlock*    CreateDivisionBlock();
+    DivisionBlock*          CreateDivisionBlock();
+    InputBlock*             CreateInputBlock();
     void ShowContextMenu(const QPoint &pos);
 private slots:
     void on_pushButton_clicked();

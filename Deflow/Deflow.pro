@@ -58,7 +58,8 @@ SOURCES += \
     Blocks/subtractblock.cpp \
     Blocks/constantvarblock.cpp \
     Blocks/multiplicationblock.cpp \
-    Blocks/divisionblock.cpp
+    Blocks/divisionblock.cpp \
+    Blocks/inputblock.cpp
 
 
 HEADERS += \
@@ -95,7 +96,8 @@ HEADERS += \
     Blocks/subtractblock.h \
     Blocks/constantvarblock.h \
     Blocks/multiplicationblock.h \
-    Blocks/divisionblock.h
+    Blocks/divisionblock.h \
+    Blocks/inputblock.h
 
 FORMS += \
         mainwindow.ui \
@@ -122,7 +124,8 @@ FORMS += \
     Blocks/subtractblock.ui \
     Blocks/constantvarblock.ui \
     Blocks/multiplicationblock.ui \
-    Blocks/divisionblock.ui
+    Blocks/divisionblock.ui \
+    Blocks/inputblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

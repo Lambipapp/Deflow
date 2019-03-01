@@ -70,13 +70,16 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     QAction createDivisionBlock("Division Block", &createBlockMenu);
     connect(&createDivisionBlock, SIGNAL(triggered()),this, SLOT(CreateDivisionBlock()));
 
+    QAction createInputBlock("Input Check Block", &createBlockMenu);
+    connect(&createInputBlock, SIGNAL(triggered()),this, SLOT(CreateInputBlock()));
 
     createBlockMenu.addAction(&createConditionalBlock);
     createBlockMenu.addAction(&createPrintBlockAction);
-    createBlockMenu.addAction(&createAcquireInputBlock);
 
 
-
+    QMenu *inputMenu = createBlockMenu.addMenu((tr("Inputs")));
+    inputMenu->addAction(&createInputBlock);
+    inputMenu->addAction(&createAcquireInputBlock);
     QMenu *mathMenu = createBlockMenu.addMenu(tr("Math blocks"));
     mathMenu->addAction(&createAddBlock);
     mathMenu->addAction(&createSubtractBlock);
@@ -137,6 +140,15 @@ DivisionBlock* GraphSpace::CreateDivisionBlock()
 SetVarBlock* GraphSpace::CreateSetVarBlock()
 {
     SetVarBlock *n = new SetVarBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+
+InputBlock* GraphSpace::CreateInputBlock()
+{
+    InputBlock *n = new InputBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
@@ -337,6 +349,8 @@ BaseBlock* GraphSpace::CreateBlock(int bt)
         return CreateMultiplicationBlock();
     case BaseBlock::BlockType::     DivisionBlock:
         return CreateDivisionBlock();
+    case BaseBlock::BlockType::     InputBlock:
+        return CreateInputBlock();
     }
 
 

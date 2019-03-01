@@ -41,7 +41,7 @@ public:
         AddBlock, PrintBlock, StringBlock, AcquireInputBlock,
         GetGOPropertysBlock, SetGOPropertysBlock, SetVarBlock,
         SubtractBlock, ConstantVarBlock, MultiplicationBlock,
-        DivisionBlock};
+        DivisionBlock, InputBlock};
     BlockType myType;
 
 signals:
