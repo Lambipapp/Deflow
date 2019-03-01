@@ -22,10 +22,13 @@ public:
 private slots:
     void on_ActionNameBox_activated(const QString &arg1);
 
-    void on_ActionNameBox_highlighted(const QString &arg1);
-
 private:
     Ui::InputBlock *ui;
+    QString inputFileContents;
+    QStringList InputKeys;
+    QStringList InterpretInputFileContents();
+
+    void SetActionBoxContent(const QStringList &inputKeys);
 };
 
 #endif // INPUTBLOCK_H

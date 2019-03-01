@@ -145,6 +145,8 @@ bool FileManager::ShouldOpenFile(QString filePath, QString fileName)
 
 bool FileManager::FindAndReadInputFile(QString &buffer)
 {
+    if(projectPath == "")
+        return false;
     //find all files of type .input_binding in all subfolders of the projectPath
     QDirIterator it(projectPath ,QStringList() << "*.input_binding", QDir::Files, QDirIterator::Subdirectories);
 

@@ -13,7 +13,10 @@ InputBlock::InputBlock(QWidget *parent) :
     ui->actionTypeBox->addItem(QString("On Pressed"));  //action.pressed
     ui->actionTypeBox->addItem(QString("On Held"));     //action.repeated       //double check if this one works
     ui->actionTypeBox->addItem(QString("On Released")); //action.released
-    //FileManager::fm->FindAndReadInputFile()
+    FileManager::fm->FindAndReadInputFile(inputFileContents);
+    InputKeys = InterpretInputFileContents();
+    SetActionBoxContent(InputKeys);
+
     //TODO: uncomment line above, interpret the content, update the dropdown list
 
 }
@@ -48,12 +51,42 @@ void InputBlock::ReLoadData(QJsonObject data)
     //SET CONNECTIONS
 }
 
+QStringList InputBlock::InterpretInputFileContents()
+{
+    if(inputFileContents == "")
+        return QStringList();
+
+    QRegExp rx("\\n");
+    QStringList query = inputFileContents.split(rx);
+
+    QStringList actions;
+    for(int i = 0; i < query.size(); i++)
+    {
+        //i dont know what this does. but it works so i dont care
+        if(query[i].contains("action:"))
+        {
+            QRegExp rx2("action:|\\\"");
+            QStringList tmp = query[i].split(rx2);
+            actions.push_back(tmp[2]);
+        }
+    }
+    return actions;
+}
+
+void InputBlock::SetActionBoxContent(const QStringList &inputKeys)
+{
+    ui->ActionNameBox->clear();
+    if(inputKeys.size() == 0)
+    {
+        ui->ActionNameBox->addItem("No Input Keys Detected");
+    }
+
+    ui->ActionNameBox->addItems(inputKeys);
+}
+
+
+
 void InputBlock::on_ActionNameBox_activated(const QString &arg1)
 {
     qDebug() << "test";
-}
-
-void InputBlock::on_ActionNameBox_highlighted(const QString &arg1)
-{
-    qDebug() << "test2";
 }
