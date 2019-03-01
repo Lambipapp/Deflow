@@ -35,18 +35,22 @@ void BaseBlock::mousePressEvent(QMouseEvent *event)
 void BaseBlock::mouseReleaseEvent(QMouseEvent* event)
 {
     selectedBlock = nullptr;
+
 }
 
 void BaseBlock::mouseMoveEvent(QMouseEvent *event)
 {
+    if(selectedBlock == nullptr) return;
     if ((event->pos() - dragStartPosition).manhattanLength() < QApplication::startDragDistance())
         return;
 
-    QDrag *drag = new QDrag(this);
-    QMimeData *mimeData = new QMimeData;
+    drag = new QDrag(this);
+    mimeData = new QMimeData;
     drag->setMimeData(mimeData);
 
     drag->exec(Qt::MoveAction);
+    drag->deleteLater();
+    mimeData->deleteLater();
 }
 
 void BaseBlock::ShowContextMenu(const QPoint &pos)

@@ -53,6 +53,8 @@ private:
     QPoint dragStartPosition;
     virtual void ShowContextMenu(const QPoint &pos);
     virtual void OnDestroy();
+    QDrag* drag = nullptr;
+    QMimeData* mimeData = nullptr;
 protected:
     QPoint posFromjsv(QJsonValue pos);
     void initConnectors();
