@@ -14,6 +14,7 @@ InputBlock::InputBlock(QWidget *parent) :
     ui->actionTypeBox->addItem(QString("On Held"));     //action.repeated       //double check if this one works
     ui->actionTypeBox->addItem(QString("On Released")); //action.released
     //FileManager::fm->FindAndReadInputFile()
+    //TODO: uncomment line above, interpret the content, update the dropdown list
 
 }
 
