@@ -56,7 +56,9 @@ SOURCES += \
     Blocks/setgopropertysblock.cpp \
     Blocks/setvarblock.cpp \
     Blocks/subtractblock.cpp \
-    Blocks/constantvarblock.cpp
+    Blocks/constantvarblock.cpp \
+    Blocks/multiplicationblock.cpp \
+    Blocks/divisionblock.cpp
 
 
 HEADERS += \
@@ -91,7 +93,9 @@ HEADERS += \
     Blocks/setgopropertysblock.h \
     Blocks/setvarblock.h \
     Blocks/subtractblock.h \
-    Blocks/constantvarblock.h
+    Blocks/constantvarblock.h \
+    Blocks/multiplicationblock.h \
+    Blocks/divisionblock.h
 
 FORMS += \
         mainwindow.ui \
@@ -116,7 +120,9 @@ FORMS += \
     Blocks/setgopropertysblock.ui \
     Blocks/setvarblock.ui \
     Blocks/subtractblock.ui \
-    Blocks/constantvarblock.ui
+    Blocks/constantvarblock.ui \
+    Blocks/multiplicationblock.ui \
+    Blocks/divisionblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

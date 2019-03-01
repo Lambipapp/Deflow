@@ -64,20 +64,25 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     QAction createConstantVarBlock("Constant Block", &createBlockMenu);
     connect(&createConstantVarBlock, SIGNAL(triggered()),this, SLOT(CreateConstantVarBlock()));
 
-    //createBlockMenu.addAction(&createVarBlock);
+    QAction createMultiplicationBlock("Multilication Block", &createBlockMenu);
+    connect(&createMultiplicationBlock, SIGNAL(triggered()),this, SLOT(CreateMultiplicationBlock()));
+
+    QAction createDivisionBlock("Division Block", &createBlockMenu);
+    connect(&createDivisionBlock, SIGNAL(triggered()),this, SLOT(CreateDivisionBlock()));
+
+
     createBlockMenu.addAction(&createConditionalBlock);
     createBlockMenu.addAction(&createPrintBlockAction);
-    //createBlockMenu.addAction(&createStringBlock);
     createBlockMenu.addAction(&createAcquireInputBlock);
-    //createBlockMenu.addAction(&createNewVarBlock);
-    //createBlockMenu.addAction(&createSetVarBlock);
+
 
 
     QMenu *mathMenu = createBlockMenu.addMenu(tr("Math blocks"));
     mathMenu->addAction(&createAddBlock);
     mathMenu->addAction(&createSubtractBlock);
-    //multipy block
-    //divide block
+    mathMenu->addAction(&createMultiplicationBlock);
+    mathMenu->addAction(&createDivisionBlock);
+
     //vector length/magnitude block
     //Vector distance block
 
@@ -104,9 +109,26 @@ ConditionalBlock* GraphSpace::CreateConditionalBlock()
     this->blocks.push_back(n);
     return n;
 }
+
+MultiplicationBlock* GraphSpace::CreateMultiplicationBlock()
+{
+    MultiplicationBlock *n = new MultiplicationBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
 VarBlock* GraphSpace::CreateVarBlock()
 {
     VarBlock *n = new VarBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+DivisionBlock* GraphSpace::CreateDivisionBlock()
+{
+    DivisionBlock *n = new DivisionBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
@@ -287,31 +309,36 @@ void GraphSpace::RemoveBlock(BaseBlock* block)
 BaseBlock* GraphSpace::CreateBlock(int bt)
 {
     switch (bt) {
-    case BaseBlock::BlockType::StartBlock:
+    case BaseBlock::BlockType::     StartBlock:
         return CreateStartBlock();
-    case BaseBlock::BlockType::AddBlock:
+    case BaseBlock::BlockType::     AddBlock:
         return CreateAddBlock();
-    case BaseBlock::BlockType::VarBlock:
+    case BaseBlock::BlockType::     VarBlock:
         return CreateVarBlock();
-    case BaseBlock::BlockType::PrintBlock:
+    case BaseBlock::BlockType::     PrintBlock:
         return CreatePrintBlock();
-    case BaseBlock::BlockType::NewVarBlock:
+    case BaseBlock::BlockType::     NewVarBlock:
         return CreateNewVarBlock();
-    case BaseBlock::BlockType::StringBlock:
+    case BaseBlock::BlockType::     StringBlock:
         return CreateStringBlock();
-    case BaseBlock::BlockType::ConditionalBlock:
+    case BaseBlock::BlockType::     ConditionalBlock:
         return CreateConditionalBlock();
-    case BaseBlock::BlockType::AcquireInputBlock:
+    case BaseBlock::BlockType::     AcquireInputBlock:
         return CreateAcquireInputBlock();
-    case BaseBlock::BlockType::GetGOPropertysBlock:
+    case BaseBlock::BlockType::     GetGOPropertysBlock:
         return CreateGetGOPropertysBlock();
-    case BaseBlock::BlockType::SetGOPropertysBlock:
+    case BaseBlock::BlockType::     SetGOPropertysBlock:
         return CreateSetGOPropertysBlock();
-    case BaseBlock::BlockType::SubtractBlock:
+    case BaseBlock::BlockType::     SubtractBlock:
         return CreateSubtractBlock();
-    case BaseBlock::BlockType::ConstantVarBlock:
+    case BaseBlock::BlockType::     ConstantVarBlock:
         return CreateConstantVarBlock();
+    case BaseBlock::BlockType::     MultiplicationBlock:
+        return CreateMultiplicationBlock();
+    case BaseBlock::BlockType::     DivisionBlock:
+        return CreateDivisionBlock();
     }
+
 
     return nullptr;
 }

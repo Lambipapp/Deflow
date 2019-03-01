@@ -50,6 +50,7 @@ void ConnectorExecOut::mouseReleaseEvent(QMouseEvent* event)
                 return;
             }
             ConnectorExecIn* c = static_cast<ConnectorExecIn*>(widget);
+            if(next != nullptr) next->LoseConnection(this);
             next = c;
             c->BindConnection(this);
             BindConnection(c);
@@ -73,6 +74,8 @@ void ConnectorExecOut::LoseConnection(Connector* c)
 }
 void ConnectorExecOut::BindConnection(Connector* c)
 {
+    if(next != nullptr && c != next) next->LoseConnection(this);
+    next = static_cast<ConnectorExecIn*>(c);
     ui->Arrow->setStyleSheet(tr("background-image: url(:/new/prefix1/Arrow-filled.png);"));
 }
 QJsonObject ConnectorExecOut::GetJsonRepresentation()

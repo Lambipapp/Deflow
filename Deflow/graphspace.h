@@ -60,6 +60,8 @@ public slots:
     SetGOPropertysBlock*    CreateSetGOPropertysBlock();
     SetVarBlock*            CreateSetVarBlock();
     ConstantVarBlock*       CreateConstantVarBlock();
+    MultiplicationBlock*    CreateMultiplicationBlock();
+    DivisionBlock*    CreateDivisionBlock();
     void ShowContextMenu(const QPoint &pos);
 private slots:
     void on_pushButton_clicked();

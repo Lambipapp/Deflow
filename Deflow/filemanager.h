@@ -7,6 +7,7 @@
 #include <QTextStream>
 #include "gsserializer.h"
 #include "translator.h"
+#include <QDirIterator>
 
 class FileManager
 {
@@ -27,16 +28,22 @@ public:
     void SetGSS(GSSerializer *p);
 
     void TranslateAndWriteToCurrentFile();
+    void SetProjectPath(const QString path);
+
+
 
 private:
     bool overwrite = false;
     GSSerializer *gss;
+    QString projectPath = "";
+
     bool shouldOverwriteCurrentFile();
     bool ShouldOpenFile(QString filePath, QString fileName);
     void OverwriteCurrentFile();
     void OnFileOpen();
     void OnFileClose();
     void WriteToCurrentFile(const QString &);
+    void FindInputFile();
 
 };
 

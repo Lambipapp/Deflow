@@ -14,5 +14,7 @@
 #include "setvarblock.h"
 #include "subtractblock.h"
 #include "constantvarblock.h"
+#include "multiplicationblock.h"
+#include "divisionblock.h"
 
 #endif // BLOCKS_H

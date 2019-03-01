@@ -47,6 +47,7 @@ void ConnectorIn::mouseReleaseEvent(QMouseEvent* event)
                 return;
             }
             ConnectorOut* c = static_cast<ConnectorOut*>(widget);
+            if(input != nullptr) input->LoseConnection(this);
             input = c;
             c->BindConnection(this);
             BindConnection(c);
@@ -70,6 +71,8 @@ void ConnectorIn::LoseConnection(Connector* c)
 }
 void ConnectorIn::BindConnection(Connector* c)
 {
+    if(input != nullptr && c != input) input->LoseConnection(this);
+    input = static_cast<ConnectorOut*>(c);
     ui->Node->setStyleSheet(tr("background-image: url(:/new/prefix1/Circle-filled.png);"));
 }
 QJsonObject ConnectorIn::GetJsonRepresentation()

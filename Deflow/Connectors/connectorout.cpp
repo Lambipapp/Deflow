@@ -48,7 +48,6 @@ void ConnectorOut::mouseReleaseEvent(QMouseEvent* event)
                 return;
             }
             ConnectorIn* c = static_cast<ConnectorIn*>(widget);
-            c->input = this;
             c->BindConnection(this);
             BindConnection(c);
         }

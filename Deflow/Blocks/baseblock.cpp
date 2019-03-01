@@ -18,11 +18,14 @@ void BaseBlock::mousePressEvent(QMouseEvent *event)
         dragStartPosition = event->pos();
         selectedBlock = this;
         mouseOffset = event->pos(); - this->pos();
+
     }
     else if(event->button() == Qt::RightButton)
     {
         ShowContextMenu(event->pos());
     }
+    raise();
+
 
 }
 

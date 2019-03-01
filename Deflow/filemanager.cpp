@@ -100,6 +100,21 @@ void FileManager::OnFileOpen()
 }
 
 
+void FileManager::SetProjectPath(const QString path)
+{
+    projectPath = path;
+}
+
+void FileManager::FindInputFile()
+{
+    if(projectPath == "")
+        return;
+
+    QDirIterator it(projectPath ,QStringList() << "*.jpg", QDir::Files, QDirIterator::Subdirectories);
+    while (it.hasNext())
+        qDebug() << it.next();
+}
+
 
 bool FileManager::ShouldOpenFile(QString filePath, QString fileName)
 {
