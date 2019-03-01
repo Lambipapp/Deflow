@@ -19,6 +19,11 @@ public:
     QJsonObject GetJsonRepresentation() override;
     void ReLoadData(QJsonObject data) override;
 
+private slots:
+    void on_ActionNameBox_activated(const QString &arg1);
+
+    void on_ActionNameBox_highlighted(const QString &arg1);
+
 private:
     Ui::InputBlock *ui;
 };

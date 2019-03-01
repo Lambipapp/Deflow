@@ -105,15 +105,6 @@ void FileManager::SetProjectPath(const QString path)
     projectPath = path;
 }
 
-void FileManager::FindInputFile()
-{
-    if(projectPath == "")
-        return;
-
-    QDirIterator it(projectPath ,QStringList() << "*.jpg", QDir::Files, QDirIterator::Subdirectories);
-    while (it.hasNext())
-        qDebug() << it.next();
-}
 
 
 bool FileManager::ShouldOpenFile(QString filePath, QString fileName)
@@ -151,4 +142,31 @@ bool FileManager::ShouldOpenFile(QString filePath, QString fileName)
         }
     }
 }
+
+bool FileManager::FindAndReadInputFile(QString &buffer)
+{
+    //find all files of type .input_binding in all subfolders of the projectPath
+    QDirIterator it(projectPath ,QStringList() << "*.input_binding", QDir::Files, QDirIterator::Subdirectories);
+
+    //Read Input file and store contents in buffer
+    if(it.hasNext())
+        return ReadFile(it.next(), buffer);
+}
+
+bool FileManager::ReadFile(const QString &path, QString &buffer) const
+{
+    QFile file(path);
+    qDebug() << path;
+
+    if(file.open(QFile::ReadOnly))
+    {
+        QTextStream inStream(&file);
+        buffer = inStream.readAll();
+
+        return true;
+    }
+    else return false;
+}
+
+
 

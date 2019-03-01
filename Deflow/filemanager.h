@@ -29,6 +29,11 @@ public:
 
     void TranslateAndWriteToCurrentFile();
     void SetProjectPath(const QString path);
+    bool FindAndReadInputFile(QString &buffer);
+
+
+    bool ReadFile(const QString &path, QString &buffer) const;
+
 
 
 
@@ -43,7 +48,7 @@ private:
     void OnFileOpen();
     void OnFileClose();
     void WriteToCurrentFile(const QString &);
-    void FindInputFile();
+
 
 };
 

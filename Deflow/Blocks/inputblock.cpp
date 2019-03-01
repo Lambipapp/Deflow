@@ -1,5 +1,6 @@
 #include "inputblock.h"
 #include "ui_inputblock.h"
+#include "filemanager.h"
 
 InputBlock::InputBlock(QWidget *parent) :
     BaseBlock(parent),
@@ -12,6 +13,8 @@ InputBlock::InputBlock(QWidget *parent) :
     ui->actionTypeBox->addItem(QString("On Pressed"));  //action.pressed
     ui->actionTypeBox->addItem(QString("On Held"));     //action.repeated       //double check if this one works
     ui->actionTypeBox->addItem(QString("On Released")); //action.released
+    //FileManager::fm->FindAndReadInputFile()
+
 }
 
 InputBlock::~InputBlock()
@@ -42,4 +45,14 @@ void InputBlock::ReLoadData(QJsonObject data)
     //SET POSITION
     //SET CONNECTORIDS
     //SET CONNECTIONS
+}
+
+void InputBlock::on_ActionNameBox_activated(const QString &arg1)
+{
+    qDebug() << "test";
+}
+
+void InputBlock::on_ActionNameBox_highlighted(const QString &arg1)
+{
+    qDebug() << "test2";
 }

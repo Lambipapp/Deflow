@@ -31,6 +31,9 @@ void FolderTree::ShowTree(QString* folderPath)
     ui->tree->hideColumn(2);
     ui->tree->hideColumn(3);
 
+    //set .project file path for future use in FileManager
+    FileManager::fm->SetProjectPath((*folderPath));
+
 }
 
 void FolderTree::on_toggleButton_clicked()
