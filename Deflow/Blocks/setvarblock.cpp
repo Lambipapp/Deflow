@@ -1,27 +1,28 @@
-#include "varblock.h"
-#include "ui_varblock.h"
+#include "setvarblock.h"
+#include "ui_setvarblock.h"
 
-VarBlock::VarBlock(QWidget *parent) :
-    BaseBlock(parent),
-    ui(new Ui::VarBlock)
+SetVarBlock::SetVarBlock(QWidget *parent) :
+    BaseBlock (parent),
+    ui(new Ui::SetVarBlock)
 {
     ui->setupUi(this);
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
-    myType = BlockType::VarBlock;
-    ui->VarBox->addItem(tr("dt"));
+    myType = BaseBlock::BlockType::SetVarBlock;
 }
 
-VarBlock::~VarBlock()
+SetVarBlock::~SetVarBlock()
 {
     delete ui;
 }
-QString VarBlock::getLuaCodeLine()
+QString SetVarBlock::getLuaCodeLine()
 {
-    return "";
+
+    return QString();
+   //return "local " + ui->NameField->toPlainText() + " = " + ui->ValueField->toPlainText();
 }
 
-QJsonObject VarBlock::GetJsonRepresentation()
+QJsonObject SetVarBlock::GetJsonRepresentation()
 {
     QJsonObject pos;
     pos.insert("x", this->pos().x());
@@ -34,7 +35,7 @@ QJsonObject VarBlock::GetJsonRepresentation()
 
     return o;
 }
-void VarBlock::ReLoadData(QJsonObject data)
+void SetVarBlock::ReLoadData(QJsonObject data)
 {
     QJsonValue pos = data.value(tr("Position"));
     move(posFromjsv(pos));

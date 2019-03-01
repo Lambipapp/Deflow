@@ -14,7 +14,7 @@ class StringBlock : public BaseBlock
 
 public:
     explicit StringBlock(QWidget *parent = nullptr);
-    ~StringBlock();
+    ~StringBlock() override;
     QString getLuaCodeLine() override;
     QJsonObject GetJsonRepresentation() override;
     void ReLoadData(QJsonObject data) override;

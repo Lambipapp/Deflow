@@ -12,7 +12,6 @@ GraphSpace::GraphSpace(QWidget *parent) :
     setAcceptDrops(true);
     setContextMenuPolicy(Qt::CustomContextMenu);
     startBlock = CreateStartBlock();
-    CreateGetGOPropertysBlock();
 }
 
 GraphSpace::~GraphSpace()
@@ -32,8 +31,11 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     QAction createPrintBlockAction("Print block", &createBlockMenu);
     connect(&createPrintBlockAction, SIGNAL(triggered()), this, SLOT(CreatePrintBlock()));
 
-    QAction createAddBlock("Add block", &createBlockMenu);
+    QAction createAddBlock("Addition", &createBlockMenu);
     connect(&createAddBlock, SIGNAL(triggered()), this, SLOT(CreateAddBlock()));
+
+    QAction createSubtractBlock("Subtraction", &createBlockMenu);
+    connect(&createSubtractBlock, SIGNAL(triggered()), this, SLOT(CreateSubtractBlock()));
 
     QAction createStringBlock("string variable block", &createBlockMenu);
     connect(&createStringBlock, SIGNAL(triggered()), this, SLOT(CreateStringBlock()));
@@ -50,13 +52,45 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     QAction createConditionalBlock("Conditional Block", &createBlockMenu);
     connect(&createConditionalBlock, SIGNAL(triggered()), this, SLOT(CreateConditionalBlock()));
 
-    createBlockMenu.addAction(&createVarBlock);
+    QAction createSetGoBlock("Set GO Properties Block", &createBlockMenu);
+    connect(&createSetGoBlock, SIGNAL(triggered()), this, SLOT(CreateSetGOPropertysBlock()));
+
+    QAction createGetGoBlock("Get GO Properties Block", &createBlockMenu);
+    connect(&createGetGoBlock, SIGNAL(triggered()), this, SLOT(CreateGetGOPropertysBlock()));
+
+    QAction createSetVarBlock("Set Variable Block", &createBlockMenu);
+    connect(&createSetVarBlock, SIGNAL(triggered()), this, SLOT(CreateSetVarBlock()));
+
+    QAction createConstantVarBlock("Constant Block", &createBlockMenu);
+    connect(&createConstantVarBlock, SIGNAL(triggered()),this, SLOT(CreateConstantVarBlock()));
+
+    //createBlockMenu.addAction(&createVarBlock);
     createBlockMenu.addAction(&createConditionalBlock);
-    createBlockMenu.addAction(&createAddBlock);
     createBlockMenu.addAction(&createPrintBlockAction);
-    createBlockMenu.addAction(&createStringBlock);
+    //createBlockMenu.addAction(&createStringBlock);
     createBlockMenu.addAction(&createAcquireInputBlock);
-    createBlockMenu.addAction(&createNewVarBlock);
+    //createBlockMenu.addAction(&createNewVarBlock);
+    //createBlockMenu.addAction(&createSetVarBlock);
+
+
+    QMenu *mathMenu = createBlockMenu.addMenu(tr("Math blocks"));
+    mathMenu->addAction(&createAddBlock);
+    mathMenu->addAction(&createSubtractBlock);
+    //multipy block
+    //divide block
+    //vector length/magnitude block
+    //Vector distance block
+
+    QMenu *varMenu = createBlockMenu.addMenu(tr("variable blocks"));
+    varMenu->addAction(&createNewVarBlock);
+    varMenu->addAction(&createVarBlock);
+    varMenu->addAction(&createStringBlock);
+    varMenu->addAction(&createSetVarBlock);
+    varMenu->addAction(&createConstantVarBlock);
+
+    QMenu *goBlockMenu = createBlockMenu.addMenu(tr("Game Object blocks"));
+    goBlockMenu->addAction(&createGetGoBlock);
+    goBlockMenu->addAction(&createSetGoBlock);
 
 
     newBlockPos = pos;
@@ -73,6 +107,22 @@ ConditionalBlock* GraphSpace::CreateConditionalBlock()
 VarBlock* GraphSpace::CreateVarBlock()
 {
     VarBlock *n = new VarBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+SetVarBlock* GraphSpace::CreateSetVarBlock()
+{
+    SetVarBlock *n = new SetVarBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+ConstantVarBlock* GraphSpace::CreateConstantVarBlock()
+{
+    ConstantVarBlock *n = new ConstantVarBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
@@ -113,6 +163,14 @@ AddBlock* GraphSpace::CreateAddBlock()
     this->blocks.push_back(n);
     return n;
 }
+SubtractBlock* GraphSpace::CreateSubtractBlock()
+{
+    SubtractBlock *n = new SubtractBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
 StringBlock* GraphSpace::CreateStringBlock()
 {
     StringBlock *n = new StringBlock(this);
@@ -133,6 +191,15 @@ StartBlock* GraphSpace::CreateStartBlock()
 GetGOPropertysBlock* GraphSpace::CreateGetGOPropertysBlock()
 {
     GetGOPropertysBlock *n = new GetGOPropertysBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+
+SetGOPropertysBlock* GraphSpace::CreateSetGOPropertysBlock()
+{
+    SetGOPropertysBlock *n = new SetGOPropertysBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
@@ -238,6 +305,12 @@ BaseBlock* GraphSpace::CreateBlock(int bt)
         return CreateAcquireInputBlock();
     case BaseBlock::BlockType::GetGOPropertysBlock:
         return CreateGetGOPropertysBlock();
+    case BaseBlock::BlockType::SetGOPropertysBlock:
+        return CreateSetGOPropertysBlock();
+    case BaseBlock::BlockType::SubtractBlock:
+        return CreateSubtractBlock();
+    case BaseBlock::BlockType::ConstantVarBlock:
+        return CreateConstantVarBlock();
     }
 
     return nullptr;

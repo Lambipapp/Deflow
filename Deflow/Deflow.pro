@@ -52,7 +52,11 @@ SOURCES += \
     FileManager.cpp \
     gsserializer.cpp \
     translator.cpp \
-    Blocks/getgopropertysblock.cpp
+    Blocks/getgopropertysblock.cpp \
+    Blocks/setgopropertysblock.cpp \
+    Blocks/setvarblock.cpp \
+    Blocks/subtractblock.cpp \
+    Blocks/constantvarblock.cpp
 
 
 HEADERS += \
@@ -83,7 +87,11 @@ HEADERS += \
     FileManager.h \
     gsserializer.h \
     translator.h \
-    Blocks/getgopropertysblock.h
+    Blocks/getgopropertysblock.h \
+    Blocks/setgopropertysblock.h \
+    Blocks/setvarblock.h \
+    Blocks/subtractblock.h \
+    Blocks/constantvarblock.h
 
 FORMS += \
         mainwindow.ui \
@@ -104,7 +112,11 @@ FORMS += \
     Blocks/newvarblock.ui \
     Blocks/varblock.ui \
     Blocks/conditionalblock.ui \
-    Blocks/getgopropertysblock.ui
+    Blocks/getgopropertysblock.ui \
+    Blocks/setgopropertysblock.ui \
+    Blocks/setvarblock.ui \
+    Blocks/subtractblock.ui \
+    Blocks/constantvarblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

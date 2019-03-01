@@ -22,9 +22,10 @@ NewVarBlock::~NewVarBlock()
 }
 QString NewVarBlock::getLuaCodeLine()
 {
+    //if node connected, return that instead of valueField
 
-
-    return "self." + ui->NameField->toPlainText() + " = " + ui->ValueField->toPlainText();
+    return "self." + ui->NameField->text() + " = " + ui->Valuefield->text();
+   //return "local " + ui->NameField->toPlainText() + " = " + ui->ValueField->toPlainText();
 }
 
 QJsonObject NewVarBlock::GetJsonRepresentation()

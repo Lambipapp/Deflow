@@ -21,7 +21,7 @@ class GraphSpace : public QWidget
 
 public:
     explicit GraphSpace(QWidget *parent = nullptr);
-    ~GraphSpace();
+    ~GraphSpace() override;
     std::vector<BaseBlock*> blocks;
     StartBlock* startBlock;
 
@@ -47,15 +47,19 @@ protected:
 
 public slots:
     void RemoveBlock(BaseBlock* block);
-    PrintBlock* CreatePrintBlock();
-    StringBlock* CreateStringBlock();
-    AddBlock* CreateAddBlock();
-    StartBlock* CreateStartBlock();
-    AcquireInputBlock* CreateAcquireInputBlock();
-    NewVarBlock* CreateNewVarBlock();
-    VarBlock* CreateVarBlock();
-    ConditionalBlock* CreateConditionalBlock();
-    GetGOPropertysBlock* CreateGetGOPropertysBlock();
+    PrintBlock*             CreatePrintBlock();
+    StringBlock*            CreateStringBlock();
+    AddBlock*               CreateAddBlock();
+    SubtractBlock*          CreateSubtractBlock();
+    StartBlock*             CreateStartBlock();
+    AcquireInputBlock*      CreateAcquireInputBlock();
+    NewVarBlock*            CreateNewVarBlock();
+    VarBlock*               CreateVarBlock();
+    ConditionalBlock*       CreateConditionalBlock();
+    GetGOPropertysBlock*    CreateGetGOPropertysBlock();
+    SetGOPropertysBlock*    CreateSetGOPropertysBlock();
+    SetVarBlock*            CreateSetVarBlock();
+    ConstantVarBlock*       CreateConstantVarBlock();
     void ShowContextMenu(const QPoint &pos);
 private slots:
     void on_pushButton_clicked();

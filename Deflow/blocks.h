@@ -10,4 +10,9 @@
 #include "varblock.h"
 #include "conditionalblock.h"
 #include "getgopropertysblock.h"
+#include "setgopropertysblock.h"
+#include "setvarblock.h"
+#include "subtractblock.h"
+#include "constantvarblock.h"
+
 #endif // BLOCKS_H

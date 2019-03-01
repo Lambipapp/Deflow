@@ -1,27 +1,25 @@
-#include "varblock.h"
-#include "ui_varblock.h"
+#include "subtractblock.h"
+#include "ui_subtractblock.h"
 
-VarBlock::VarBlock(QWidget *parent) :
+SubtractBlock::SubtractBlock(QWidget *parent) :
     BaseBlock(parent),
-    ui(new Ui::VarBlock)
+    ui(new Ui::SubtractBlock)
 {
     ui->setupUi(this);
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
-    myType = BlockType::VarBlock;
-    ui->VarBox->addItem(tr("dt"));
+    myType = BaseBlock::BlockType::SubtractBlock;
 }
 
-VarBlock::~VarBlock()
+SubtractBlock::~SubtractBlock()
 {
     delete ui;
 }
-QString VarBlock::getLuaCodeLine()
+QString SubtractBlock::getLuaCodeLine()
 {
-    return "";
+    return QString();
 }
-
-QJsonObject VarBlock::GetJsonRepresentation()
+QJsonObject SubtractBlock::GetJsonRepresentation()
 {
     QJsonObject pos;
     pos.insert("x", this->pos().x());
@@ -34,7 +32,7 @@ QJsonObject VarBlock::GetJsonRepresentation()
 
     return o;
 }
-void VarBlock::ReLoadData(QJsonObject data)
+void SubtractBlock::ReLoadData(QJsonObject data)
 {
     QJsonValue pos = data.value(tr("Position"));
     move(posFromjsv(pos));

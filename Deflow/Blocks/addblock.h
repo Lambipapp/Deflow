@@ -14,7 +14,7 @@ class AddBlock : public BaseBlock
 
 public:
     explicit AddBlock(QWidget *parent = nullptr);
-    ~AddBlock();
+    ~AddBlock() override;
 
     QString getLuaCodeLine() override;
     QJsonObject GetJsonRepresentation() override;

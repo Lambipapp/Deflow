@@ -1,27 +1,29 @@
-#include "varblock.h"
-#include "ui_varblock.h"
+#include "constantvarblock.h"
+#include "ui_constantvarblock.h"
 
-VarBlock::VarBlock(QWidget *parent) :
+ConstantVarBlock::ConstantVarBlock(QWidget *parent) :
     BaseBlock(parent),
-    ui(new Ui::VarBlock)
+    ui(new Ui::ConstantVarBlock)
 {
     ui->setupUi(this);
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
-    myType = BlockType::VarBlock;
-    ui->VarBox->addItem(tr("dt"));
+    myType = BaseBlock::BlockType::ConstantVarBlock;
 }
 
-VarBlock::~VarBlock()
+ConstantVarBlock::~ConstantVarBlock()
 {
     delete ui;
 }
-QString VarBlock::getLuaCodeLine()
+QString ConstantVarBlock::getLuaCodeLine()
 {
-    return "";
+
+    //if ui->lineEdit->text() contains other than numbers (or decimals), add quotes to make it a string, else return as a number
+
+    return QString();
 }
 
-QJsonObject VarBlock::GetJsonRepresentation()
+QJsonObject ConstantVarBlock::GetJsonRepresentation()
 {
     QJsonObject pos;
     pos.insert("x", this->pos().x());
@@ -34,7 +36,7 @@ QJsonObject VarBlock::GetJsonRepresentation()
 
     return o;
 }
-void VarBlock::ReLoadData(QJsonObject data)
+void ConstantVarBlock::ReLoadData(QJsonObject data)
 {
     QJsonValue pos = data.value(tr("Position"));
     move(posFromjsv(pos));
