@@ -259,16 +259,7 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QComboBox" name="ActionNameBox">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
+             <widget class="AutoUpdateComboBox" name="ActionNameBox">
               <property name="styleSheet">
                <string notr="true">background-color: rgb(255, 255, 255);</string>
               </property>
@@ -330,6 +321,12 @@
    <class>ConnectorExecIn</class>
    <extends>QWidget</extends>
    <header>connectorexecin.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AutoUpdateComboBox</class>
+   <extends>QComboBox</extends>
+   <header>autoupdatecombobox.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

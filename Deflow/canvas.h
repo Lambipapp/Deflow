@@ -26,12 +26,12 @@ public:
     static GraphSpace* currentGraphSpace;
     static Canvas* instance;
     QList<GraphSpace*> GetGraphSpaces();
+    QList<GraphSpace*> gSpaces;
 
 private:
     Ui::Canvas *ui;
     void OpenFile();
     void SaveVisualCode();
-    QList<GraphSpace*> gSpaces;
 
 protected:
 

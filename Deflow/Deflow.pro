@@ -59,7 +59,8 @@ SOURCES += \
     Blocks/constantvarblock.cpp \
     Blocks/multiplicationblock.cpp \
     Blocks/divisionblock.cpp \
-    Blocks/inputblock.cpp
+    Blocks/inputblock.cpp \
+    autoupdatecombobox.cpp
 
 
 HEADERS += \
@@ -97,7 +98,8 @@ HEADERS += \
     Blocks/constantvarblock.h \
     Blocks/multiplicationblock.h \
     Blocks/divisionblock.h \
-    Blocks/inputblock.h
+    Blocks/inputblock.h \
+    autoupdatecombobox.h
 
 FORMS += \
         mainwindow.ui \
@@ -125,7 +127,8 @@ FORMS += \
     Blocks/constantvarblock.ui \
     Blocks/multiplicationblock.ui \
     Blocks/divisionblock.ui \
-    Blocks/inputblock.ui
+    Blocks/inputblock.ui \
+    autoupdatecombobox.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

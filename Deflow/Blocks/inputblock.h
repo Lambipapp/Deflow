@@ -18,17 +18,17 @@ public:
     QString getLuaCodeLine() override;
     QJsonObject GetJsonRepresentation() override;
     void ReLoadData(QJsonObject data) override;
+    void UpdateActionNameBox();
 
 private slots:
     void on_ActionNameBox_activated(const QString &arg1);
 
 private:
     Ui::InputBlock *ui;
-    QString inputFileContents;
-    QStringList InputKeys;
-    QStringList InterpretInputFileContents();
 
-    void SetActionBoxContent(const QStringList &inputKeys);
+protected:
+    void mousePressEvent(QMouseEvent* event) override;
+
 };
 
 #endif // INPUTBLOCK_H
