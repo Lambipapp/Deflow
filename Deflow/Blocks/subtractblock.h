@@ -16,8 +16,6 @@ public:
     ~SubtractBlock() override;
 
     QString getLuaCodeLine() override;
-    QJsonObject GetJsonRepresentation() override;
-    void ReLoadData(QJsonObject data) override;
 
 private:
     Ui::SubtractBlock *ui;

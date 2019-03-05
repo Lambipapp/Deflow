@@ -17,8 +17,7 @@ public:
     ~ConditionalBlock() override;
 
     QString getLuaCodeLine() override;
-    QJsonObject GetJsonRepresentation() override;
-    void ReLoadData(QJsonObject data) override;
+
 
 private:
     Ui::ConditionalBlock *ui;

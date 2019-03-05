@@ -32,7 +32,6 @@ SOURCES += \
     foldertree.cpp \
     Blocks/baseblock.cpp \
     Blocks/printblock.cpp \
-    canvas.cpp \
     StatusBar.cpp \
     openingdialog.cpp \
     graphspace.cpp \
@@ -50,7 +49,6 @@ SOURCES += \
     Blocks/varblock.cpp \
     Blocks/conditionalblock.cpp \
     FileManager.cpp \
-    gsserializer.cpp \
     translator.cpp \
     Blocks/getgopropertysblock.cpp \
     Blocks/setgopropertysblock.cpp \
@@ -60,7 +58,8 @@ SOURCES += \
     Blocks/multiplicationblock.cpp \
     Blocks/divisionblock.cpp \
     Blocks/inputblock.cpp \
-    autoupdatecombobox.cpp
+    autoupdatecombobox.cpp \
+    Blocks/loopblock.cpp
 
 
 HEADERS += \
@@ -70,7 +69,6 @@ HEADERS += \
     foldertree.h \
     Blocks/baseblock.h \
     Blocks/printblock.h \
-    canvas.h \
     StatusBar.h \
     openingdialog.h \
     graphspace.h \
@@ -89,7 +87,6 @@ HEADERS += \
     Blocks/varblock.h \
     Blocks/conditionalblock.h \
     FileManager.h \
-    gsserializer.h \
     translator.h \
     Blocks/getgopropertysblock.h \
     Blocks/setgopropertysblock.h \
@@ -99,7 +96,8 @@ HEADERS += \
     Blocks/multiplicationblock.h \
     Blocks/divisionblock.h \
     Blocks/inputblock.h \
-    autoupdatecombobox.h
+    autoupdatecombobox.h \
+    Blocks/loopblock.h
 
 FORMS += \
         mainwindow.ui \
@@ -128,7 +126,8 @@ FORMS += \
     Blocks/multiplicationblock.ui \
     Blocks/divisionblock.ui \
     Blocks/inputblock.ui \
-    autoupdatecombobox.ui
+    autoupdatecombobox.ui \
+    Blocks/loopblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -6,7 +6,6 @@
 
 Translator::Translator()
 {
-    TranslateAllGraphSpaces();
 }
 
 
@@ -79,13 +78,13 @@ void Translator::TranslateGraphSpace(GraphSpace* gs, QString &gsCode)
         visited.push_back(current);
         //search backwards for all dependencies
 
-        BaseBlock* tmp = static_cast<BaseBlock*>(current->myBlock);
+        BaseBlock* tmp = current->myBlock;
         gsCode += tmp->getLuaCodeLine() + "\n";
 
 
         if(current->next != nullptr)
         {
-            BaseBlock* b = static_cast<BaseBlock*>(current->next->myBlock);
+            BaseBlock* b = current->next->myBlock;
             for(unsigned int i = 0; i < b->myExecOutConnectors.size(); i++)
             {
                 discovered.push_back(b->myExecOutConnectors[i]);

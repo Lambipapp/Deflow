@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "gsserializer.h"
+//#include "gsserializer.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -36,17 +36,17 @@ void MainWindow::OpenFileDialog()
         projectPath->remove(tr("game.project"));
         ui->fileTree->ShowTree(projectPath);
         StatusBar::instance->postMsg(tr("Opening project at: ")+projectPath, 2);
-        FileManager::fm->SetGSS(new GSSerializer(*projectPath));
+        //FileManager::fm->SetGSS(new GSSerializer(*projectPath));
 
 
         //this is probably temporary but im not sure.
         //this updates all inputboxes dropdowns when a project is loaded
-        for(int i = 0; i < Canvas::instance->gSpaces.size(); i++)
+        for(int i = 0; i < Canvas::instance->GetGraphSpaces().size(); i++)
         {
-            for(uint j = 0; j < Canvas::instance->gSpaces[i]->blocks.size(); j++)
+            for(uint j = 0; j < Canvas::instance->GetGraphSpaces()[i]->blocks.size(); j++)
             {
                 InputBlock* ib = nullptr;
-                ib = dynamic_cast<InputBlock*>(Canvas::instance->gSpaces[i]->blocks[j]);
+                ib = dynamic_cast<InputBlock*>(Canvas::instance->GetGraphSpaces()[i]->blocks[j]);
                 if(ib != nullptr)
                     ib->UpdateActionNameBox();
             }

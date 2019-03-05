@@ -25,8 +25,8 @@ public:
     std::vector<BaseBlock*> blocks;
     StartBlock* startBlock;
 
-    BaseBlock* CreateBlock(int bt);
-    BaseBlock* CreateBlock(BaseBlock::BlockType bt);
+    //BaseBlock* CreateBlock(int bt);
+    //BaseBlock* CreateBlock(BaseBlock::BlockType bt);
 
 private:
     Ui::GraphSpace *ui;
@@ -65,6 +65,7 @@ public slots:
     MultiplicationBlock*    CreateMultiplicationBlock();
     DivisionBlock*          CreateDivisionBlock();
     InputBlock*             CreateInputBlock();
+    LoopBlock*              CreateLoopBlock();
     void ShowContextMenu(const QPoint &pos);
 private slots:
     void on_pushButton_clicked();

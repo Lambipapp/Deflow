@@ -17,5 +17,6 @@
 #include "multiplicationblock.h"
 #include "divisionblock.h"
 #include "inputblock.h"
+#include "loopblock.h"
 
 #endif // BLOCKS_H

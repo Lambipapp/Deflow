@@ -14,10 +14,8 @@ class SetVarBlock : public BaseBlock
 
 public:
     explicit SetVarBlock(QWidget *parent = nullptr);
-    ~SetVarBlock();
-    QJsonObject GetJsonRepresentation();
-    QString getLuaCodeLine();
-    void ReLoadData(QJsonObject data);
+    ~SetVarBlock() override;
+    QString getLuaCodeLine() override;
 
 private:
     Ui::SetVarBlock *ui;

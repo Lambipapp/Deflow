@@ -14,10 +14,8 @@ class SetGOPropertysBlock : public BaseBlock
 
 public:
     explicit SetGOPropertysBlock(QWidget *parent = nullptr);
-    ~SetGOPropertysBlock();
-    QJsonObject GetJsonRepresentation();
-    QString getLuaCodeLine();
-    void ReLoadData(QJsonObject data);
+    ~SetGOPropertysBlock() override;
+    QString getLuaCodeLine()override;
 
 private:
     Ui::SetGOPropertysBlock *ui;

@@ -14,11 +14,10 @@ class PrintBlock : public BaseBlock
 
 public:
     explicit PrintBlock(QWidget *parent = nullptr);
-    ~PrintBlock();
+    ~PrintBlock() override;
 
     QString getLuaCodeLine() override;
-    QJsonObject GetJsonRepresentation() override;
-    void ReLoadData(QJsonObject data) override;
+
 
 private:
     Ui::PrintBlock *ui;

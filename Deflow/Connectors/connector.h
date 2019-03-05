@@ -1,12 +1,12 @@
 #ifndef CONNECTOR_H
 #define CONNECTOR_H
-
 #include <QWidget>
 #include <QDebug>
 #include <QMouseEvent>
 #include <QApplication>
 #include <vector>
 
+class BaseBlock;
 
 class Connector : public QWidget
 {
@@ -18,7 +18,7 @@ public:
 
     static Connector *clickedConnector;
     NodeType myType;
-    QWidget *myBlock = nullptr;
+    BaseBlock* myBlock = nullptr;
     virtual void LoseConnection(Connector* c) = 0;
     virtual void BindConnection(Connector* c) = 0;
     int id;

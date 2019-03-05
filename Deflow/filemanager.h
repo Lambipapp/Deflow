@@ -5,7 +5,6 @@
 #include <QDebug>
 #include <QFile>
 #include <QTextStream>
-#include "gsserializer.h"
 #include "translator.h"
 #include <QDirIterator>
 
@@ -25,7 +24,6 @@ public:
     OpeningDialog* od;
 
     static FileManager *fm;
-    void SetGSS(GSSerializer *p);
 
     void TranslateAndWriteToCurrentFile();
     void SetProjectPath(const QString path);
@@ -39,7 +37,6 @@ public:
 
 private:
     bool overwrite = false;
-    GSSerializer *gss;
     QString projectPath = "";
 
     bool shouldOverwriteCurrentFile();

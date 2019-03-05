@@ -15,9 +15,8 @@ class DivisionBlock : public BaseBlock
 public:
     explicit DivisionBlock(QWidget *parent = nullptr);
     ~DivisionBlock() override;
-     QJsonObject GetJsonRepresentation() override;
      QString getLuaCodeLine() override;
-     void ReLoadData(QJsonObject data) override;
+
 
 private:
     Ui::DivisionBlock *ui;

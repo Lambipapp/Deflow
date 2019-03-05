@@ -73,9 +73,12 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     QAction createInputBlock("Input Check Block", &createBlockMenu);
     connect(&createInputBlock, SIGNAL(triggered()),this, SLOT(CreateInputBlock()));
 
+    QAction createLoopBlock("Loop Block", &createBlockMenu);
+    connect(&createLoopBlock, SIGNAL(triggered()),this, SLOT(CreateLoopBlock()));
+
     createBlockMenu.addAction(&createConditionalBlock);
     createBlockMenu.addAction(&createPrintBlockAction);
-
+    createBlockMenu.addAction(&createLoopBlock);
 
     QMenu *inputMenu = createBlockMenu.addMenu((tr("Inputs")));
     inputMenu->addAction(&createInputBlock);
@@ -107,6 +110,15 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
 ConditionalBlock* GraphSpace::CreateConditionalBlock()
 {
     ConditionalBlock *n = new ConditionalBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+
+LoopBlock* GraphSpace::CreateLoopBlock()
+{
+    LoopBlock *n = new LoopBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
@@ -320,49 +332,49 @@ void GraphSpace::RemoveBlock(BaseBlock* block)
         }
     }
 }
-BaseBlock* GraphSpace::CreateBlock(int bt)
-{
-    switch (bt) {
-    case BaseBlock::BlockType::     StartBlock:
-        return CreateStartBlock();
-    case BaseBlock::BlockType::     AddBlock:
-        return CreateAddBlock();
-    case BaseBlock::BlockType::     VarBlock:
-        return CreateVarBlock();
-    case BaseBlock::BlockType::     PrintBlock:
-        return CreatePrintBlock();
-    case BaseBlock::BlockType::     NewVarBlock:
-        return CreateNewVarBlock();
-    case BaseBlock::BlockType::     StringBlock:
-        return CreateStringBlock();
-    case BaseBlock::BlockType::     ConditionalBlock:
-        return CreateConditionalBlock();
-    case BaseBlock::BlockType::     AcquireInputBlock:
-        return CreateAcquireInputBlock();
-    case BaseBlock::BlockType::     GetGOPropertysBlock:
-        return CreateGetGOPropertysBlock();
-    case BaseBlock::BlockType::     SetGOPropertysBlock:
-        return CreateSetGOPropertysBlock();
-    case BaseBlock::BlockType::     SubtractBlock:
-        return CreateSubtractBlock();
-    case BaseBlock::BlockType::     ConstantVarBlock:
-        return CreateConstantVarBlock();
-    case BaseBlock::BlockType::     MultiplicationBlock:
-        return CreateMultiplicationBlock();
-    case BaseBlock::BlockType::     DivisionBlock:
-        return CreateDivisionBlock();
-    case BaseBlock::BlockType::     InputBlock:
-        return CreateInputBlock();
-    }
+//BaseBlock* GraphSpace::CreateBlock(int bt)
+//{
+//    switch (bt) {
+//    case BaseBlock::BlockType::     StartBlock:
+//        return CreateStartBlock();
+//    case BaseBlock::BlockType::     AddBlock:
+//        return CreateAddBlock();
+//    case BaseBlock::BlockType::     VarBlock:
+//        return CreateVarBlock();
+//    case BaseBlock::BlockType::     PrintBlock:
+//        return CreatePrintBlock();
+//    case BaseBlock::BlockType::     NewVarBlock:
+//        return CreateNewVarBlock();
+//    case BaseBlock::BlockType::     StringBlock:
+//        return CreateStringBlock();
+//    case BaseBlock::BlockType::     ConditionalBlock:
+//        return CreateConditionalBlock();
+//    case BaseBlock::BlockType::     AcquireInputBlock:
+//        return CreateAcquireInputBlock();
+//    case BaseBlock::BlockType::     GetGOPropertysBlock:
+//        return CreateGetGOPropertysBlock();
+//    case BaseBlock::BlockType::     SetGOPropertysBlock:
+//        return CreateSetGOPropertysBlock();
+//    case BaseBlock::BlockType::     SubtractBlock:
+//        return CreateSubtractBlock();
+//    case BaseBlock::BlockType::     ConstantVarBlock:
+//        return CreateConstantVarBlock();
+//    case BaseBlock::BlockType::     MultiplicationBlock:
+//        return CreateMultiplicationBlock();
+//    case BaseBlock::BlockType::     DivisionBlock:
+//        return CreateDivisionBlock();
+//    case BaseBlock::BlockType::     InputBlock:
+//        return CreateInputBlock();
+//    }
 
 
-    return nullptr;
-}
+//    return nullptr;
+//}
 
-BaseBlock* GraphSpace::CreateBlock(BaseBlock::BlockType bt)
-{
-    return CreateBlock(static_cast<int>(bt));
-}
+//BaseBlock* GraphSpace::CreateBlock(BaseBlock::BlockType bt)
+//{
+//    return CreateBlock(static_cast<int>(bt));
+//}
 
 
 //TEMP //TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP

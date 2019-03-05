@@ -20,7 +20,7 @@ QString PrintBlock::getLuaCodeLine()
 {
     QString prevResult;
     if(ui->NodeConnectorIn->input != nullptr)
-        prevResult = static_cast<BaseBlock*>(ui->NodeConnectorIn->input->myBlock)->getLuaCodeLine();
+        prevResult = ui->NodeConnectorIn->input->myBlock->getLuaCodeLine();
 
 
     QString outString = tr("local printval = ") + prevResult + tr("\nprint(printval)");
@@ -28,24 +28,4 @@ QString PrintBlock::getLuaCodeLine()
     return outString;
 }
 
-QJsonObject PrintBlock::GetJsonRepresentation()
-{
-    QJsonObject pos;
-    pos.insert("x", this->pos().x());
-    pos.insert("y", this->pos().y());
-    QJsonObject data;
-    data.insert("Position", pos);
-    data.insert("Connectors", ParseConnectors());
-    QJsonObject o;
-    o.insert(QString::number(myType), data);
 
-    return o;
-}
-void PrintBlock::ReLoadData(QJsonObject data)
-{
-    QJsonValue pos = data.value(tr("Position"));
-    move(posFromjsv(pos));
-    //SET POSITION
-    //SET CONNECTORIDS
-    //SET CONNECTIONS
-}

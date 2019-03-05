@@ -16,8 +16,6 @@ public:
     explicit MultiplicationBlock(QWidget *parent = nullptr);
     ~MultiplicationBlock() override;
     QString getLuaCodeLine() override;
-    QJsonObject GetJsonRepresentation() override;
-    void ReLoadData(QJsonObject data) override;
 
 private:
     Ui::MultiplicationBlock *ui;

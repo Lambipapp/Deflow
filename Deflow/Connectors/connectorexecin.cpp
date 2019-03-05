@@ -2,7 +2,7 @@
 #include "connectorexecout.h"
 #include "ui_connectorexecin.h"
 #include "canvas.h"
-
+#include "baseblock.h"
 
 ConnectorExecIn::ConnectorExecIn(QWidget *parent) :
     Connector(parent),

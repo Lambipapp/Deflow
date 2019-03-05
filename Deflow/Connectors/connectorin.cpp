@@ -1,6 +1,7 @@
 #include "connectorin.h"
 #include "ui_connectorin.h"
 #include "canvas.h"
+#include "baseblock.h"
 
 ConnectorIn::ConnectorIn(QWidget *parent) :
     Connector(parent),

@@ -136,7 +136,7 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QComboBox" name="VarBox">
+             <widget class="AutoUpdateComboBox" name="VarBox">
               <property name="enabled">
                <bool>true</bool>
               </property>
@@ -209,6 +209,12 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>AutoUpdateComboBox</class>
+   <extends>QComboBox</extends>
+   <header>autoupdatecombobox.h</header>
+   <container>1</container>
+  </customwidget>
   <customwidget>
    <class>ConnectorOut</class>
    <extends>QWidget</extends>

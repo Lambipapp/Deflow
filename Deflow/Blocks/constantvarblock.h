@@ -16,8 +16,7 @@ public:
     explicit ConstantVarBlock(QWidget *parent = nullptr);
     ~ConstantVarBlock() override;
     QString getLuaCodeLine() override;
-    QJsonObject GetJsonRepresentation() override;
-    void ReLoadData(QJsonObject data) override;
+
 
 private:
     Ui::ConstantVarBlock *ui;

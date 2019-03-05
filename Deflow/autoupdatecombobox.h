@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QComboBox>
 #include "filemanager.h"
+#include "canvas.h"
 
 
 namespace Ui {
@@ -18,14 +19,17 @@ public:
     explicit AutoUpdateComboBox(QWidget *parent = nullptr);
     ~AutoUpdateComboBox();
     void UpdateContents();
+    BaseBlock* myBlock;
 
 private:
     Ui::AutoUpdateComboBox *ui;
     QString inputFileContents;
     QStringList InterpretInputFileContents();
     void SetActionBoxContent(const QStringList &inputKeys);
+    void UpdateComboBoxWithInputFile();
+    void UpdateComboBoxWithVariables();
 
-    QStringList keys;
+    QStringList content;
 public:
  virtual void showPopup() override;
 };

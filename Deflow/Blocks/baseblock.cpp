@@ -90,7 +90,11 @@ void BaseBlock::initConnectors()
         c->myBlock = this;
         connectors.push_back(c);
         if(c->myType == c->NodeType::execOut)
-            myExecOutConnectors.push_back(static_cast<ConnectorExecOut*>(c));
+            myExecOutConnectors.push_back(dynamic_cast<ConnectorExecOut*>(c));
+
+        else if(c->myType == c->NodeType::execIn)
+            myExecInConnector = dynamic_cast<ConnectorExecIn*>(c);
+
     }
 }
 QJsonObject BaseBlock::ParseConnectors()
@@ -102,13 +106,7 @@ QJsonObject BaseBlock::ParseConnectors()
     }
     return o;
 }
-void BaseBlock::ReLoadData(QJsonObject data)
-{}
 
-QJsonObject BaseBlock::GetJsonRepresentation()
-{
-    return QJsonObject();
-}
 QString BaseBlock::getLuaCodeLine()
 {
     return QString();
@@ -117,4 +115,10 @@ QPoint BaseBlock::posFromjsv(QJsonValue pos)
 {
     return QPoint(pos.toObject().value(tr("x")).toInt(), pos.toObject().value(tr("y")).toInt());
 }
+
+
+void BaseBlock::OnInputConnected(){}
+void BaseBlock::OnExecInConnected(){}
+void BaseBlock::OnExecOutConnected(){}
+
 

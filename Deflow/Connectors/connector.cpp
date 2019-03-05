@@ -1,6 +1,8 @@
 #include "connector.h"
 #include "canvas.h"
 #include <QMouseEvent>
+#include <baseblock.h>
+
 
 Connector* Connector::clickedConnector = nullptr;
 int Connector::cids = 0;

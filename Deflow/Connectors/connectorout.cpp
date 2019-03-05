@@ -3,6 +3,7 @@
 #include "connectorin.h"
 #include <QDebug>
 #include "canvas.h"
+#include "baseblock.h"
 
 ConnectorOut::ConnectorOut(QWidget *parent) :
     Connector(parent),

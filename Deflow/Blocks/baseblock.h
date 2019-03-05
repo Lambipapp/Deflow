@@ -31,17 +31,18 @@ public:
 
 
     std::vector<ConnectorExecOut*> myExecOutConnectors;
+    ConnectorExecIn* myExecInConnector;
 
-    virtual QJsonObject GetJsonRepresentation();
+//    virtual QJsonObject GetJsonRepresentation();
     virtual QString getLuaCodeLine();
-    virtual void ReLoadData(QJsonObject data);
+//    virtual void ReLoadData(QJsonObject data);
 
     enum BlockType {
         StartBlock, VarBlock, NewVarBlock, ConditionalBlock,
         AddBlock, PrintBlock, StringBlock, AcquireInputBlock,
         GetGOPropertysBlock, SetGOPropertysBlock, SetVarBlock,
         SubtractBlock, ConstantVarBlock, MultiplicationBlock,
-        DivisionBlock, InputBlock};
+        DivisionBlock, InputBlock, LoopBlock};
     BlockType myType;
 
 signals:
@@ -62,6 +63,10 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
+    virtual void OnInputConnected();
+    virtual void OnExecInConnected();
+    virtual void OnExecOutConnected();
+
 
 };
 

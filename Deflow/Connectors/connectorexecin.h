@@ -19,9 +19,10 @@ public:
     void LoseConnection(Connector* c) override;
     void BindConnection(Connector* c) override;
     QJsonObject GetJsonRepresentation() override;
+    std::vector<Connector*> connected;
 private:
     Ui::ConnectorExecIn *ui;
-    std::vector<Connector*> connected;
+
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;

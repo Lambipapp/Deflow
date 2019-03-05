@@ -12,6 +12,7 @@ InputBlock::InputBlock(QWidget *parent) :
     ui->actionTypeBox->addItem(QString("On Pressed"));  //action.pressed
     ui->actionTypeBox->addItem(QString("On Held"));     //action.repeated       //double check if this one works
     ui->actionTypeBox->addItem(QString("On Released")); //action.released
+    ui->ActionNameBox->myBlock = this;
 
 }
 
@@ -23,27 +24,7 @@ QString InputBlock::getLuaCodeLine()
 {
     return QString();
 }
-QJsonObject InputBlock::GetJsonRepresentation()
-{
-    QJsonObject pos;
-    pos.insert("x", this->pos().x());
-    pos.insert("y", this->pos().y());
-    QJsonObject data;
-    data.insert("Position", pos);
-    data.insert("Connectors", ParseConnectors());
-    QJsonObject o;
-    o.insert(QString::number(myType), data);
 
-    return o;
-}
-void InputBlock::ReLoadData(QJsonObject data)
-{
-    QJsonValue pos = data.value(tr("Position"));
-    move(posFromjsv(pos));
-    //SET POSITION
-    //SET CONNECTORIDS
-    //SET CONNECTIONS
-}
 
 
 void InputBlock::UpdateActionNameBox()

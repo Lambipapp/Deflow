@@ -16,8 +16,6 @@ public:
     explicit InputBlock(QWidget *parent = nullptr);
     ~InputBlock()override;
     QString getLuaCodeLine() override;
-    QJsonObject GetJsonRepresentation() override;
-    void ReLoadData(QJsonObject data) override;
     void UpdateActionNameBox();
 
 private slots:
