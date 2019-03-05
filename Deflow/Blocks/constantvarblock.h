@@ -16,6 +16,7 @@ public:
     explicit ConstantVarBlock(QWidget *parent = nullptr);
     ~ConstantVarBlock() override;
     QString getLuaCodeLine() override;
+    bool isDigits(const QString &string) const;
 
 
 private:
