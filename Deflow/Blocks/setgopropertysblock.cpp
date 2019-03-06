@@ -17,6 +17,23 @@ SetGOPropertysBlock::~SetGOPropertysBlock()
 }
 QString SetGOPropertysBlock::getLuaCodeLine()
 {
-return QString();
+    QString codeLine;
+
+    if(ui->PositionNode->input)
+    {
+        codeLine += "go.set_position(" + ui->PositionNode->input->myBlock->getLuaCodeLine() + ")\n";
+    }
+
+    if(ui->RotationNode->input)
+    {
+        codeLine += "go.set_rotation(" + ui->RotationNode->input->myBlock->getLuaCodeLine() + ")\n";
+    }
+
+    if(ui->ScaleNode->input)
+    {
+        codeLine = "go.set_scale(" + ui->ScaleNode->input->myBlock->getLuaCodeLine() + ")\n";
+    }
+
+    return codeLine;
 }
 

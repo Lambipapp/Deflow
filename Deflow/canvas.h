@@ -20,6 +20,7 @@ public:
     explicit Canvas(QWidget* parent = nullptr);
 
     static LineRenderer* lineRenderer;
+    QStringList GetAllVariables() const;
 
 
     ~Canvas();

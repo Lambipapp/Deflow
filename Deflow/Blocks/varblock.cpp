@@ -9,7 +9,7 @@ VarBlock::VarBlock(QWidget *parent) :
     ui->label->setAttribute(Qt::WA_TransparentForMouseEvents);
     initConnectors();
     myType = BlockType::VarBlock;
-    ui->VarBox->addItem(tr("dt"));
+    //ui->VarBox->addItem(tr("dt"));
     ui->VarBox->myBlock = this;
 }
 
@@ -19,6 +19,21 @@ VarBlock::~VarBlock()
 }
 QString VarBlock::getLuaCodeLine()
 {
-    return "";
+    if(ui->VarBox->currentText() == "---")
+        return "nil";
+
+
+    return "self." + ui->VarBox->currentText();
 }
 
+
+QStringList VarBlock::UpdateComboBoxContents()
+{
+    QStringList list;
+    if(Canvas::instance->currentGraphSpace == Canvas::instance->GetGraphSpaces()[1])
+        list.push_back("dt");
+
+    list.append(Canvas::instance->GetAllVariables());
+
+    return list;
+}

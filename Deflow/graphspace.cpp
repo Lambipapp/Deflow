@@ -55,8 +55,14 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     QAction createSetGoBlock("Set GO Properties Block", &createBlockMenu);
     connect(&createSetGoBlock, SIGNAL(triggered()), this, SLOT(CreateSetGOPropertysBlock()));
 
-    QAction createGetGoBlock("Get GO Properties Block", &createBlockMenu);
-    connect(&createGetGoBlock, SIGNAL(triggered()), this, SLOT(CreateGetGOPropertysBlock()));
+    QAction createGetGoPositionBlock("Get GO Position Block", &createBlockMenu);
+    connect(&createGetGoPositionBlock, SIGNAL(triggered()), this, SLOT(CreateGetPositionBlock()));
+
+    QAction createGetGoRotationBlock("Get GO Rotation Block", &createBlockMenu);
+    connect(&createGetGoRotationBlock, SIGNAL(triggered()), this, SLOT(CreateGetRotationBlock()));
+
+    QAction createGetGoScaleBlock("Get GO Scale Block", &createBlockMenu);
+    connect(&createGetGoScaleBlock, SIGNAL(triggered()), this, SLOT(CreateGetScaleBlock()));
 
     QAction createSetVarBlock("Set Variable Block", &createBlockMenu);
     connect(&createSetVarBlock, SIGNAL(triggered()), this, SLOT(CreateSetVarBlock()));
@@ -100,7 +106,9 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     varMenu->addAction(&createConstantVarBlock);
 
     QMenu *goBlockMenu = createBlockMenu.addMenu(tr("Game Object blocks"));
-    goBlockMenu->addAction(&createGetGoBlock);
+    goBlockMenu->addAction(&createGetGoPositionBlock);
+    goBlockMenu->addAction(&createGetGoRotationBlock);
+    goBlockMenu->addAction(&createGetGoScaleBlock);
     goBlockMenu->addAction(&createSetGoBlock);
 
 
@@ -234,9 +242,25 @@ StartBlock* GraphSpace::CreateStartBlock()
     this->blocks.push_back(n);
     return n;
 }
-GetGOPropertysBlock* GraphSpace::CreateGetGOPropertysBlock()
+GetPositionBlock* GraphSpace::CreateGetPositionBlock()
 {
-    GetGOPropertysBlock *n = new GetGOPropertysBlock(this);
+    GetPositionBlock *n = new GetPositionBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+GetScaleBlock* GraphSpace::CreateGetScaleBlock()
+{
+    GetScaleBlock *n = new GetScaleBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+GetRotationBlock* GraphSpace::CreateGetRotationBlock()
+{
+    GetRotationBlock *n = new GetRotationBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);

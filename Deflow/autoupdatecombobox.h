@@ -18,16 +18,11 @@ class AutoUpdateComboBox : public QComboBox
 public:
     explicit AutoUpdateComboBox(QWidget *parent = nullptr);
     ~AutoUpdateComboBox();
-    void UpdateContents();
+    void SetActionBoxContent(const QStringList &inputKeys);
     BaseBlock* myBlock;
 
 private:
     Ui::AutoUpdateComboBox *ui;
-    QString inputFileContents;
-    QStringList InterpretInputFileContents();
-    void SetActionBoxContent(const QStringList &inputKeys);
-    void UpdateComboBoxWithInputFile();
-    void UpdateComboBoxWithVariables();
 
     QStringList content;
 public:

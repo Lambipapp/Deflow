@@ -19,6 +19,9 @@ public:
 
 private:
     Ui::SetVarBlock *ui;
+
+protected:
+    virtual QStringList UpdateComboBoxContents() override;
 };
 
 #endif // SETVARBLOCK_H

@@ -16,6 +16,7 @@ public:
     explicit VarBlock(QWidget *parent = nullptr);
     ~VarBlock() override;
     QString getLuaCodeLine() override;
+    virtual QStringList UpdateComboBoxContents() override;
 
 
 private:

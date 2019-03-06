@@ -33,6 +33,22 @@ void Canvas::SaveVisualCode()
 
 
 
+QStringList Canvas::GetAllVariables() const
+{
+    QStringList allVars;
+
+    for(int i = 0; i < gSpaces.size(); i++)
+    {
+        QList<NewVarBlock*> list = gSpaces[i]->findChildren<NewVarBlock*>();
+        for(int j = 0; j < list.size(); j++)
+        {
+            allVars.push_back(list[j]->GetVarName());
+        }
+    }
+    return allVars;
+}
+
+
 void Canvas::OpenFile()
 {
 

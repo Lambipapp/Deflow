@@ -17,5 +17,21 @@ AddBlock::~AddBlock()
 }
 QString AddBlock::getLuaCodeLine()
 {
-    return QString();
+    QString codeLine;
+
+   if(ui->Node->input)
+       codeLine = ui->Node->input->myBlock->getLuaCodeLine();
+   else
+       codeLine = "0";
+
+   codeLine += " + ";
+
+   if(ui->Node_2->input)
+       codeLine += ui->Node_2->input->myBlock->getLuaCodeLine();
+   else
+       codeLine += "0";
+
+   codeLine += "\n";
+
+   return codeLine;
 }

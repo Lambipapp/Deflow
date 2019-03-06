@@ -29,7 +29,10 @@ void BaseBlock::mousePressEvent(QMouseEvent *event)
 
 }
 
-
+QStringList BaseBlock::UpdateComboBoxContents()
+{
+    return QStringList("No Content");
+}
 
 
 void BaseBlock::mouseReleaseEvent(QMouseEvent* event)

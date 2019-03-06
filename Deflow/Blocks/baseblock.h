@@ -31,16 +31,17 @@ public:
 
 
     std::vector<ConnectorExecOut*> myExecOutConnectors;
-    ConnectorExecIn* myExecInConnector;
+    ConnectorExecIn* myExecInConnector = nullptr;
 
 //    virtual QJsonObject GetJsonRepresentation();
     virtual QString getLuaCodeLine();
 //    virtual void ReLoadData(QJsonObject data);
+    virtual QStringList UpdateComboBoxContents();
 
     enum BlockType {
         StartBlock, VarBlock, NewVarBlock, ConditionalBlock,
         AddBlock, PrintBlock, StringBlock, AcquireInputBlock,
-        GetGOPropertysBlock, SetGOPropertysBlock, SetVarBlock,
+        GetPositionBlock, GetRotationBlock, GetScaleBlock, SetGOPropertysBlock, SetVarBlock,
         SubtractBlock, ConstantVarBlock, MultiplicationBlock,
         DivisionBlock, InputBlock, LoopBlock};
     BlockType myType;

@@ -96,8 +96,6 @@ QJsonObject ConnectorOut::GetJsonRepresentation()
 {
     QJsonObject o;
 
-    o.insert("myType", myType);
-    o.insert("myID", id);
 
     return o;
 }

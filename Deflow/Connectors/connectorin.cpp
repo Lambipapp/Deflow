@@ -80,9 +80,5 @@ QJsonObject ConnectorIn::GetJsonRepresentation()
 {
     QJsonObject o;
 
-    o.insert("myType", myType);
-    o.insert("myID", id);
-    o.insert("connectedID", input != nullptr ? input->id : -1);
-
     return o;
 }

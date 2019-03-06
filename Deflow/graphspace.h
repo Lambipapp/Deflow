@@ -58,7 +58,9 @@ public slots:
     NewVarBlock*            CreateNewVarBlock();
     VarBlock*               CreateVarBlock();
     ConditionalBlock*       CreateConditionalBlock();
-    GetGOPropertysBlock*    CreateGetGOPropertysBlock();
+    GetPositionBlock*       CreateGetPositionBlock();
+    GetRotationBlock*       CreateGetRotationBlock();
+    GetScaleBlock*          CreateGetScaleBlock();
     SetGOPropertysBlock*    CreateSetGOPropertysBlock();
     SetVarBlock*            CreateSetVarBlock();
     ConstantVarBlock*       CreateConstantVarBlock();

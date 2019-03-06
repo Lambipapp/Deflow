@@ -48,7 +48,7 @@ void MainWindow::OpenFileDialog()
                 InputBlock* ib = nullptr;
                 ib = dynamic_cast<InputBlock*>(Canvas::instance->GetGraphSpaces()[i]->blocks[j]);
                 if(ib != nullptr)
-                    ib->UpdateActionNameBox();
+                    ib->UpdateComboBoxContents();
             }
         }
 

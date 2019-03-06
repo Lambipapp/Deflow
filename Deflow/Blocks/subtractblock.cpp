@@ -17,6 +17,22 @@ SubtractBlock::~SubtractBlock()
 }
 QString SubtractBlock::getLuaCodeLine()
 {
-    return QString();
+    QString codeLine;
+
+   if(ui->a_Node->input)
+       codeLine = ui->a_Node->input->myBlock->getLuaCodeLine();
+   else
+       codeLine = "0";
+
+   codeLine += " - ";
+
+   if(ui->b_Node->input)
+       codeLine += ui->b_Node->input->myBlock->getLuaCodeLine();
+   else
+       codeLine += "0";
+
+   codeLine += "\n";
+
+   return codeLine;
 }
 

@@ -50,7 +50,6 @@ SOURCES += \
     Blocks/conditionalblock.cpp \
     FileManager.cpp \
     translator.cpp \
-    Blocks/getgopropertysblock.cpp \
     Blocks/setgopropertysblock.cpp \
     Blocks/setvarblock.cpp \
     Blocks/subtractblock.cpp \
@@ -59,7 +58,10 @@ SOURCES += \
     Blocks/divisionblock.cpp \
     Blocks/inputblock.cpp \
     autoupdatecombobox.cpp \
-    Blocks/loopblock.cpp
+    Blocks/loopblock.cpp \
+    Blocks/getpositionblock.cpp \
+    Blocks/getrotationblock.cpp \
+    Blocks/getscaleblock.cpp
 
 
 HEADERS += \
@@ -88,7 +90,6 @@ HEADERS += \
     Blocks/conditionalblock.h \
     FileManager.h \
     translator.h \
-    Blocks/getgopropertysblock.h \
     Blocks/setgopropertysblock.h \
     Blocks/setvarblock.h \
     Blocks/subtractblock.h \
@@ -97,7 +98,10 @@ HEADERS += \
     Blocks/divisionblock.h \
     Blocks/inputblock.h \
     autoupdatecombobox.h \
-    Blocks/loopblock.h
+    Blocks/loopblock.h \
+    Blocks/getpositionblock.h \
+    Blocks/getrotationblock.h \
+    Blocks/getscaleblock.h
 
 FORMS += \
         mainwindow.ui \
@@ -118,7 +122,6 @@ FORMS += \
     Blocks/newvarblock.ui \
     Blocks/varblock.ui \
     Blocks/conditionalblock.ui \
-    Blocks/getgopropertysblock.ui \
     Blocks/setgopropertysblock.ui \
     Blocks/setvarblock.ui \
     Blocks/subtractblock.ui \
@@ -127,7 +130,10 @@ FORMS += \
     Blocks/divisionblock.ui \
     Blocks/inputblock.ui \
     autoupdatecombobox.ui \
-    Blocks/loopblock.ui
+    Blocks/loopblock.ui \
+    Blocks/getpositionblock.ui \
+    Blocks/getrotationblock.ui \
+    Blocks/getscaleblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

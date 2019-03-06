@@ -21,8 +21,8 @@ public:
     BaseBlock* myBlock = nullptr;
     virtual void LoseConnection(Connector* c) = 0;
     virtual void BindConnection(Connector* c) = 0;
-    int id;
     virtual QJsonObject GetJsonRepresentation() = 0;
+
 
 signals:
 
