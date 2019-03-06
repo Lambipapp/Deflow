@@ -22,10 +22,9 @@ NewVarBlock::~NewVarBlock()
 }
 QString NewVarBlock::getLuaCodeLine()
 {
-    //if node connected, return that instead of valueField
-
-    return "self." + ui->NameField->text() + " = " + ui->Valuefield->text();
-   //return "local " + ui->NameField->toPlainText() + " = " + ui->ValueField->toPlainText();
+    if(ui->ValueNode->input)
+        return "self." + ui->NameField->text() + " = " + ui->ValueNode->input->myBlock->getLuaCodeLine();
+    return "self." + ui->NameField->text() + " = nil";
 }
 
 
