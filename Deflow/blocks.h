@@ -20,5 +20,6 @@
 #include "divisionblock.h"
 #include "inputblock.h"
 #include "loopblock.h"
+#include "vectorconstantblock.h"
 
 #endif // BLOCKS_H

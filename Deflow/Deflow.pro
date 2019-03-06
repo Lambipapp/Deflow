@@ -61,7 +61,8 @@ SOURCES += \
     Blocks/loopblock.cpp \
     Blocks/getpositionblock.cpp \
     Blocks/getrotationblock.cpp \
-    Blocks/getscaleblock.cpp
+    Blocks/getscaleblock.cpp \
+    Blocks/vectorconstantblock.cpp
 
 
 HEADERS += \
@@ -101,7 +102,8 @@ HEADERS += \
     Blocks/loopblock.h \
     Blocks/getpositionblock.h \
     Blocks/getrotationblock.h \
-    Blocks/getscaleblock.h
+    Blocks/getscaleblock.h \
+    Blocks/vectorconstantblock.h
 
 FORMS += \
         mainwindow.ui \
@@ -133,7 +135,8 @@ FORMS += \
     Blocks/loopblock.ui \
     Blocks/getpositionblock.ui \
     Blocks/getrotationblock.ui \
-    Blocks/getscaleblock.ui
+    Blocks/getscaleblock.ui \
+    Blocks/vectorconstantblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
