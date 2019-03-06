@@ -64,6 +64,7 @@ public slots:
     SetGOPropertysBlock*    CreateSetGOPropertysBlock();
     SetVarBlock*            CreateSetVarBlock();
     ConstantVarBlock*       CreateConstantVarBlock();
+    VectorConstantBlock*    CreateConstantVectorBlock();
     MultiplicationBlock*    CreateMultiplicationBlock();
     DivisionBlock*          CreateDivisionBlock();
     InputBlock*             CreateInputBlock();

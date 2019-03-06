@@ -82,6 +82,9 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     QAction createLoopBlock("Loop Block", &createBlockMenu);
     connect(&createLoopBlock, SIGNAL(triggered()),this, SLOT(CreateLoopBlock()));
 
+    QAction createVectorConstantBlock("Constant Vector Block", &createBlockMenu);
+    connect(&createVectorConstantBlock, SIGNAL(triggered()),this, SLOT(CreateConstantVectorBlock()));
+
     createBlockMenu.addAction(&createConditionalBlock);
     createBlockMenu.addAction(&createPrintBlockAction);
     createBlockMenu.addAction(&createLoopBlock);
@@ -98,12 +101,16 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     //vector length/magnitude block
     //Vector distance block
 
+
+
+
     QMenu *varMenu = createBlockMenu.addMenu(tr("variable blocks"));
     varMenu->addAction(&createNewVarBlock);
     varMenu->addAction(&createVarBlock);
     varMenu->addAction(&createStringBlock);
     varMenu->addAction(&createSetVarBlock);
     varMenu->addAction(&createConstantVarBlock);
+    varMenu->addAction(&createVectorConstantBlock);
 
     QMenu *goBlockMenu = createBlockMenu.addMenu(tr("Game Object blocks"));
     goBlockMenu->addAction(&createGetGoPositionBlock);
@@ -177,6 +184,15 @@ InputBlock* GraphSpace::CreateInputBlock()
 ConstantVarBlock* GraphSpace::CreateConstantVarBlock()
 {
     ConstantVarBlock *n = new ConstantVarBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+
+VectorConstantBlock* GraphSpace::CreateConstantVectorBlock()
+{
+    VectorConstantBlock *n = new VectorConstantBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);

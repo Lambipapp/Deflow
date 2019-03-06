@@ -22,6 +22,8 @@ QString VarBlock::getLuaCodeLine()
     if(ui->VarBox->currentText() == "---")
         return "nil";
 
+    if(ui->VarBox->currentText() == "dt")
+        return ui->VarBox->currentText();
 
     return "self." + ui->VarBox->currentText();
 }
