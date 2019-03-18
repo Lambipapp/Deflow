@@ -155,3 +155,31 @@ RESOURCES += \
 INCLUDEPATH += \
     $$PWD/Blocks \
     $$PWD/Connectors
+
+
+
+# Copy required DLLs to output directory
+CONFIG(debug, debug|release) {
+    Qt5Cored.commands = copy /Y %QTDIR%\\bin\\Qt5Cored.dll debug
+    Qt5Cored.target = debug/Qt5Cored.dll
+    Qt5Guid.commands = copy /Y %QTDIR%\\bin\\Qt5Guid.dll debug
+    Qt5Guid.target = debug/Qt5Guid.dll
+    Qt5Widgetsd.commands = copy /Y %QTDIR%\\bin\\Qt5Widgetsd.dll debug
+    Qt5Widgetsd.target = debug/Qt5Widgetsd.dll
+
+    QMAKE_EXTRA_TARGETS += Qt5Cored Qt5Guid Qt5Widgetsd
+    PRE_TARGETDEPS += debug/Qt5Cored.dll debug/Qt5Guid.dll debug/Qt5Widgetsd.dll
+} else:CONFIG(release, debug|release) {
+    Qt5Core.commands = copy /Y %QTDIR%\\bin\\Qt5Core.dll release
+    Qt5Core.target = release/Qt5Core.dll
+    Qt5Gui.commands = copy /Y %QTDIR%\\bin\\Qt5Gui.dll release
+    Qt5Gui.target = release/Qt5Gui.dll
+    Qt5Widgets.commands = copy /Y %QTDIR%\\bin\\Qt5Widgets.dll release
+    Qt5Widgets.target = release/Qt5Widgets.dll
+
+
+    QMAKE_EXTRA_TARGETS += Qt5Core Qt5Gui Qt5Widgets
+    PRE_TARGETDEPS += release/Qt5Core.dll release/Qt5Gui.dll release/Qt5Widgets.dll
+} else {
+    error(Unknown set of dependencies.)
+}
