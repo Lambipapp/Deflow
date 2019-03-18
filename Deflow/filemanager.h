@@ -8,8 +8,10 @@
 #include "translator.h"
 #include <QDirIterator>
 
-class FileManager
+class FileManager : public QObject
 {
+    Q_OBJECT
+
 public:
     FileManager();
     ~FileManager();
@@ -25,7 +27,7 @@ public:
 
     static FileManager *fm;
 
-    void TranslateAndWriteToCurrentFile();
+
     void SetProjectPath(const QString path);
     bool FindAndReadInputFile(QString &buffer);
 
@@ -45,6 +47,9 @@ private:
     void OnFileOpen();
     void OnFileClose();
     void WriteToCurrentFile(const QString &);
+
+public slots:
+        void TranslateAndWriteToCurrentFile();
 
 
 };

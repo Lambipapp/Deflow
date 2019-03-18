@@ -416,10 +416,3 @@ void GraphSpace::RemoveBlock(BaseBlock* block)
 //    return CreateBlock(static_cast<int>(bt));
 //}
 
-
-//TEMP //TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP//TEMP
-#include "filemanager.h"
-void GraphSpace::on_pushButton_clicked()
-{
-    FileManager::fm->TranslateAndWriteToCurrentFile();
-}

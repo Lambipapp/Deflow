@@ -64,6 +64,7 @@ void FileManager::OnFileClose()
 
 void FileManager::TranslateAndWriteToCurrentFile()
 {
+    qDebug() << "asd";
     QString code;
     Translator t;
     code = t.TranslateAllGraphSpaces();

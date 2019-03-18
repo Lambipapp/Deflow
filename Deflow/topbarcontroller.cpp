@@ -1,4 +1,5 @@
 #include "topbarcontroller.h"
+#include "filemanager.h"
 
 TopBarController::TopBarController(QMenuBar* menu, QMainWindow* mainwindow):
     menuBar(menu), mainWindow(mainwindow)
@@ -33,6 +34,7 @@ void TopBarController::AboutMenu_Add()
 void TopBarController::FileMenu_Populate()
 {
     fileMenu->addAction(QMenuBar::tr("Open Defold Project"),mainWindow, SLOT(OpenFileDialog()));
+    fileMenu->addAction(QMenuBar::tr("Save"),FileManager::fm, SLOT(TranslateAndWriteToCurrentFile()));
 }
 
 void TopBarController::openAboutWindow()
@@ -43,9 +45,7 @@ void TopBarController::openAboutWindow()
 
 void TopBarController::AboutMenu_Populate()
 {
-    QAction* aboutAction = aboutMenu->addAction(QMenuBar::tr("About Deflow"));
-    connect(aboutAction, SIGNAL(triggered()), this, SLOT(openAboutWindow()));
-    aboutMenu->addSeparator();
+    QAction* aboutAction = aboutMenu->addAction(QMenuBar::tr("About Deflow"),this, SLOT(openAboutWindow()));
     QAction* lisenceAction = aboutMenu->addAction(QMenuBar::tr("License"));
 }
 
