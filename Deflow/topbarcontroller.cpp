@@ -3,7 +3,12 @@
 TopBarController::TopBarController(QMenuBar* menu, QMainWindow* mainwindow):
     menuBar(menu), mainWindow(mainwindow)
 {
+    ad = new AboutDialog();
+}
 
+TopBarController::~TopBarController()
+{
+    delete ad;
 }
 
 void TopBarController::SetUpMenu()
@@ -30,11 +35,19 @@ void TopBarController::FileMenu_Populate()
     fileMenu->addAction(QMenuBar::tr("Open Defold Project"),mainWindow, SLOT(OpenFileDialog()));
 }
 
+void TopBarController::openAboutWindow()
+{
+    ad->exec();
+}
+
+
 void TopBarController::AboutMenu_Populate()
 {
-    aboutMenu->addAction(QMenuBar::tr("About Deflow"));
+    QAction* aboutAction = aboutMenu->addAction(QMenuBar::tr("About Deflow"));
+    connect(aboutAction, SIGNAL(triggered()), this, SLOT(openAboutWindow()));
     aboutMenu->addSeparator();
-    aboutMenu->addAction(QMenuBar::tr("License"));
+    QAction* lisenceAction = aboutMenu->addAction(QMenuBar::tr("License"));
 }
+
 
 

@@ -3,13 +3,15 @@
 
 #include <QMainWindow>
 #include <QMenuBar>
+#include "aboutdialog.h"
 
-#include <iostream>
-
-class TopBarController
+class TopBarController : public QObject
 {
+    Q_OBJECT
+
 public:
     TopBarController(QMenuBar* menu,QMainWindow* mainwindow);
+    ~TopBarController();
     void SetUpMenu();
 
 
@@ -23,6 +25,11 @@ private:
     QMainWindow* mainWindow;
     QMenu* fileMenu;
     QMenu* aboutMenu;
+    AboutDialog* ad;
+
+public slots:
+    void openAboutWindow();
+
 
 };
 

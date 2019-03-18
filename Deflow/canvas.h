@@ -4,7 +4,6 @@
 #include <QWidget>
 #include "blocks.h"
 #include "graphspace.h"
-#include <iostream>
 #include "linerenderer.h"
 #include <QJsonDocument>
 
