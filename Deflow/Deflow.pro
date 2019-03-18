@@ -150,7 +150,8 @@ DISTFILES += \
     Arrow.png \
     Arrow-filled.png \
     Circle.png \
-    Circle-filled.png
+    Circle-filled.png \
+    hisLogo.png
 
 RESOURCES += \
     arrows.qrc
