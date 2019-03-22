@@ -6,4 +6,5 @@ Deflow is written in C++ with Qt.
 
 Deflow is provided as is.
 
-![example](/pictures/update.png)
+![Example](https://puu.sh/D2FK0/026e33837a.png)
+
