@@ -34,7 +34,7 @@ void TopBarController::AboutMenu_Add()
 void TopBarController::FileMenu_Populate()
 {
     fileMenu->addAction(QMenuBar::tr("Open Defold Project"),mainWindow, SLOT(OpenFileDialog()));
-    fileMenu->addAction(QMenuBar::tr("Save"),FileManager::fm, SLOT(TranslateAndWriteToCurrentFile()));
+    fileMenu->addAction(QMenuBar::tr("Translate"),FileManager::fm, SLOT(TranslateAndWriteToCurrentFile()));
 }
 
 void TopBarController::openAboutWindow()

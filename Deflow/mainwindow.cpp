@@ -7,13 +7,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    new FileManager();
     topbar = new TopBarController(menuBar(), this);
     topbar->SetUpMenu();
     setWindowTitle(tr("Deflow"));
 
 
 
-    new FileManager();
     sb = new StatusBar(ui->statusBar);
 
 }
