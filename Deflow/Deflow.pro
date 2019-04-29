@@ -63,7 +63,10 @@ SOURCES += \
     Blocks/getrotationblock.cpp \
     Blocks/getscaleblock.cpp \
     Blocks/vectorconstantblock.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    Blocks/godeleteblock.cpp \
+    Blocks/getvectorelementsblock.cpp \
+    Blocks/compareblock.cpp
 
 
 HEADERS += \
@@ -105,7 +108,10 @@ HEADERS += \
     Blocks/getrotationblock.h \
     Blocks/getscaleblock.h \
     Blocks/vectorconstantblock.h \
-    aboutdialog.h
+    aboutdialog.h \
+    Blocks/godeleteblock.h \
+    Blocks/getvectorelementsblock.h \
+    Blocks/compareblock.h
 
 FORMS += \
         mainwindow.ui \
@@ -139,7 +145,10 @@ FORMS += \
     Blocks/getrotationblock.ui \
     Blocks/getscaleblock.ui \
     Blocks/vectorconstantblock.ui \
-    aboutdialog.ui
+    aboutdialog.ui \
+    Blocks/godeleteblock.ui \
+    Blocks/getvectorelementsblock.ui \
+    Blocks/compareblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

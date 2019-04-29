@@ -85,6 +85,15 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     QAction createVectorConstantBlock("Constant Vector Block", &createBlockMenu);
     connect(&createVectorConstantBlock, SIGNAL(triggered()),this, SLOT(CreateConstantVectorBlock()));
 
+    QAction createGoDeleteBlock("Delete Gameobject", &createBlockMenu);
+    connect(&createGoDeleteBlock, SIGNAL(triggered()),this, SLOT(CreateGoDeleteBlock()));
+
+    QAction createVectorElementsBlock("Get Vector Element", &createBlockMenu);
+    connect(&createVectorElementsBlock, SIGNAL(triggered()),this, SLOT(CreateVectorElementsBlock()));
+
+    QAction createCompareBlock("Compare", &createBlockMenu);
+    connect(&createCompareBlock, SIGNAL(triggered()),this, SLOT(CreateCompareBlock()));
+
     createBlockMenu.addAction(&createConditionalBlock);
     createBlockMenu.addAction(&createPrintBlockAction);
     createBlockMenu.addAction(&createLoopBlock);
@@ -97,6 +106,8 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     mathMenu->addAction(&createSubtractBlock);
     mathMenu->addAction(&createMultiplicationBlock);
     mathMenu->addAction(&createDivisionBlock);
+    mathMenu->addAction(&createVectorElementsBlock);
+    mathMenu->addAction(&createCompareBlock);
 
     //vector length/magnitude block
     //Vector distance block
@@ -117,6 +128,7 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
     goBlockMenu->addAction(&createGetGoRotationBlock);
     goBlockMenu->addAction(&createGetGoScaleBlock);
     goBlockMenu->addAction(&createSetGoBlock);
+    goBlockMenu->addAction(&createGoDeleteBlock);
 
 
     newBlockPos = pos;
@@ -125,6 +137,15 @@ void GraphSpace::ShowContextMenu(const QPoint &pos)
 ConditionalBlock* GraphSpace::CreateConditionalBlock()
 {
     ConditionalBlock *n = new ConditionalBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+
+CompareBlock* GraphSpace::CreateCompareBlock()
+{
+    CompareBlock *n = new CompareBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
@@ -151,6 +172,14 @@ MultiplicationBlock* GraphSpace::CreateMultiplicationBlock()
 VarBlock* GraphSpace::CreateVarBlock()
 {
     VarBlock *n = new VarBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
+GetVectorElementsBlock* GraphSpace::CreateVectorElementsBlock()
+{
+    GetVectorElementsBlock *n = new GetVectorElementsBlock(this);
     n->show();
     n->move(newBlockPos);
     this->blocks.push_back(n);
@@ -225,6 +254,14 @@ AcquireInputBlock* GraphSpace::CreateAcquireInputBlock()
     return n;
 }
 
+GoDeleteBlock* GraphSpace::CreateGoDeleteBlock()
+{
+    GoDeleteBlock *n = new GoDeleteBlock(this);
+    n->show();
+    n->move(newBlockPos);
+    this->blocks.push_back(n);
+    return n;
+}
 AddBlock* GraphSpace::CreateAddBlock()
 {
     AddBlock *n = new AddBlock(this);

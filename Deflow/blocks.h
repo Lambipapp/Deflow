@@ -21,5 +21,8 @@
 #include "inputblock.h"
 #include "loopblock.h"
 #include "vectorconstantblock.h"
+#include "godeleteblock.h"
+#include "getvectorelementsblock.h"
+#include "compareblock.h"
 
 #endif // BLOCKS_H

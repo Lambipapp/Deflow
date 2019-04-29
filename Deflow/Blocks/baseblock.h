@@ -43,7 +43,8 @@ public:
         AddBlock, PrintBlock, StringBlock, AcquireInputBlock,
         GetPositionBlock, GetRotationBlock, GetScaleBlock, SetGOPropertysBlock, SetVarBlock,
         SubtractBlock, ConstantVarBlock, MultiplicationBlock,
-        DivisionBlock, InputBlock, LoopBlock, VectorConstantBlock};
+        DivisionBlock, InputBlock, LoopBlock, VectorConstantBlock, GoDeleteBlock, GetVectorelEmentsBlock,
+        CompareBlock};
     BlockType myType;
 
 signals:

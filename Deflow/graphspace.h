@@ -69,6 +69,9 @@ public slots:
     DivisionBlock*          CreateDivisionBlock();
     InputBlock*             CreateInputBlock();
     LoopBlock*              CreateLoopBlock();
+    GoDeleteBlock*          CreateGoDeleteBlock();
+    GetVectorElementsBlock* CreateVectorElementsBlock();
+    CompareBlock*           CreateCompareBlock();
     void ShowContextMenu(const QPoint &pos);
 };
 
